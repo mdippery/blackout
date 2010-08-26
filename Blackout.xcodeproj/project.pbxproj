@@ -12,6 +12,7 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		B76446A71226E47B00881E03 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76446A51226E47B00881E03 /* MainMenu.xib */; };
 		B76446AA1226E48A00881E03 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B76446A81226E48A00881E03 /* InfoPlist.strings */; };
+		B7AFE0631226EB170094D80C /* NSEvent+Blackout.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AFE0621226EB170094D80C /* NSEvent+Blackout.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,8 @@
 		8D1107320486CEB800E47090 /* Blackout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blackout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B76446A61226E47B00881E03 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B76446A91226E48A00881E03 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B7AFE0611226EB170094D80C /* NSEvent+Blackout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSEvent+Blackout.h"; path = "Source/NSEvent+Blackout.h"; sourceTree = "<group>"; };
+		B7AFE0621226EB170094D80C /* NSEvent+Blackout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSEvent+Blackout.m"; path = "Source/NSEvent+Blackout.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,7 @@
 			children = (
 				256AC3D80F4B6AC300CF3369 /* BOApplication.h */,
 				256AC3D90F4B6AC300CF3369 /* BOApplication.m */,
+				B7AFE0601226EAFF0094D80C /* Additions */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -98,6 +102,15 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B7AFE0601226EAFF0094D80C /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				B7AFE0611226EB170094D80C /* NSEvent+Blackout.h */,
+				B7AFE0621226EB170094D80C /* NSEvent+Blackout.m */,
+			);
+			name = Additions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +170,7 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* BOApplication.m in Sources */,
+				B7AFE0631226EB170094D80C /* NSEvent+Blackout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

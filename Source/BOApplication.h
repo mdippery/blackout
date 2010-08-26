@@ -16,6 +16,7 @@
     NSStatusItem *statusItem;
 }
 
+- (IBAction)activateMenu:(id)sener;
 - (IBAction)activateScreenSaver:(id)sender;
 
 @end
