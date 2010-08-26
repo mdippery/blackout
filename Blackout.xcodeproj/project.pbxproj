@@ -15,6 +15,7 @@
 		B7AFE0631226EB170094D80C /* NSEvent+Blackout.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AFE0621226EB170094D80C /* NSEvent+Blackout.m */; };
 		B7D1D4F51226F10400803D94 /* Moon.png in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D4F41226F10400803D94 /* Moon.png */; };
 		B7D1D5121226F1F100803D94 /* NSImage+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D1D5111226F1F100803D94 /* NSImage+Convenience.m */; };
+		B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D54A1226F53E00803D94 /* Moon.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		B7D1D4F41226F10400803D94 /* Moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Moon.png; path = Resources/Moon.png; sourceTree = "<group>"; };
 		B7D1D5101226F1F100803D94 /* NSImage+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+Convenience.h"; path = "Source/NSImage+Convenience.h"; sourceTree = "<group>"; };
 		B7D1D5111226F1F100803D94 /* NSImage+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+Convenience.m"; path = "Source/NSImage+Convenience.m"; sourceTree = "<group>"; };
+		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Moon.icns; path = Resources/Moon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				B76446A51226E47B00881E03 /* MainMenu.xib */,
 				B76446A81226E48A00881E03 /* InfoPlist.strings */,
 				B7D1D4F41226F10400803D94 /* Moon.png */,
+				B7D1D54A1226F53E00803D94 /* Moon.icns */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 				B76446A71226E47B00881E03 /* MainMenu.xib in Resources */,
 				B76446AA1226E48A00881E03 /* InfoPlist.strings in Resources */,
 				B7D1D4F51226F10400803D94 /* Moon.png in Resources */,
+				B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
