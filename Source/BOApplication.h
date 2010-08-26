@@ -8,5 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
+
 @interface BOApplication : NSObject
+{
+    IBOutlet NSMenu *mainMenu;
+    
+    NSStatusItem *statusItem;
+}
+
+- (IBAction)activateScreenSaver:(id)sender;
+
 @end

@@ -10,4 +10,26 @@
 
 
 @implementation BOApplication
+
+- (void)awakeFromNib
+{
+    NSStatusBar *bar = [NSStatusBar systemStatusBar];
+    
+    statusItem = [[bar statusItemWithLength:NSSquareStatusItemLength] retain];
+    [statusItem setTitle:@"!"];
+    [statusItem setHighlightMode:YES];
+    [statusItem setMenu:mainMenu];
+}
+
+- (void)dealloc
+{
+    [statusItem release];
+    [super dealloc];
+}
+
+- (IBAction)activateScreenSaver:(id)sender
+{
+    [[NSWorkspace sharedWorkspace] launchApplication:@"ScreenSaverEngine"];
+}
+
 @end
