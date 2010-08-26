@@ -9,7 +9,4 @@
 #import <Cocoa/Cocoa.h>
 
 @interface BOApplication : NSObject
-{
-    IBOutlet NSWindow *window;
-}
 @end
