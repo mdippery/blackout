@@ -13,6 +13,8 @@
 		B76446A71226E47B00881E03 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76446A51226E47B00881E03 /* MainMenu.xib */; };
 		B76446AA1226E48A00881E03 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B76446A81226E48A00881E03 /* InfoPlist.strings */; };
 		B7AFE0631226EB170094D80C /* NSEvent+Blackout.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AFE0621226EB170094D80C /* NSEvent+Blackout.m */; };
+		B7D1D4F51226F10400803D94 /* Moon.png in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D4F41226F10400803D94 /* Moon.png */; };
+		B7D1D5121226F1F100803D94 /* NSImage+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D1D5111226F1F100803D94 /* NSImage+Convenience.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,9 @@
 		B76446A91226E48A00881E03 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B7AFE0611226EB170094D80C /* NSEvent+Blackout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSEvent+Blackout.h"; path = "Source/NSEvent+Blackout.h"; sourceTree = "<group>"; };
 		B7AFE0621226EB170094D80C /* NSEvent+Blackout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSEvent+Blackout.m"; path = "Source/NSEvent+Blackout.m"; sourceTree = "<group>"; };
+		B7D1D4F41226F10400803D94 /* Moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Moon.png; path = Resources/Moon.png; sourceTree = "<group>"; };
+		B7D1D5101226F1F100803D94 /* NSImage+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+Convenience.h"; path = "Source/NSImage+Convenience.h"; sourceTree = "<group>"; };
+		B7D1D5111226F1F100803D94 /* NSImage+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+Convenience.m"; path = "Source/NSImage+Convenience.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +96,7 @@
 				8D1107310486CEB800E47090 /* Info.plist */,
 				B76446A51226E47B00881E03 /* MainMenu.xib */,
 				B76446A81226E48A00881E03 /* InfoPlist.strings */,
+				B7D1D4F41226F10400803D94 /* Moon.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -109,6 +115,8 @@
 			children = (
 				B7AFE0611226EB170094D80C /* NSEvent+Blackout.h */,
 				B7AFE0621226EB170094D80C /* NSEvent+Blackout.m */,
+				B7D1D5101226F1F100803D94 /* NSImage+Convenience.h */,
+				B7D1D5111226F1F100803D94 /* NSImage+Convenience.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -158,6 +166,7 @@
 			files = (
 				B76446A71226E47B00881E03 /* MainMenu.xib in Resources */,
 				B76446AA1226E48A00881E03 /* InfoPlist.strings in Resources */,
+				B7D1D4F51226F10400803D94 /* Moon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +180,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* BOApplication.m in Sources */,
 				B7AFE0631226EB170094D80C /* NSEvent+Blackout.m in Sources */,
+				B7D1D5121226F1F100803D94 /* NSImage+Convenience.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

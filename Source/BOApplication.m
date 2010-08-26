@@ -8,21 +8,28 @@
 
 #import "BOApplication.h"
 #import "NSEvent+Blackout.h"
+#import "NSImage+Convenience.h"
 
 
 @interface BOApplication ()
+@property (readonly) NSImage *statusMenuImage;
+@property (readonly) NSImage *alternateStatusMenuImage;
 - (IBAction)activateScreenSaverOrMenu:(id)sender;
 @end
 
 
 @implementation BOApplication
 
+@dynamic statusMenuImage;
+@dynamic alternateStatusMenuImage;
+
 - (void)awakeFromNib
 {
     NSStatusBar *bar = [NSStatusBar systemStatusBar];
     
     statusItem = [[bar statusItemWithLength:NSSquareStatusItemLength] retain];
-    [statusItem setTitle:@"!"];
+    [statusItem setImage:[self statusMenuImage]];
+    [statusItem setAlternateImage:[self alternateStatusMenuImage]];
     [statusItem setHighlightMode:YES];
     [statusItem setAction:@selector(activateScreenSaverOrMenu:)];
 }
@@ -31,6 +38,17 @@
 {
     [statusItem release];
     [super dealloc];
+}
+
+- (NSImage *)statusMenuImage
+{
+    NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"Moon" ofType:@"png"];
+    return [NSImage imageWithContentsOfFile:imgPath];
+}
+
+- (NSImage *)alternateStatusMenuImage
+{
+    return [self statusMenuImage];
 }
 
 - (IBAction)activateScreenSaverOrMenu:(id)sender
