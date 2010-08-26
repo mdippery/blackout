@@ -16,6 +16,7 @@
 		B7D1D4F51226F10400803D94 /* Moon.png in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D4F41226F10400803D94 /* Moon.png */; };
 		B7D1D5121226F1F100803D94 /* NSImage+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D1D5111226F1F100803D94 /* NSImage+Convenience.m */; };
 		B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D54A1226F53E00803D94 /* Moon.icns */; };
+		B7D3A83F1227047B0091FA66 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B7D3A83D1227047B0091FA66 /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		B7D1D5101226F1F100803D94 /* NSImage+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+Convenience.h"; path = "Source/NSImage+Convenience.h"; sourceTree = "<group>"; };
 		B7D1D5111226F1F100803D94 /* NSImage+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+Convenience.m"; path = "Source/NSImage+Convenience.m"; sourceTree = "<group>"; };
 		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Moon.icns; path = Resources/Moon.icns; sourceTree = "<group>"; };
+		B7D3A83E1227047B0091FA66 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = Resources/English.lproj/Credits.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				B76446A81226E48A00881E03 /* InfoPlist.strings */,
 				B7D1D4F41226F10400803D94 /* Moon.png */,
 				B7D1D54A1226F53E00803D94 /* Moon.icns */,
+				B7D3A83D1227047B0091FA66 /* Credits.rtf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 				B76446AA1226E48A00881E03 /* InfoPlist.strings in Resources */,
 				B7D1D4F51226F10400803D94 /* Moon.png in Resources */,
 				B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */,
+				B7D3A83F1227047B0091FA66 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +209,14 @@
 				B76446A91226E48A00881E03 /* English */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B7D3A83D1227047B0091FA66 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B7D3A83E1227047B0091FA66 /* English */,
+			);
+			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
