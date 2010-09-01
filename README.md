@@ -30,7 +30,8 @@ can take up valuable menubar real estate instead.
 
 You need:
 
-* Mac OS X 10.6 (and an [Intel Mac][osx-requirements], of course)
+* A 64-bit Intel Mac (sorry, 32-bit Intel is not supported)
+* Mac OS X 10.6
 
 ## Who are you?
 
