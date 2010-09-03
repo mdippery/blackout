@@ -11,28 +11,47 @@
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		B750C5C012277BE500A18696 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B750C5BF12277BE500A18696 /* LICENSE */; };
-		B76446A71226E47B00881E03 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76446A51226E47B00881E03 /* MainMenu.xib */; };
-		B76446AA1226E48A00881E03 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B76446A81226E48A00881E03 /* InfoPlist.strings */; };
 		B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783BE6B123146EC005AA38B /* Carbon.framework */; };
+		B783C07212316662005AA38B /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783C06A1231663D005AA38B /* PreferencePanes.framework */; };
+		B783C0E6123166FE005AA38B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B783C0E4123166FE005AA38B /* MainMenu.xib */; };
+		B783C0E91231670E005AA38B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B783C0E71231670E005AA38B /* InfoPlist.strings */; };
+		B783C0F112316788005AA38B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		B783C1E012316845005AA38B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B783C1DF12316845005AA38B /* InfoPlist.strings */; };
+		B783C1EE12316926005AA38B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B750C5BF12277BE500A18696 /* LICENSE */; };
+		B783C2001231695C005AA38B /* Blackout.app in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107320486CEB800E47090 /* Blackout.app */; };
 		B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D54A1226F53E00803D94 /* Moon.icns */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B783C0681231662A005AA38B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8D1107260486CEB800E47090 /* Blackout Helper */;
+			remoteInfo = "Blackout Helper";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
-		256AC3D80F4B6AC300CF3369 /* BOApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOApplication.h; path = Source/BOApplication.h; sourceTree = "<group>"; };
-		256AC3D90F4B6AC300CF3369 /* BOApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOApplication.m; path = Source/BOApplication.m; sourceTree = "<group>"; };
-		256AC3F00F4B6AF500CF3369 /* Blackout.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Blackout.pch; path = Source/Blackout.pch; sourceTree = "<group>"; };
-		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Source/main.m; sourceTree = "<group>"; };
+		256AC3D80F4B6AC300CF3369 /* BOApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOApplication.h; path = Helper/Source/BOApplication.h; sourceTree = "<group>"; };
+		256AC3D90F4B6AC300CF3369 /* BOApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOApplication.m; path = Helper/Source/BOApplication.m; sourceTree = "<group>"; };
+		256AC3F00F4B6AF500CF3369 /* Blackout.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Blackout.pch; path = Helper/Source/Blackout.pch; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Helper/Source/main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Helper/Resources/Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Blackout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blackout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B750C5BF12277BE500A18696 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		B76446A61226E47B00881E03 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		B76446A91226E48A00881E03 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B783BE6B123146EC005AA38B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Moon.icns; path = Resources/Moon.icns; sourceTree = "<group>"; };
+		B783C063123165BB005AA38B /* Blackout.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Blackout.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
+		B783C064123165BB005AA38B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Prefpane/Resources/Info.plist; sourceTree = "<group>"; };
+		B783C06A1231663D005AA38B /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = System/Library/Frameworks/PreferencePanes.framework; sourceTree = SDKROOT; };
+		B783C0E5123166FE005AA38B /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Helper/Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		B783C0E81231670E005AA38B /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Helper/Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B783C1DD12316841005AA38B /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Prefpane/Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Moon.icns; path = Helper/Resources/Moon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +61,15 @@
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B783C061123165BB005AA38B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B783C0F112316788005AA38B /* Cocoa.framework in Frameworks */,
+				B783C07212316662005AA38B /* PreferencePanes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				8D1107320486CEB800E47090 /* Blackout.app */,
+				B783C063123165BB005AA38B /* Blackout.prefPane */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -69,10 +98,8 @@
 		29B97314FDCFA39411CA2CEA /* Blackout */ = {
 			isa = PBXGroup;
 			children = (
-				256AC3D80F4B6AC300CF3369 /* BOApplication.h */,
-				256AC3D90F4B6AC300CF3369 /* BOApplication.m */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				29B97317FDCFA39411CA2CEA /* Resources */,
+				B783BFE012316436005AA38B /* Preference Pane */,
+				B783BF6E123163EF005AA38B /* Helper */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -92,8 +119,8 @@
 			isa = PBXGroup;
 			children = (
 				8D1107310486CEB800E47090 /* Info.plist */,
-				B76446A51226E47B00881E03 /* MainMenu.xib */,
-				B76446A81226E48A00881E03 /* InfoPlist.strings */,
+				B783C0E71231670E005AA38B /* InfoPlist.strings */,
+				B783C0E4123166FE005AA38B /* MainMenu.xib */,
 				B7D1D54A1226F53E00803D94 /* Moon.icns */,
 				B750C5BF12277BE500A18696 /* LICENSE */,
 			);
@@ -105,17 +132,46 @@
 			children = (
 				B783BE6B123146EC005AA38B /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				B783C06A1231663D005AA38B /* PreferencePanes.framework */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B783BF6E123163EF005AA38B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				256AC3D80F4B6AC300CF3369 /* BOApplication.h */,
+				256AC3D90F4B6AC300CF3369 /* BOApplication.m */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		B783BFE012316436005AA38B /* Preference Pane */ = {
+			isa = PBXGroup;
+			children = (
+				B783C0EC1231674A005AA38B /* Resources */,
+			);
+			name = "Preference Pane";
+			sourceTree = "<group>";
+		};
+		B783C0EC1231674A005AA38B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B783C064123165BB005AA38B /* Info.plist */,
+				B783C1DF12316845005AA38B /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* Blackout */ = {
+		8D1107260486CEB800E47090 /* Blackout Helper */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Blackout" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Blackout Helper" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
@@ -125,11 +181,29 @@
 			);
 			dependencies = (
 			);
-			name = Blackout;
+			name = "Blackout Helper";
 			productInstallPath = "$(HOME)/Applications";
 			productName = Blackout;
 			productReference = 8D1107320486CEB800E47090 /* Blackout.app */;
 			productType = "com.apple.product-type.application";
+		};
+		B783C062123165BB005AA38B /* Blackout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B783C067123165BB005AA38B /* Build configuration list for PBXNativeTarget "Blackout" */;
+			buildPhases = (
+				B783C05F123165BB005AA38B /* Resources */,
+				B783C060123165BB005AA38B /* Sources */,
+				B783C061123165BB005AA38B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B783C0691231662A005AA38B /* PBXTargetDependency */,
+			);
+			name = Blackout;
+			productName = Blackout;
+			productReference = B783C063123165BB005AA38B /* Blackout.prefPane */;
+			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
 
@@ -143,7 +217,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* Blackout */,
+				B783C062123165BB005AA38B /* Blackout */,
+				8D1107260486CEB800E47090 /* Blackout Helper */,
 			);
 		};
 /* End PBXProject section */
@@ -153,10 +228,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B76446A71226E47B00881E03 /* MainMenu.xib in Resources */,
-				B76446AA1226E48A00881E03 /* InfoPlist.strings in Resources */,
+				B783C0E6123166FE005AA38B /* MainMenu.xib in Resources */,
+				B783C0E91231670E005AA38B /* InfoPlist.strings in Resources */,
 				B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */,
 				B750C5C012277BE500A18696 /* LICENSE in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B783C05F123165BB005AA38B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B783C1E012316845005AA38B /* InfoPlist.strings in Resources */,
+				B783C1EE12316926005AA38B /* LICENSE in Resources */,
+				B783C2001231695C005AA38B /* Blackout.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,21 +257,44 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B783C060123165BB005AA38B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B783C0691231662A005AA38B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8D1107260486CEB800E47090 /* Blackout Helper */;
+			targetProxy = B783C0681231662A005AA38B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
-		B76446A51226E47B00881E03 /* MainMenu.xib */ = {
+		B783C0E4123166FE005AA38B /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B76446A61226E47B00881E03 /* English */,
+				B783C0E5123166FE005AA38B /* English */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
-		B76446A81226E48A00881E03 /* InfoPlist.strings */ = {
+		B783C0E71231670E005AA38B /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B76446A91226E48A00881E03 /* English */,
+				B783C0E81231670E005AA38B /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B783C1DF12316845005AA38B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B783C1DD12316841005AA38B /* English */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -194,26 +302,83 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B783C065123165BB005AA38B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 2;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = Prefpane/Resources/Info.plist;
+				INSTALL_PATH = /Library/PreferencePanes;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Blackout;
+				VALID_ARCHS = x86_64;
+				WRAPPER_EXTENSION = prefPane;
+			};
+			name = Debug;
+		};
+		B783C066123165BB005AA38B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 2;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = Prefpane/Resources/Info.plist;
+				INSTALL_PATH = /Library/PreferencePanes;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					AppKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Blackout;
+				VALID_ARCHS = x86_64;
+				WRAPPER_EXTENSION = prefPane;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Source/Blackout.pch;
+				GCC_PREFIX_HEADER = Helper/Source/Blackout.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_FILE = Helper/Resources/Info.plist;
 				INSTALL_PATH = /Applications;
 				PRODUCT_NAME = Blackout;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				VALID_ARCHS = x86_64;
-				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -222,18 +387,17 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Source/Blackout.pch;
+				GCC_PREFIX_HEADER = Helper/Source/Blackout.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_FILE = Helper/Resources/Info.plist;
 				INSTALL_PATH = /Applications;
 				PRODUCT_NAME = Blackout;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				VALID_ARCHS = x86_64;
-				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -266,7 +430,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Blackout" */ = {
+		B783C067123165BB005AA38B /* Build configuration list for PBXNativeTarget "Blackout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B783C065123165BB005AA38B /* Debug */,
+				B783C066123165BB005AA38B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Blackout Helper" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
