@@ -24,13 +24,6 @@
 
 
 @interface BOApplication : NSObject
-{
-    IBOutlet NSMenu *mainMenu;
-    
-    NSStatusItem *statusItem;
-}
-
-- (IBAction)activateMenu:(id)sener;
-- (IBAction)activateScreenSaver:(id)sender;
-
+- (void)registerGlobalHotkey;
+- (void)activateScreenSaver:(id)sender;
 @end

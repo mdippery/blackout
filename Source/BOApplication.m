@@ -24,18 +24,7 @@
 
 #import <Carbon/Carbon.h>
 
-#import "NSEvent+Blackout.h"
-#import "NSImage+Convenience.h"
-
 #define ESC_KEY 53
-
-
-@interface BOApplication ()
-@property (readonly) NSImage *statusMenuImage;
-@property (readonly) NSImage *alternateStatusMenuImage;
-- (void)registerGlobalHotkey;
-- (IBAction)activateScreenSaverOrMenu:(id)sender;
-@end
 
 
 static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData)
@@ -49,40 +38,9 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 @implementation BOApplication
 
-@dynamic statusMenuImage;
-@dynamic alternateStatusMenuImage;
-
 - (void)applicationDidFinishLaunching:(NSNotification *)note
 {
     [self registerGlobalHotkey];
-}
-
-- (void)awakeFromNib
-{
-    NSStatusBar *bar = [NSStatusBar systemStatusBar];
-    
-    statusItem = [[bar statusItemWithLength:NSSquareStatusItemLength] retain];
-    [statusItem setImage:[self statusMenuImage]];
-    [statusItem setAlternateImage:[self alternateStatusMenuImage]];
-    [statusItem setHighlightMode:YES];
-    [statusItem setAction:@selector(activateScreenSaverOrMenu:)];
-}
-
-- (void)dealloc
-{
-    [statusItem release];
-    [super dealloc];
-}
-
-- (NSImage *)statusMenuImage
-{
-    NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"Moon" ofType:@"png"];
-    return [NSImage imageWithContentsOfFile:imgPath];
-}
-
-- (NSImage *)alternateStatusMenuImage
-{
-    return [self statusMenuImage];
 }
 
 - (void)registerGlobalHotkey
@@ -102,21 +60,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     RegisterEventHotKey(ESC_KEY, cmdKey | shiftKey, hotKeyID, GetApplicationEventTarget(), 0, &hotKeyRef);
 }
 
-- (IBAction)activateScreenSaverOrMenu:(id)sender
-{
-    if ([NSEvent isCommandKeyDown] || [NSEvent isControlKeyDown]) {
-        [self activateMenu:sender];
-    } else {
-        [self activateScreenSaver:sender];
-    }
-}
-
-- (IBAction)activateMenu:(id)sender
-{
-    [statusItem popUpStatusItemMenu:mainMenu];
-}
-
-- (IBAction)activateScreenSaver:(id)sender
+- (void)activateScreenSaver:(id)sender
 {
     [[NSWorkspace sharedWorkspace] launchApplication:@"ScreenSaverEngine"];
 }

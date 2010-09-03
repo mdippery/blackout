@@ -14,11 +14,7 @@
 		B76446A71226E47B00881E03 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76446A51226E47B00881E03 /* MainMenu.xib */; };
 		B76446AA1226E48A00881E03 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B76446A81226E48A00881E03 /* InfoPlist.strings */; };
 		B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783BE6B123146EC005AA38B /* Carbon.framework */; };
-		B7AFE0631226EB170094D80C /* NSEvent+Blackout.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AFE0621226EB170094D80C /* NSEvent+Blackout.m */; };
-		B7D1D4F51226F10400803D94 /* Moon.png in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D4F41226F10400803D94 /* Moon.png */; };
-		B7D1D5121226F1F100803D94 /* NSImage+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D1D5111226F1F100803D94 /* NSImage+Convenience.m */; };
 		B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D54A1226F53E00803D94 /* Moon.icns */; };
-		B7D3A83F1227047B0091FA66 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = B7D3A83D1227047B0091FA66 /* Credits.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,13 +32,7 @@
 		B76446A61226E47B00881E03 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B76446A91226E48A00881E03 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B783BE6B123146EC005AA38B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		B7AFE0611226EB170094D80C /* NSEvent+Blackout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSEvent+Blackout.h"; path = "Source/NSEvent+Blackout.h"; sourceTree = "<group>"; };
-		B7AFE0621226EB170094D80C /* NSEvent+Blackout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSEvent+Blackout.m"; path = "Source/NSEvent+Blackout.m"; sourceTree = "<group>"; };
-		B7D1D4F41226F10400803D94 /* Moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Moon.png; path = Resources/Moon.png; sourceTree = "<group>"; };
-		B7D1D5101226F1F100803D94 /* NSImage+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSImage+Convenience.h"; path = "Source/NSImage+Convenience.h"; sourceTree = "<group>"; };
-		B7D1D5111226F1F100803D94 /* NSImage+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSImage+Convenience.m"; path = "Source/NSImage+Convenience.m"; sourceTree = "<group>"; };
 		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Moon.icns; path = Resources/Moon.icns; sourceTree = "<group>"; };
-		B7D3A83E1227047B0091FA66 /* English */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = English; path = Resources/English.lproj/Credits.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +71,6 @@
 			children = (
 				256AC3D80F4B6AC300CF3369 /* BOApplication.h */,
 				256AC3D90F4B6AC300CF3369 /* BOApplication.m */,
-				B7AFE0601226EAFF0094D80C /* Additions */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -105,9 +94,7 @@
 				8D1107310486CEB800E47090 /* Info.plist */,
 				B76446A51226E47B00881E03 /* MainMenu.xib */,
 				B76446A81226E48A00881E03 /* InfoPlist.strings */,
-				B7D1D4F41226F10400803D94 /* Moon.png */,
 				B7D1D54A1226F53E00803D94 /* Moon.icns */,
-				B7D3A83D1227047B0091FA66 /* Credits.rtf */,
 				B750C5BF12277BE500A18696 /* LICENSE */,
 			);
 			name = Resources;
@@ -121,17 +108,6 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B7AFE0601226EAFF0094D80C /* Additions */ = {
-			isa = PBXGroup;
-			children = (
-				B7AFE0611226EB170094D80C /* NSEvent+Blackout.h */,
-				B7AFE0621226EB170094D80C /* NSEvent+Blackout.m */,
-				B7D1D5101226F1F100803D94 /* NSImage+Convenience.h */,
-				B7D1D5111226F1F100803D94 /* NSImage+Convenience.m */,
-			);
-			name = Additions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,9 +155,7 @@
 			files = (
 				B76446A71226E47B00881E03 /* MainMenu.xib in Resources */,
 				B76446AA1226E48A00881E03 /* InfoPlist.strings in Resources */,
-				B7D1D4F51226F10400803D94 /* Moon.png in Resources */,
 				B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */,
-				B7D3A83F1227047B0091FA66 /* Credits.rtf in Resources */,
 				B750C5C012277BE500A18696 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,8 +169,6 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* BOApplication.m in Sources */,
-				B7AFE0631226EB170094D80C /* NSEvent+Blackout.m in Sources */,
-				B7D1D5121226F1F100803D94 /* NSImage+Convenience.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,14 +189,6 @@
 				B76446A91226E48A00881E03 /* English */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		B7D3A83D1227047B0091FA66 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B7D3A83E1227047B0091FA66 /* English */,
-			);
-			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
