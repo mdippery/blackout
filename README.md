@@ -1,12 +1,11 @@
 # Blackout
 
-Blackout is a Mac OS X menulet that lets you activate the screensaver with
-a single click.
+Blackout is a Mac OS X preference pane that lets you activate the screensaver
+with a single keystroke.
 
 ## That's it?
 
-Well, it lets you set a keystroke to activate the screensaver from the
-keyboard, too.
+What else did you expect?
 
 ## Can't I activate the screensaver with a hot corner?
 
@@ -24,7 +23,7 @@ the screen is set to lock upon screensaver activation).
 ## Can't I drag ScreenSaverEngine.app to the Dock?
 
 You can, but that takes up valuable Dock real estate. With Blackout, you
-can take up valuable menubar real estate instead.
+can use up valueless System Preferences real estate instead.
 
 ## What does it take to run this thing?
 
@@ -38,5 +37,4 @@ You need:
 I'm [Michael Dippery][mpd], and I made this thing.
 
 
-[osx-requirements]: http://www.apple.com/macosx/specs.html
 [mpd]: http://github.com/mdippery
