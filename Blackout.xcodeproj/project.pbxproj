@@ -13,6 +13,7 @@
 		B750C5C012277BE500A18696 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B750C5BF12277BE500A18696 /* LICENSE */; };
 		B76446A71226E47B00881E03 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B76446A51226E47B00881E03 /* MainMenu.xib */; };
 		B76446AA1226E48A00881E03 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B76446A81226E48A00881E03 /* InfoPlist.strings */; };
+		B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783BE6B123146EC005AA38B /* Carbon.framework */; };
 		B7AFE0631226EB170094D80C /* NSEvent+Blackout.m in Sources */ = {isa = PBXBuildFile; fileRef = B7AFE0621226EB170094D80C /* NSEvent+Blackout.m */; };
 		B7D1D4F51226F10400803D94 /* Moon.png in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D4F41226F10400803D94 /* Moon.png */; };
 		B7D1D5121226F1F100803D94 /* NSImage+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D1D5111226F1F100803D94 /* NSImage+Convenience.m */; };
@@ -34,6 +35,7 @@
 		B750C5BF12277BE500A18696 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B76446A61226E47B00881E03 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B76446A91226E48A00881E03 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B783BE6B123146EC005AA38B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		B7AFE0611226EB170094D80C /* NSEvent+Blackout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSEvent+Blackout.h"; path = "Source/NSEvent+Blackout.h"; sourceTree = "<group>"; };
 		B7AFE0621226EB170094D80C /* NSEvent+Blackout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSEvent+Blackout.m"; path = "Source/NSEvent+Blackout.m"; sourceTree = "<group>"; };
 		B7D1D4F41226F10400803D94 /* Moon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Moon.png; path = Resources/Moon.png; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +116,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B783BE6B123146EC005AA38B /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
