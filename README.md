@@ -29,8 +29,7 @@ can use up valueless System Preferences real estate instead.
 
 You need:
 
-* A 64-bit Intel Mac (sorry, 32-bit Intel is not supported)
-* Mac OS X 10.6
+* Mac OS X 10.5 (yep, that's it!)
 
 ## Who are you?
 
