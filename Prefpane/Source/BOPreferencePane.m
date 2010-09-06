@@ -26,6 +26,7 @@
 @interface BOPreferencePane ()
 - (void)setStateRunning;
 - (void)setStateStopped;
+- (void)setStateOpenAtLogin:(BOOL)openAtLogin;
 - (void)launchBlackout;
 - (void)terminateBlackout;
 - (void)checkBlackoutIsRunning;
@@ -55,6 +56,15 @@
     [runningLabel setStringValue:NSLocalizedString(@"Blackout is stopped.", nil)];
     [startButton setTitle:NSLocalizedString(@"Start Blackout", nil)];
     [startButton setAction:@selector(startBlackout:)];
+}
+
+- (void)setStateOpenAtLogin:(BOOL)isLoginItem
+{
+    if (isLoginItem) {
+        [loginItemsCheckbox setAction:@selector(removeFromLoginItems:)];
+    } else {
+        [loginItemsCheckbox setAction:@selector(addToLoginItems:)];
+    }
 }
 
 - (NSString *)blackoutHelperPath
@@ -132,12 +142,14 @@
 
 - (IBAction)addToLoginItems:(id)sender
 {
-    NSLog(@"Adding to Login items: %@", [sender state] == NSOnState ? @"Yes" : @"No");
+    NSLog(@"Adding to Login item");
+    [self setStateOpenAtLogin:YES];
 }
 
 - (IBAction)removeFromLoginItems:(id)sender
 {
     NSLog(@"Removing from Login items");
+    [self setStateOpenAtLogin:NO];
 }
 
 @end

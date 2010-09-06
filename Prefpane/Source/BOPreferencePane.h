@@ -29,6 +29,7 @@
     IBOutlet NSButton *startButton;
     IBOutlet NSProgressIndicator *launchIndicator;
     IBOutlet NSTextField *runningLabel;
+    IBOutlet NSButton *loginItemsCheckbox;
 }
 
 - (NSString *)blackoutHelperPath;
