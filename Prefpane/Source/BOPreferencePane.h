@@ -37,5 +37,6 @@
 - (IBAction)startBlackout:(id)sender;
 - (IBAction)stopBlackout:(id)sender;
 - (IBAction)addToLoginItems:(id)sender;
+- (IBAction)removeFromLoginItems:(id)sender;
 
 @end

@@ -24,6 +24,8 @@
 
 
 @interface BOPreferencePane ()
+- (void)setStateRunning;
+- (void)setStateStopped;
 - (void)launchBlackout;
 - (void)terminateBlackout;
 - (void)checkBlackoutIsRunning;
@@ -35,14 +37,24 @@
 - (void)awakeFromNib
 {
     if ([self isBlackoutRunning]) {
-        [runningLabel setStringValue:NSLocalizedString(@"Blackout is running.", nil)];
-        [startButton setTitle:NSLocalizedString(@"Stop Blackout", nil)];
-        [startButton setAction:@selector(stopBlackout:)];
+        [self setStateRunning];
     } else {
-        [runningLabel setStringValue:NSLocalizedString(@"Blackout is stopped.", nil)];
-        [startButton setTitle:NSLocalizedString(@"Start Blackout", nil)];
-        [startButton setAction:@selector(startBlackout:)];
+        [self setStateStopped];
     }
+}
+
+- (void)setStateRunning
+{
+    [runningLabel setStringValue:NSLocalizedString(@"Blackout is running.", nil)];
+    [startButton setTitle:NSLocalizedString(@"Stop Blackout", nil)];
+    [startButton setAction:@selector(stopBlackout:)];
+}
+
+- (void)setStateStopped
+{
+    [runningLabel setStringValue:NSLocalizedString(@"Blackout is stopped.", nil)];
+    [startButton setTitle:NSLocalizedString(@"Start Blackout", nil)];
+    [startButton setAction:@selector(startBlackout:)];
 }
 
 - (NSString *)blackoutHelperPath
@@ -108,16 +120,12 @@
 - (void)checkBlackoutIsRunning
 {
     if ([self isBlackoutRunning]) {
-        [runningLabel setStringValue:NSLocalizedString(@"Blackout is running.", nil)];
+        [self setStateRunning];
         [launchIndicator stopAnimation:self];
-        [startButton setTitle:NSLocalizedString(@"Stop Blackout", nil)];
-        [startButton setAction:@selector(stopBlackout:)];
         [startButton setEnabled:YES];
     } else {
-        [runningLabel setStringValue:NSLocalizedString(@"Blackout is stopped.", nil)];
+        [self setStateStopped];
         [launchIndicator stopAnimation:self];
-        [startButton setTitle:NSLocalizedString(@"Start Blackout", nil)];
-        [startButton setAction:@selector(startBlackout:)];
         [startButton setEnabled:YES];
     }
 }
@@ -125,6 +133,11 @@
 - (IBAction)addToLoginItems:(id)sender
 {
     NSLog(@"Adding to Login items: %@", [sender state] == NSOnState ? @"Yes" : @"No");
+}
+
+- (IBAction)removeFromLoginItems:(id)sender
+{
+    NSLog(@"Removing from Login items");
 }
 
 @end
