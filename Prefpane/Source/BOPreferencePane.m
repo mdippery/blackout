@@ -23,11 +23,97 @@
 #import "BOPreferencePane.h"
 
 
+@interface BOPreferencePane ()
+- (void)launchBlackout;
+- (void)terminateBlackout;
+- (void)checkBlackoutIsRunning;
+@end
+
+
 @implementation BOPreferencePane
+
+- (void)awakeFromNib
+{
+    if ([self isBlackoutRunning]) {
+        [runningLabel setStringValue:NSLocalizedString(@"Blackout is running.", nil)];
+        [startButton setTitle:NSLocalizedString(@"Stop Blackout", nil)];
+        [startButton setAction:@selector(stopBlackout:)];
+    } else {
+        [runningLabel setStringValue:NSLocalizedString(@"Blackout is stopped.", nil)];
+        [startButton setTitle:NSLocalizedString(@"Start Blackout", nil)];
+        [startButton setAction:@selector(startBlackout:)];
+    }
+}
+
+- (NSString *)blackoutHelperPath
+{
+    return [[NSBundle bundleForClass:[self class]] pathForResource:@"Blackout" ofType:@"app"];
+}
+
+- (BOOL)isBlackoutRunning
+{
+    ProcessSerialNumber psn = {0, kNoProcess };
+    
+    while (GetNextProcess(&psn) == noErr) {
+        NSDictionary *info = [NSMakeCollectable(ProcessInformationCopyDictionary(&psn, kProcessDictionaryIncludeAllInformationMask)) autorelease];
+        if (info) {
+            NSString *bundlePath = [info objectForKey:@"BundlePath"];
+            NSString *bundleID = [info objectForKey:(NSString *) kCFBundleIdentifierKey];
+            if (bundlePath && bundleID) {
+                if ([bundleID isEqualToString:@"com.monkey-robot.Blackout"]) {
+                    return YES;
+                }
+            }
+        }
+    }
+    
+    return NO;
+}
 
 - (IBAction)startBlackout:(id)sender
 {
-    NSLog(@"Starting Blackout...");
+    [startButton setEnabled:NO];
+    [launchIndicator startAnimation:self];
+    [runningLabel setStringValue:NSLocalizedString(@"Launching Blackout...", nil)];
+    [self launchBlackout];
+    [self performSelector:@selector(checkBlackoutIsRunning) withObject:nil afterDelay:4.0];
+}
+
+- (IBAction)stopBlackout:(id)sender
+{
+    [startButton setEnabled:NO];
+    [launchIndicator startAnimation:self];
+    [runningLabel setStringValue:NSLocalizedString(@"Stopping Blackout...", nil)];
+    [self terminateBlackout];
+    [self performSelector:@selector(checkBlackoutIsRunning) withObject:nil afterDelay:4.0];
+}
+
+- (void)launchBlackout
+{
+    static NSWorkspaceLaunchOptions opts = NSWorkspaceLaunchWithoutAddingToRecents | NSWorkspaceLaunchWithoutActivation | NSWorkspaceLaunchAsync;
+    NSURL *url = [NSURL fileURLWithPath:[self blackoutHelperPath]];
+    [[NSWorkspace sharedWorkspace] openURLs:[NSArray arrayWithObject:url]
+                    withAppBundleIdentifier:nil
+                                    options:opts
+             additionalEventParamDescriptor:nil
+                          launchIdentifiers:NULL];
+}
+
+- (void)terminateBlackout
+{
+}
+
+- (void)checkBlackoutIsRunning
+{
+    if ([self isBlackoutRunning]) {
+        [runningLabel setStringValue:NSLocalizedString(@"Blackout is running.", nil)];
+        [launchIndicator stopAnimation:self];
+        [startButton setEnabled:YES];
+    } else {
+        [runningLabel setStringValue:NSLocalizedString(@"Blackout is stopped.", nil)];
+        [launchIndicator stopAnimation:self];
+        [startButton setEnabled:YES];
+    }
 }
 
 - (IBAction)addToLoginItems:(id)sender

@@ -25,8 +25,17 @@
 
 
 @interface BOPreferencePane : NSPreferencePane
+{
+    IBOutlet NSButton *startButton;
+    IBOutlet NSProgressIndicator *launchIndicator;
+    IBOutlet NSTextField *runningLabel;
+}
+
+- (NSString *)blackoutHelperPath;
+- (BOOL)isBlackoutRunning;
 
 - (IBAction)startBlackout:(id)sender;
+- (IBAction)stopBlackout:(id)sender;
 - (IBAction)addToLoginItems:(id)sender;
 
 @end

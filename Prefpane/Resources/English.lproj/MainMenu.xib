@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="22"/>
+			<integer value="8"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -62,7 +62,7 @@
 								<object class="NSTabViewItem" id="146660671">
 									<string key="NSIdentifier">1</string>
 									<object class="NSView" key="NSView" id="437238234">
-										<nil key="NSNextResponder"/>
+										<reference key="NSNextResponder" ref="908124856"/>
 										<int key="NSvFlags">256</int>
 										<object class="NSMutableArray" key="NSSubviews">
 											<bool key="EncodedWithXMLCoder">YES</bool>
@@ -257,6 +257,7 @@
 											</object>
 										</object>
 										<string key="NSFrame">{{10, 33}, {539, 256}}</string>
+										<reference key="NSSuperview" ref="908124856"/>
 									</object>
 									<string key="NSLabel">General</string>
 									<reference key="NSColor" ref="634982612"/>
@@ -265,7 +266,7 @@
 								<object class="NSTabViewItem" id="343264640">
 									<string key="NSIdentifier">2</string>
 									<object class="NSView" key="NSView" id="928260623">
-										<reference key="NSNextResponder" ref="908124856"/>
+										<nil key="NSNextResponder"/>
 										<int key="NSvFlags">256</int>
 										<object class="NSMutableArray" key="NSSubviews">
 											<bool key="EncodedWithXMLCoder">YES</bool>
@@ -282,29 +283,6 @@
 															<object class="NSTextView" id="331168712">
 																<reference key="NSNextResponder" ref="53751738"/>
 																<int key="NSvFlags">2322</int>
-																<object class="NSMutableSet" key="NSDragTypes">
-																	<bool key="EncodedWithXMLCoder">YES</bool>
-																	<object class="NSArray" key="set.sortedObjects">
-																		<bool key="EncodedWithXMLCoder">YES</bool>
-																		<string>Apple HTML pasteboard type</string>
-																		<string>Apple PDF pasteboard type</string>
-																		<string>Apple PICT pasteboard type</string>
-																		<string>Apple PNG pasteboard type</string>
-																		<string>Apple URL pasteboard type</string>
-																		<string>CorePasteboardFlavorType 0x6D6F6F76</string>
-																		<string>NSColor pasteboard type</string>
-																		<string>NSFilenamesPboardType</string>
-																		<string>NSStringPboardType</string>
-																		<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
-																		<string>NeXT RTFD pasteboard type</string>
-																		<string>NeXT Rich Text Format v1.0 pasteboard type</string>
-																		<string>NeXT TIFF v4.0 pasteboard type</string>
-																		<string>NeXT font pasteboard type</string>
-																		<string>NeXT ruler pasteboard type</string>
-																		<string>WebURLsWithTitlesPboardType</string>
-																		<string>public.url</string>
-																	</object>
-																</object>
 																<string key="NSFrameSize">{503, 23}</string>
 																<reference key="NSSuperview" ref="53751738"/>
 																<object class="NSTextContainer" key="NSTextContainer" id="1020746830">
@@ -430,21 +408,20 @@
 											</object>
 										</object>
 										<string key="NSFrame">{{10, 33}, {539, 256}}</string>
-										<reference key="NSSuperview" ref="908124856"/>
 									</object>
 									<string key="NSLabel">About</string>
 									<reference key="NSColor" ref="634982612"/>
 									<reference key="NSTabView" ref="908124856"/>
 								</object>
 							</object>
-							<reference key="NSSelectedTabViewItem" ref="343264640"/>
+							<reference key="NSSelectedTabViewItem" ref="146660671"/>
 							<reference key="NSFont" ref="711672796"/>
 							<int key="NSTvFlags">0</int>
 							<bool key="NSAllowTruncatedLabels">YES</bool>
 							<bool key="NSDrawsBackground">YES</bool>
 							<object class="NSMutableArray" key="NSSubviews">
 								<bool key="EncodedWithXMLCoder">YES</bool>
-								<reference ref="928260623"/>
+								<reference ref="437238234"/>
 							</object>
 						</object>
 					</object>
@@ -481,6 +458,30 @@
 						<reference key="destination" ref="995563778"/>
 					</object>
 					<int key="connectionID">27</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">runningLabel</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="563716905"/>
+					</object>
+					<int key="connectionID">28</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">startButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="730670859"/>
+					</object>
+					<int key="connectionID">29</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">launchIndicator</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="243811879"/>
+					</object>
+					<int key="connectionID">30</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -781,7 +782,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">27</int>
+			<int key="maxID">30</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -818,6 +819,45 @@
 							<object class="IBActionInfo">
 								<string key="name">startBlackout:</string>
 								<string key="candidateClassName">id</string>
+							</object>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="outlets">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>launchIndicator</string>
+							<string>runningLabel</string>
+							<string>startButton</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>NSProgressIndicator</string>
+							<string>NSTextField</string>
+							<string>NSButton</string>
+						</object>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>launchIndicator</string>
+							<string>runningLabel</string>
+							<string>startButton</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">launchIndicator</string>
+								<string key="candidateClassName">NSProgressIndicator</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">runningLabel</string>
+								<string key="candidateClassName">NSTextField</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">startButton</string>
+								<string key="candidateClassName">NSButton</string>
 							</object>
 						</object>
 					</object>
