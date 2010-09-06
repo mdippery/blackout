@@ -25,4 +25,8 @@
 
 
 @interface BOPreferencePane : NSPreferencePane
+
+- (IBAction)startBlackout:(id)sender;
+- (IBAction)addToLoginItems:(id)sender;
+
 @end

@@ -25,4 +25,14 @@
 
 @implementation BOPreferencePane
 
+- (IBAction)startBlackout:(id)sender
+{
+    NSLog(@"Starting Blackout...");
+}
+
+- (IBAction)addToLoginItems:(id)sender
+{
+    NSLog(@"Adding to Login items: %@", [sender state] == NSOnState ? @"Yes" : @"No");
+}
+
 @end
