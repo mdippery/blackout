@@ -36,14 +36,44 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 }
 
 
+@interface BOApplication ()
+- (void)setupNotifications;
+@end
+
+@interface BOApplication (Notifications)
+- (void)terminate:(NSNotification *)note;
+@end
+
+
 @implementation BOApplication
+
+- (void)setupNotifications
+{
+    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
+                                                        selector:@selector(terminate:)
+                                                            name:@"BOApplicationShouldTerminate"
+                                                          object:nil];
+}
+
+#pragma mark Application Status
 
 - (void)applicationDidFinishLaunching:(NSNotification *)note
 {
-    [self registerGlobalHotkey];
+    [self registerGlobalHotkey:self];
+    [self setupNotifications];
 }
 
-- (void)registerGlobalHotkey
+- (void)applicationWillTerminate:(NSNotification *)note
+{
+    NSLog(@"Blackout is shutting down");
+    NSString *obj = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"BOApplicationWillTerminate" object:obj];
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark Application Functionality
+
+- (void)registerGlobalHotkey:(id)sender;
 {
     // Source: <http://dbachrach.com/blog/2005/11/program-global-hotkeys-in-cocoa-easily/>
     
@@ -63,6 +93,13 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (void)activateScreenSaver:(id)sender
 {
     [[NSWorkspace sharedWorkspace] launchApplication:@"ScreenSaverEngine"];
+}
+
+#pragma mark Notification Handlers
+
+- (void)terminate:(NSNotification *)note
+{
+    [NSApp terminate:self];
 }
 
 @end

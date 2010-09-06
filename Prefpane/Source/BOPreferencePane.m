@@ -101,6 +101,8 @@
 
 - (void)terminateBlackout
 {
+    NSString *obj = [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"BOApplicationShouldTerminate" object:obj];
 }
 
 - (void)checkBlackoutIsRunning
@@ -108,10 +110,14 @@
     if ([self isBlackoutRunning]) {
         [runningLabel setStringValue:NSLocalizedString(@"Blackout is running.", nil)];
         [launchIndicator stopAnimation:self];
+        [startButton setTitle:NSLocalizedString(@"Stop Blackout", nil)];
+        [startButton setAction:@selector(stopBlackout:)];
         [startButton setEnabled:YES];
     } else {
         [runningLabel setStringValue:NSLocalizedString(@"Blackout is stopped.", nil)];
         [launchIndicator stopAnimation:self];
+        [startButton setTitle:NSLocalizedString(@"Start Blackout", nil)];
+        [startButton setAction:@selector(startBlackout:)];
         [startButton setEnabled:YES];
     }
 }

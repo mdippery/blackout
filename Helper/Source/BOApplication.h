@@ -24,6 +24,6 @@
 
 
 @interface BOApplication : NSObject
-- (void)registerGlobalHotkey;
+- (void)registerGlobalHotkey:(id)sender;
 - (void)activateScreenSaver:(id)sender;
 @end
