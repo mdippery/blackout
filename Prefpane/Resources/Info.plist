@@ -6,12 +6,16 @@
 	<string>English</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
+	<key>NSPrefPaneIconFile</key>
+	<string>Moon</string>
 	<key>CFBundleGetInfoString</key>
 	<string>0.2dev, © 2010 Michael Dippery</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.monkey-robot.Blackout.prefpane</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
@@ -20,5 +24,9 @@
 	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>2</string>
+	<key>NSPrincipalClass</key>
+	<string>BOPreferencePane</string>
+	<key>NSMainNibFile</key>
+	<string>MainMenu</string>
 </dict>
 </plist>

@@ -10,6 +10,9 @@
 		256AC3DA0F4B6AC300CF3369 /* BOApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* BOApplication.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		B7155DA81234A25A00A00429 /* Moon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D54A1226F53E00803D94 /* Moon.icns */; };
+		B7155DB31234A33600A00429 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7155DB11234A33600A00429 /* MainMenu.xib */; };
+		B7155E2A1234A3BA00A00429 /* BOPreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = B7155E291234A3BA00A00429 /* BOPreferencePane.m */; };
 		B750C5C012277BE500A18696 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B750C5BF12277BE500A18696 /* LICENSE */; };
 		B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783BE6B123146EC005AA38B /* Carbon.framework */; };
 		B783C07212316662005AA38B /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783C06A1231663D005AA38B /* PreferencePanes.framework */; };
@@ -27,7 +30,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8D1107260486CEB800E47090 /* Blackout Helper */;
+			remoteGlobalIDString = 8D1107260486CEB800E47090;
 			remoteInfo = "Blackout Helper";
 		};
 /* End PBXContainerItemProxy section */
@@ -43,6 +46,9 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Helper/Resources/Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Blackout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blackout.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7155DB21234A33600A00429 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Prefpane/Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		B7155E281234A3BA00A00429 /* BOPreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOPreferencePane.h; path = Prefpane/Source/BOPreferencePane.h; sourceTree = "<group>"; };
+		B7155E291234A3BA00A00429 /* BOPreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOPreferencePane.m; path = Prefpane/Source/BOPreferencePane.m; sourceTree = "<group>"; };
 		B750C5BF12277BE500A18696 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B783BE6B123146EC005AA38B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		B783C063123165BB005AA38B /* Blackout.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Blackout.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +106,7 @@
 			children = (
 				B783BFE012316436005AA38B /* Preference Pane */,
 				B783BF6E123163EF005AA38B /* Helper */,
+				B7155DA61234A23E00A00429 /* Core */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -121,7 +128,6 @@
 				8D1107310486CEB800E47090 /* Info.plist */,
 				B783C0E71231670E005AA38B /* InfoPlist.strings */,
 				B783C0E4123166FE005AA38B /* MainMenu.xib */,
-				B7D1D54A1226F53E00803D94 /* Moon.icns */,
 				B750C5BF12277BE500A18696 /* LICENSE */,
 			);
 			name = Resources;
@@ -138,6 +144,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B7155DA61234A23E00A00429 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B7155DA71234A24800A00429 /* Resources */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		B7155DA71234A24800A00429 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B7D1D54A1226F53E00803D94 /* Moon.icns */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		B783BF6E123163EF005AA38B /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +174,8 @@
 		B783BFE012316436005AA38B /* Preference Pane */ = {
 			isa = PBXGroup;
 			children = (
+				B7155E281234A3BA00A00429 /* BOPreferencePane.h */,
+				B7155E291234A3BA00A00429 /* BOPreferencePane.m */,
 				B783C0EC1231674A005AA38B /* Resources */,
 			);
 			name = "Preference Pane";
@@ -162,6 +186,7 @@
 			children = (
 				B783C064123165BB005AA38B /* Info.plist */,
 				B783C1DF12316845005AA38B /* InfoPlist.strings */,
+				B7155DB11234A33600A00429 /* MainMenu.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -242,6 +267,8 @@
 				B783C1E012316845005AA38B /* InfoPlist.strings in Resources */,
 				B783C1EE12316926005AA38B /* LICENSE in Resources */,
 				B783C2001231695C005AA38B /* Blackout.app in Resources */,
+				B7155DA81234A25A00A00429 /* Moon.icns in Resources */,
+				B7155DB31234A33600A00429 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7155E2A1234A3BA00A00429 /* BOPreferencePane.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +303,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		B7155DB11234A33600A00429 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B7155DB21234A33600A00429 /* English */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		B783C0E4123166FE005AA38B /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
