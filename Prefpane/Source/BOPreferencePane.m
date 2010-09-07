@@ -21,6 +21,7 @@
  */
 
 #import "BOPreferencePane.h"
+#import <CoreServices/CoreServices.h>
 
 
 @interface BOPreferencePane ()
@@ -142,13 +143,40 @@
 
 - (IBAction)addToLoginItems:(id)sender
 {
-    NSLog(@"Adding to Login item");
+    // Source: http://cocoatutorial.grapewave.com/2010/02/creating-andor-removing-a-login-item/
+    
+    CFURLRef appPath = (CFURLRef) [NSURL fileURLWithPath:[self blackoutHelperPath]];
+    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    if (loginItems) {
+        LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemLast, NULL, NULL, appPath, NULL, NULL);
+        NSLog(@"Added Blackout to login items");
+        if (item) CFRelease(item);
+    }
+    
     [self setStateOpenAtLogin:YES];
 }
 
 - (IBAction)removeFromLoginItems:(id)sender
 {
-    NSLog(@"Removing from Login items");
+    // Source: http://cocoatutorial.grapewave.com/2010/02/creating-andor-removing-a-login-item/
+    
+    CFURLRef appPath = (CFURLRef) [NSURL fileURLWithPath:[self blackoutHelperPath]];
+    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    if (loginItems) {
+        UInt32 seedValue;
+        NSArray *loginItemsList = (NSArray *) LSSharedFileListCopySnapshot(loginItems, &seedValue);
+        for (NSUInteger i = 0; i < [loginItemsList count]; i++) {
+            LSSharedFileListItemRef item = (LSSharedFileListItemRef) [loginItemsList objectAtIndex:i];
+            if (LSSharedFileListItemResolve(item, 0, (CFURLRef *) &appPath, NULL) == noErr) {
+                if ([[(NSURL *) appPath path] isEqualToString:[self blackoutHelperPath]]) {
+                    LSSharedFileListItemRemove(loginItems, item);
+                    NSLog(@"Removed Blackout from login items");
+                }
+            }
+        }
+        [loginItemsList release];
+    }
+    
     [self setStateOpenAtLogin:NO];
 }
 

@@ -25,6 +25,7 @@
 		B783C1EE12316926005AA38B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B750C5BF12277BE500A18696 /* LICENSE */; };
 		B783C2001231695C005AA38B /* Blackout.app in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107320486CEB800E47090 /* Blackout.app */; };
 		B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D54A1226F53E00803D94 /* Moon.icns */; };
+		B7FB0A8F1235C31600C2B7C9 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0A8E1235C31600C2B7C9 /* CoreServices.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		B783C0E81231670E005AA38B /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Helper/Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B783C1DD12316841005AA38B /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Prefpane/Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Moon.icns; path = Helper/Resources/Moon.icns; sourceTree = "<group>"; };
+		B7FB0A8E1235C31600C2B7C9 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,22 +82,13 @@
 				B75D755C123559CF00AED14E /* Carbon.framework in Frameworks */,
 				B783C0F112316788005AA38B /* Cocoa.framework in Frameworks */,
 				B783C07212316662005AA38B /* PreferencePanes.framework in Frameworks */,
+				B7FB0A8F1235C31600C2B7C9 /* CoreServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
-				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
-				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,10 +133,13 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
 				B783BE6B123146EC005AA38B /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
+				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
+				B7FB0A8E1235C31600C2B7C9 /* CoreServices.framework */,
+				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
 				B783C06A1231663D005AA38B /* PreferencePanes.framework */,
-				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -358,7 +354,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_GC = supported;
@@ -391,7 +387,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_GC = supported;
@@ -424,7 +420,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_GC = supported;
@@ -448,7 +444,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_MODEL_TUNING = G5;
