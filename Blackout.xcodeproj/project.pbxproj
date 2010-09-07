@@ -13,6 +13,8 @@
 		B7155DA81234A25A00A00429 /* Moon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D54A1226F53E00803D94 /* Moon.icns */; };
 		B7155DB31234A33600A00429 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7155DB11234A33600A00429 /* MainMenu.xib */; };
 		B7155E2A1234A3BA00A00429 /* BOPreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = B7155E291234A3BA00A00429 /* BOPreferencePane.m */; };
+		B7267A2A1235D2AC00EA118C /* BONotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = B7267A291235D2AC00EA118C /* BONotifications.m */; };
+		B7267A2B1235D2AC00EA118C /* BONotifications.m in Sources */ = {isa = PBXBuildFile; fileRef = B7267A291235D2AC00EA118C /* BONotifications.m */; };
 		B750C5C012277BE500A18696 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B750C5BF12277BE500A18696 /* LICENSE */; };
 		B75D74B11235578600AED14E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B75D74AF1235578600AED14E /* Localizable.strings */; };
 		B75D755C123559CF00AED14E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783BE6B123146EC005AA38B /* Carbon.framework */; };
@@ -26,6 +28,8 @@
 		B783C2001231695C005AA38B /* Blackout.app in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107320486CEB800E47090 /* Blackout.app */; };
 		B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D54A1226F53E00803D94 /* Moon.icns */; };
 		B7FB0A8F1235C31600C2B7C9 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0A8E1235C31600C2B7C9 /* CoreServices.framework */; };
+		B7FB0B651235CC6B00C2B7C9 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
+		B7FB0B6C1235CC8E00C2B7C9 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +41,20 @@
 			remoteInfo = "Blackout Helper";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B7FB0B6F1235CC9A00C2B7C9 /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B7FB0B6C1235CC8E00C2B7C9 /* ShortcutRecorder.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -52,6 +70,9 @@
 		B7155DB21234A33600A00429 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Prefpane/Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B7155E281234A3BA00A00429 /* BOPreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOPreferencePane.h; path = Prefpane/Source/BOPreferencePane.h; sourceTree = "<group>"; };
 		B7155E291234A3BA00A00429 /* BOPreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOPreferencePane.m; path = Prefpane/Source/BOPreferencePane.m; sourceTree = "<group>"; };
+		B7267A281235D2AC00EA118C /* BONotifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BONotifications.h; path = Core/Source/BONotifications.h; sourceTree = "<group>"; };
+		B7267A291235D2AC00EA118C /* BONotifications.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BONotifications.m; path = Core/Source/BONotifications.m; sourceTree = "<group>"; };
+		B7267A4B1235D42400EA118C /* BOKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOKeys.h; path = Core/Source/BOKeys.h; sourceTree = "<group>"; };
 		B750C5BF12277BE500A18696 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B75D74B01235578600AED14E /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Prefpane/Resources/English.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B783BE6B123146EC005AA38B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
@@ -61,8 +82,9 @@
 		B783C0E5123166FE005AA38B /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Helper/Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B783C0E81231670E005AA38B /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Helper/Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B783C1DD12316841005AA38B /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Prefpane/Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Moon.icns; path = Helper/Resources/Moon.icns; sourceTree = "<group>"; };
+		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Moon.icns; path = Core/Resources/Moon.icns; sourceTree = "<group>"; };
 		B7FB0A8E1235C31600C2B7C9 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
+		B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = Frameworks/ShortcutRecorder.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +105,7 @@
 				B783C0F112316788005AA38B /* Cocoa.framework in Frameworks */,
 				B783C07212316662005AA38B /* PreferencePanes.framework in Frameworks */,
 				B7FB0A8F1235C31600C2B7C9 /* CoreServices.framework in Frameworks */,
+				B7FB0B651235CC6B00C2B7C9 /* ShortcutRecorder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +163,7 @@
 				B7FB0A8E1235C31600C2B7C9 /* CoreServices.framework */,
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
 				B783C06A1231663D005AA38B /* PreferencePanes.framework */,
+				B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -147,6 +171,7 @@
 		B7155DA61234A23E00A00429 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				B7267A271235D28F00EA118C /* Other Sources */,
 				B7155DA71234A24800A00429 /* Resources */,
 			);
 			name = Core;
@@ -158,6 +183,16 @@
 				B7D1D54A1226F53E00803D94 /* Moon.icns */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		B7267A271235D28F00EA118C /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B7267A4B1235D42400EA118C /* BOKeys.h */,
+				B7267A281235D2AC00EA118C /* BONotifications.h */,
+				B7267A291235D2AC00EA118C /* BONotifications.m */,
+			);
+			name = "Other Sources";
 			sourceTree = "<group>";
 		};
 		B783BF6E123163EF005AA38B /* Helper */ = {
@@ -220,6 +255,7 @@
 				B783C05F123165BB005AA38B /* Resources */,
 				B783C060123165BB005AA38B /* Sources */,
 				B783C061123165BB005AA38B /* Frameworks */,
+				B7FB0B6F1235CC9A00C2B7C9 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -283,6 +319,7 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* BOApplication.m in Sources */,
+				B7267A2B1235D2AC00EA118C /* BONotifications.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7155E2A1234A3BA00A00429 /* BOPreferencePane.m in Sources */,
+				B7267A2A1235D2AC00EA118C /* BONotifications.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +392,11 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_GC = supported;
@@ -387,8 +429,12 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Frameworks\"",
+				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_MODEL_TUNING = G5;
@@ -420,7 +466,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_GC = supported;
@@ -444,7 +490,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_MODEL_TUNING = G5;

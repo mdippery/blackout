@@ -24,7 +24,8 @@
 
 #import <Carbon/Carbon.h>
 
-#define ESC_KEY 53
+#import "BONotifications.h"
+#import "BOKeys.h"
 
 
 static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData)
@@ -42,6 +43,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 @interface BOApplication (Notifications)
 - (void)terminate:(NSNotification *)note;
+- (void)updateHotkeys:(NSNotification *)note;
 @end
 
 
@@ -49,10 +51,9 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 - (void)setupNotifications
 {
-    [[NSDistributedNotificationCenter defaultCenter] addObserver:self
-                                                        selector:@selector(terminate:)
-                                                            name:@"BOApplicationShouldTerminate"
-                                                          object:nil];
+    NSDistributedNotificationCenter *dnc = [NSDistributedNotificationCenter defaultCenter];
+    [dnc addObserver:self selector:@selector(terminate:) name:BOApplicationShouldTerminate object:nil];
+    [dnc addObserver:self selector:@selector(updateHotkeys:) name:BOApplicationShouldUpdateHotkeys object:nil];
 }
 
 #pragma mark Application Status
@@ -67,7 +68,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 {
     NSLog(@"Blackout is shutting down");
     NSString *obj = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"BOApplicationWillTerminate" object:obj];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationWillTerminate object:obj];
     [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -75,7 +76,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 - (void)registerGlobalHotkey:(id)sender;
 {
-    // Source: <http://dbachrach.com/blog/2005/11/program-global-hotkeys-in-cocoa-easily/>
+    // Source: http://dbachrach.com/blog/2005/11/program-global-hotkeys-in-cocoa-easily/
     
     EventHotKeyRef hotKeyRef;
     EventHotKeyID hotKeyID;
@@ -87,7 +88,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     eventType.eventKind = kEventHotKeyPressed;
     
     InstallApplicationEventHandler(BOHotkeyHandler, 1, &eventType, self, NULL);
-    RegisterEventHotKey(ESC_KEY, cmdKey | shiftKey, hotKeyID, GetApplicationEventTarget(), 0, &hotKeyRef);
+    RegisterEventHotKey(BODefaultKeyCode, BODefaultModifiers, hotKeyID, GetApplicationEventTarget(), 0, &hotKeyRef);
 }
 
 - (void)activateScreenSaver:(id)sender
@@ -100,6 +101,13 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (void)terminate:(NSNotification *)note
 {
     [NSApp terminate:self];
+}
+
+- (void)updateHotkeys:(NSNotification *)note
+{
+    NSNumber *code = [[note userInfo] objectForKey:BOKeyCodeNotificationKey];
+    NSNumber *flags = [[note userInfo] objectForKey:BOKeyFlagNotificationKey];
+    NSLog(@"Updating hot key with code: %u flags %u", [code unsignedShortValue], [flags unsignedIntValue]);
 }
 
 @end

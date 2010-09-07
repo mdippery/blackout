@@ -21,13 +21,20 @@
  */
 
 #import "BOPreferencePane.h"
+
 #import <CoreServices/CoreServices.h>
+
+#import "BONotifications.h"
+#import "BOKeys.h"
 
 
 @interface BOPreferencePane ()
+- (NSBundle *)bundle;
+- (NSString *)notificationIdentifier;
 - (void)setStateRunning;
 - (void)setStateStopped;
 - (void)setStateOpenAtLogin:(BOOL)openAtLogin;
+- (void)updateKeyCombo;
 - (void)launchBlackout;
 - (void)terminateBlackout;
 - (void)checkBlackoutIsRunning;
@@ -43,6 +50,17 @@
     } else {
         [self setStateStopped];
     }
+    [self updateKeyCombo];
+}
+
+- (NSBundle *)bundle
+{
+    return [NSBundle bundleForClass:[self class]];
+}
+
+- (NSString *)notificationIdentifier
+{
+    return [[[self bundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
 }
 
 - (void)setStateRunning
@@ -68,9 +86,22 @@
     }
 }
 
+- (void)updateKeyCombo
+{
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSInteger keys = [prefs integerForKey:BOKeyCodeNotificationKey];
+    NSInteger mods = [prefs integerForKey:BOKeyFlagNotificationKey];
+    
+    if (keys == 0) keys = BODefaultKeyCode;
+    if (mods == 0) mods = SRCarbonToCocoaFlags(BODefaultModifiers);
+    
+    KeyCombo keyCombo = SRMakeKeyCombo(keys, mods);
+    [shortcutRecorder setKeyCombo:keyCombo];
+}
+
 - (NSString *)blackoutHelperPath
 {
-    return [[NSBundle bundleForClass:[self class]] pathForResource:@"Blackout" ofType:@"app"];
+    return [[self bundle] pathForResource:@"Blackout" ofType:@"app"];
 }
 
 - (BOOL)isBlackoutRunning
@@ -124,8 +155,7 @@
 
 - (void)terminateBlackout
 {
-    NSString *obj = [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleIdentifier"];
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:@"BOApplicationShouldTerminate" object:obj];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationShouldTerminate object:[self notificationIdentifier]];
 }
 
 - (void)checkBlackoutIsRunning
@@ -178,6 +208,21 @@
     }
     
     [self setStateOpenAtLogin:NO];
+}
+
+#pragma mark Shortcut Recorder
+
+- (void)shortcutRecorder:(SRRecorderControl *)recorder keyComboDidChange:(KeyCombo)newKeyCombo
+{
+    NSNumber *code = [NSNumber numberWithUnsignedShort:newKeyCombo.code];
+    NSNumber *flags = [NSNumber numberWithUnsignedInteger:SRCocoaToCarbonFlags(newKeyCombo.flags)];
+    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
+                             code, BOKeyCodeNotificationKey,
+                             flags, BOKeyFlagNotificationKey,
+                             nil];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationShouldUpdateHotkeys
+                                                                   object:[self notificationIdentifier]
+                                                                 userInfo:info];
 }
 
 @end

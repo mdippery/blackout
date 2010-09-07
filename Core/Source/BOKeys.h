@@ -20,26 +20,8 @@
  * THE SOFTWARE.
  */
 
-#import <Cocoa/Cocoa.h>
-#import <PreferencePanes/PreferencePanes.h>
-#import <ShortcutRecorder/ShortcutRecorder.h>
+#define BOEscapeKeyCode     53
+#define BOCommandShiftMask  (cmdKey | shiftKey)
 
-
-@interface BOPreferencePane : NSPreferencePane
-{
-    IBOutlet NSButton *startButton;
-    IBOutlet NSProgressIndicator *launchIndicator;
-    IBOutlet NSTextField *runningLabel;
-    IBOutlet NSButton *loginItemsCheckbox;
-    IBOutlet SRRecorderControl *shortcutRecorder;
-}
-
-- (NSString *)blackoutHelperPath;
-- (BOOL)isBlackoutRunning;
-
-- (IBAction)startBlackout:(id)sender;
-- (IBAction)stopBlackout:(id)sender;
-- (IBAction)addToLoginItems:(id)sender;
-- (IBAction)removeFromLoginItems:(id)sender;
-
-@end
+#define BODefaultKeyCode    BOEscapeKeyCode
+#define BODefaultModifiers  BOCommandShiftMask

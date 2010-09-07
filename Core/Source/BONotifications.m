@@ -20,26 +20,13 @@
  * THE SOFTWARE.
  */
 
-#import <Cocoa/Cocoa.h>
-#import <PreferencePanes/PreferencePanes.h>
-#import <ShortcutRecorder/ShortcutRecorder.h>
+#import "BONotifications.h"
 
 
-@interface BOPreferencePane : NSPreferencePane
-{
-    IBOutlet NSButton *startButton;
-    IBOutlet NSProgressIndicator *launchIndicator;
-    IBOutlet NSTextField *runningLabel;
-    IBOutlet NSButton *loginItemsCheckbox;
-    IBOutlet SRRecorderControl *shortcutRecorder;
-}
+NSString * const BOApplicationShouldTerminate = @"BOApplicationShouldTerminate";
+NSString * const BOApplicationWillTerminate = @"BOApplicationWillTerminate";
+NSString * const BOApplicationShouldUpdateHotkeys = @"BOApplicationShouldUpdateHotkeys";
+NSString * const BOApplicationDidUpdateHotkeys = @"BOApplicationDidUpdateHotkeys";
 
-- (NSString *)blackoutHelperPath;
-- (BOOL)isBlackoutRunning;
-
-- (IBAction)startBlackout:(id)sender;
-- (IBAction)stopBlackout:(id)sender;
-- (IBAction)addToLoginItems:(id)sender;
-- (IBAction)removeFromLoginItems:(id)sender;
-
-@end
+NSString * const BOKeyCodeNotificationKey = @"BOGlobalKeys";
+NSString * const BOKeyFlagNotificationKey = @"BOModifierKeys";
