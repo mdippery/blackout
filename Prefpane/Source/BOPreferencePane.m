@@ -31,10 +31,11 @@
 @interface BOPreferencePane ()
 - (NSBundle *)bundle;
 - (NSString *)notificationIdentifier;
-- (void)setStateRunning;
-- (void)setStateStopped;
-- (void)setStateOpenAtLogin:(BOOL)openAtLogin;
+- (LSSharedFileListItemRef) loginItem:(LSSharedFileListRef *)items;
+- (void)updateRunningState:(BOOL)state;
 - (void)updateKeyCombo;
+- (void)updateLoginItemState;
+- (void)disableControlsWithLabel:(NSString *)labelKey;
 - (void)launchBlackout;
 - (void)terminateBlackout;
 - (void)checkBlackoutIsRunning;
@@ -45,12 +46,9 @@
 
 - (void)awakeFromNib
 {
-    if ([self isBlackoutRunning]) {
-        [self setStateRunning];
-    } else {
-        [self setStateStopped];
-    }
+    [self updateRunningState:[self isBlackoutRunning]];
     [self updateKeyCombo];
+    [self updateLoginItemState];
 }
 
 - (NSBundle *)bundle
@@ -63,26 +61,42 @@
     return [[[self bundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
 }
 
-- (void)setStateRunning
+- (LSSharedFileListItemRef)loginItem:(LSSharedFileListRef *)items
 {
-    [runningLabel setStringValue:NSLocalizedString(@"Blackout is running.", nil)];
-    [startButton setTitle:NSLocalizedString(@"Stop Blackout", nil)];
-    [startButton setAction:@selector(stopBlackout:)];
+    // Source: http://cocoatutorial.grapewave.com/2010/02/creating-andor-removing-a-login-item/
+    
+    LSSharedFileListItemRef theItem = NULL;
+    CFURLRef appPath = (CFURLRef) [NSURL fileURLWithPath:[self blackoutHelperPath]];
+    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    if (loginItems) {
+        UInt32 seedValue;
+        NSArray *loginItemsList = (NSArray *) LSSharedFileListCopySnapshot(loginItems, &seedValue);
+        for (NSUInteger i = 0; i < [loginItemsList count]; i++) {
+            LSSharedFileListItemRef item = (LSSharedFileListItemRef) [loginItemsList objectAtIndex:i];
+            if (LSSharedFileListItemResolve(item, 0, (CFURLRef *) &appPath, NULL) == noErr) {
+                if ([[(NSURL *) appPath path] isEqualToString:[self blackoutHelperPath]]) {
+                    theItem = item;
+                    break;
+                }
+            }
+        }
+        [loginItemsList release];
+    }
+    
+    if (items) *items = loginItems;
+    return theItem;
 }
 
-- (void)setStateStopped
+- (void)updateRunningState:(BOOL)state
 {
-    [runningLabel setStringValue:NSLocalizedString(@"Blackout is stopped.", nil)];
-    [startButton setTitle:NSLocalizedString(@"Start Blackout", nil)];
-    [startButton setAction:@selector(startBlackout:)];
-}
-
-- (void)setStateOpenAtLogin:(BOOL)isLoginItem
-{
-    if (isLoginItem) {
-        [loginItemsCheckbox setAction:@selector(removeFromLoginItems:)];
+    if (state) {
+        [runningLabel setStringValue:NSLocalizedString(@"Blackout is running.", nil)];
+        [startButton setTitle:NSLocalizedString(@"Stop Blackout", nil)];
+        [startButton setAction:@selector(stopBlackout:)];
     } else {
-        [loginItemsCheckbox setAction:@selector(addToLoginItems:)];
+        [runningLabel setStringValue:NSLocalizedString(@"Blackout is stopped.", nil)];
+        [startButton setTitle:NSLocalizedString(@"Start Blackout", nil)];
+        [startButton setAction:@selector(startBlackout:)];
     }
 }
 
@@ -97,6 +111,14 @@
     
     KeyCombo keyCombo = SRMakeKeyCombo(keys, mods);
     [shortcutRecorder setKeyCombo:keyCombo];
+}
+
+- (void)updateLoginItemState
+{
+    LSSharedFileListItemRef item = [self loginItem:NULL];
+    BOOL isLoginItem = !!item;
+    [loginItemsCheckbox setState:isLoginItem];
+    [loginItemsCheckbox setAction:isLoginItem ? @selector(removeFromLoginItems:) : @selector(addToLoginItems:)];
 }
 
 - (NSString *)blackoutHelperPath
@@ -124,20 +146,23 @@
     return NO;
 }
 
-- (IBAction)startBlackout:(id)sender
+- (void)disableControlsWithLabel:(NSString *)labelKey
 {
     [startButton setEnabled:NO];
     [launchIndicator startAnimation:self];
-    [runningLabel setStringValue:NSLocalizedString(@"Launching Blackout...", nil)];
+    [runningLabel setStringValue:NSLocalizedString(labelKey, nil)];
+}
+
+- (IBAction)startBlackout:(id)sender
+{
+    [self disableControlsWithLabel:NSLocalizedString(@"Launching Blackout...", nil)];
     [self launchBlackout];
     [self performSelector:@selector(checkBlackoutIsRunning) withObject:nil afterDelay:4.0];
 }
 
 - (IBAction)stopBlackout:(id)sender
 {
-    [startButton setEnabled:NO];
-    [launchIndicator startAnimation:self];
-    [runningLabel setStringValue:NSLocalizedString(@"Stopping Blackout...", nil)];
+    [self disableControlsWithLabel:NSLocalizedString(@"Stopping Blackout...", nil)];
     [self terminateBlackout];
     [self performSelector:@selector(checkBlackoutIsRunning) withObject:nil afterDelay:4.0];
 }
@@ -160,15 +185,9 @@
 
 - (void)checkBlackoutIsRunning
 {
-    if ([self isBlackoutRunning]) {
-        [self setStateRunning];
-        [launchIndicator stopAnimation:self];
-        [startButton setEnabled:YES];
-    } else {
-        [self setStateStopped];
-        [launchIndicator stopAnimation:self];
-        [startButton setEnabled:YES];
-    }
+    [self updateRunningState:[self isBlackoutRunning]];
+    [launchIndicator stopAnimation:self];
+    [startButton setEnabled:YES];
 }
 
 - (IBAction)addToLoginItems:(id)sender
@@ -183,11 +202,19 @@
         if (item) CFRelease(item);
     }
     
-    [self setStateOpenAtLogin:YES];
+    [loginItemsCheckbox setAction:@selector(removeFromLoginItems:)];
 }
 
 - (IBAction)removeFromLoginItems:(id)sender
 {
+    LSSharedFileListRef loginItems;
+    LSSharedFileListItemRef item = [self loginItem:&loginItems];
+    if (item) {
+        LSSharedFileListItemRemove(loginItems, item);
+    }
+    [loginItemsCheckbox setAction:@selector(addToLoginItems:)];
+    
+#if 0
     // Source: http://cocoatutorial.grapewave.com/2010/02/creating-andor-removing-a-login-item/
     
     CFURLRef appPath = (CFURLRef) [NSURL fileURLWithPath:[self blackoutHelperPath]];
@@ -206,8 +233,7 @@
         }
         [loginItemsList release];
     }
-    
-    [self setStateOpenAtLogin:NO];
+#endif
 }
 
 #pragma mark Shortcut Recorder
