@@ -21,16 +21,8 @@
  */
 
 #import <Cocoa/Cocoa.h>
-#import "BOUpdater.h"
+#import <Sparkle/Sparkle.h>
 
 
-@interface BOApplication : NSObject
-{
-    IBOutlet BOUpdater *updater;
-}
-
-@property (readonly) NSString *notificationIdentifier;
-- (void)registerGlobalHotkey:(id)sender;
-- (void)activateScreenSaver:(id)sender;
-
+@interface BOUpdater : SUUpdater
 @end

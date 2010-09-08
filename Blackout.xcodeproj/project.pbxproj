@@ -22,6 +22,7 @@
 		B780E8241238124B00D309AB /* BOBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = B780E8221238124B00D309AB /* BOBundle.m */; };
 		B780E8E012381E1900D309AB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B780E8DE12381E0800D309AB /* Sparkle.framework */; };
 		B780E8E512381E4700D309AB /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B780E8DE12381E0800D309AB /* Sparkle.framework */; };
+		B780E8EE12381EA200D309AB /* BOUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = B780E8ED12381EA200D309AB /* BOUpdater.m */; };
 		B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783BE6B123146EC005AA38B /* Carbon.framework */; };
 		B783C07212316662005AA38B /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783C06A1231663D005AA38B /* PreferencePanes.framework */; };
 		B783C0E6123166FE005AA38B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B783C0E4123166FE005AA38B /* MainMenu.xib */; };
@@ -93,6 +94,8 @@
 		B780E8211238124B00D309AB /* BOBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOBundle.h; path = Core/Source/BOBundle.h; sourceTree = "<group>"; };
 		B780E8221238124B00D309AB /* BOBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOBundle.m; path = Core/Source/BOBundle.m; sourceTree = "<group>"; };
 		B780E8DE12381E0800D309AB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
+		B780E8EC12381EA200D309AB /* BOUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOUpdater.h; path = Helper/Source/BOUpdater.h; sourceTree = "<group>"; };
+		B780E8ED12381EA200D309AB /* BOUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOUpdater.m; path = Helper/Source/BOUpdater.m; sourceTree = "<group>"; };
 		B783BE6B123146EC005AA38B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		B783C063123165BB005AA38B /* Blackout.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Blackout.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		B783C064123165BB005AA38B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Prefpane/Resources/Info.plist; sourceTree = "<group>"; };
@@ -225,11 +228,21 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		B780E8EB12381E8C00D309AB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B780E8EC12381EA200D309AB /* BOUpdater.h */,
+				B780E8ED12381EA200D309AB /* BOUpdater.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
 		B783BF6E123163EF005AA38B /* Helper */ = {
 			isa = PBXGroup;
 			children = (
 				256AC3D80F4B6AC300CF3369 /* BOApplication.h */,
 				256AC3D90F4B6AC300CF3369 /* BOApplication.m */,
+				B780E8EB12381E8C00D309AB /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 			);
@@ -352,6 +365,7 @@
 				256AC3DA0F4B6AC300CF3369 /* BOApplication.m in Sources */,
 				B7267A2B1235D2AC00EA118C /* BONotifications.m in Sources */,
 				B780E8241238124B00D309AB /* BOBundle.m in Sources */,
+				B780E8EE12381EA200D309AB /* BOUpdater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

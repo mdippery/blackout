@@ -20,17 +20,27 @@
  * THE SOFTWARE.
  */
 
-#import <Cocoa/Cocoa.h>
 #import "BOUpdater.h"
 
+#import "BOBundle.h"
 
-@interface BOApplication : NSObject
+
+// Prevent compiler warning by declaring private method
+@interface SUUpdater (Private)
+- (id)initForBundle:(NSBundle *)bundle;
+@end
+
+
+@implementation BOUpdater
+
++ (id)sharedUpdater
 {
-    IBOutlet BOUpdater *updater;
+    return [self updaterForBundle:[BOBundle preferencePaneBundle]];
 }
 
-@property (readonly) NSString *notificationIdentifier;
-- (void)registerGlobalHotkey:(id)sender;
-- (void)activateScreenSaver:(id)sender;
+- (id)init
+{
+    return [self initForBundle:[BOBundle preferencePaneBundle]];
+}
 
 @end
