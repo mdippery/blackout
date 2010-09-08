@@ -47,6 +47,18 @@
 
 - (void)awakeFromNib
 {
+    NSDictionary *info = [[BOBundle preferencePaneBundle] infoDictionary];
+    NSString *version = [NSString stringWithFormat:@"v%@ (%@)",
+                            [info objectForKey:@"CFBundleShortVersionString"],
+                            [info objectForKey:@"CFBundleVersion"]];
+    NSString *copyright = NSLocalizedStringFromTableInBundle(
+                              @"NSHumanReadableCopyright",
+                              @"InfoPlist",
+                              [BOBundle preferencePaneBundle],
+                              nil);
+    [versionLabel setStringValue:version];
+    [copyrightLabel setStringValue:copyright];
+    
     [self updateRunningState:[self isBlackoutRunning]];
     [self updateKeyCombo];
     [self updateLoginItemState];

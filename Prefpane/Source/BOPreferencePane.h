@@ -32,6 +32,8 @@
     IBOutlet NSTextField *runningLabel;
     IBOutlet NSButton *loginItemsCheckbox;
     IBOutlet SRRecorderControl *shortcutRecorder;
+    IBOutlet NSTextField *versionLabel;
+    IBOutlet NSTextField *copyrightLabel;
 }
 
 @property (readonly) NSString *notificationIdentifier;
