@@ -23,8 +23,9 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface BOApplication : NSObject
-@property (readonly) NSString *notificationIdentifier;
-- (void)registerGlobalHotkey:(id)sender;
-- (void)activateScreenSaver:(id)sender;
+@interface BOBundle : NSObject
+
++ (NSBundle *)preferencePaneBundle;
++ (NSBundle *)helperBundle;
+
 @end

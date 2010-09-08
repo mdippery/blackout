@@ -24,6 +24,7 @@
 
 #import <Carbon/Carbon.h>
 
+#import "BOBundle.h"
 #import "BONotifications.h"
 #import "BOKeys.h"
 
@@ -49,6 +50,13 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 @implementation BOApplication
 
+@dynamic notificationIdentifier;
+
+- (NSString *)notificationIdentifier
+{
+    return [[BOBundle helperBundle] bundleIdentifier];
+}
+
 - (void)setupNotifications
 {
     NSDistributedNotificationCenter *dnc = [NSDistributedNotificationCenter defaultCenter];
@@ -67,8 +75,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (void)applicationWillTerminate:(NSNotification *)note
 {
     NSLog(@"Blackout is shutting down");
-    NSString *obj = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationWillTerminate object:obj];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationWillTerminate object:[self notificationIdentifier]];
     [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
 }
 

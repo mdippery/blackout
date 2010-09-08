@@ -20,11 +20,19 @@
  * THE SOFTWARE.
  */
 
-#import <Cocoa/Cocoa.h>
+#import "BOBundle.h"
 
 
-@interface BOApplication : NSObject
-@property (readonly) NSString *notificationIdentifier;
-- (void)registerGlobalHotkey:(id)sender;
-- (void)activateScreenSaver:(id)sender;
+@implementation BOBundle
+
++ (NSBundle *)preferencePaneBundle
+{
+    return [NSBundle bundleWithIdentifier:@"com.monkey-robot.Blackout.prefpane"];
+}
+
++ (NSBundle *)helperBundle
+{
+    return [NSBundle bundleWithIdentifier:@"com.monkey-robot.Blackout"];
+}
+
 @end

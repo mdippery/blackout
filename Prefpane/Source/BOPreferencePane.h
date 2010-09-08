@@ -34,6 +34,8 @@
     IBOutlet SRRecorderControl *shortcutRecorder;
 }
 
+@property (readonly) NSString *notificationIdentifier;
+
 - (NSString *)blackoutHelperPath;
 - (BOOL)isBlackoutRunning;
 

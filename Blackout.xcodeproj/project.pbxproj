@@ -18,6 +18,8 @@
 		B750C5C012277BE500A18696 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = B750C5BF12277BE500A18696 /* LICENSE */; };
 		B75D74B11235578600AED14E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B75D74AF1235578600AED14E /* Localizable.strings */; };
 		B75D755C123559CF00AED14E /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783BE6B123146EC005AA38B /* Carbon.framework */; };
+		B780E8231238124B00D309AB /* BOBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = B780E8221238124B00D309AB /* BOBundle.m */; };
+		B780E8241238124B00D309AB /* BOBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = B780E8221238124B00D309AB /* BOBundle.m */; };
 		B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783BE6B123146EC005AA38B /* Carbon.framework */; };
 		B783C07212316662005AA38B /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783C06A1231663D005AA38B /* PreferencePanes.framework */; };
 		B783C0E6123166FE005AA38B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B783C0E4123166FE005AA38B /* MainMenu.xib */; };
@@ -75,6 +77,8 @@
 		B7267A4B1235D42400EA118C /* BOKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOKeys.h; path = Core/Source/BOKeys.h; sourceTree = "<group>"; };
 		B750C5BF12277BE500A18696 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		B75D74B01235578600AED14E /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Prefpane/Resources/English.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B780E8211238124B00D309AB /* BOBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOBundle.h; path = Core/Source/BOBundle.h; sourceTree = "<group>"; };
+		B780E8221238124B00D309AB /* BOBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOBundle.m; path = Core/Source/BOBundle.m; sourceTree = "<group>"; };
 		B783BE6B123146EC005AA38B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		B783C063123165BB005AA38B /* Blackout.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Blackout.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		B783C064123165BB005AA38B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Prefpane/Resources/Info.plist; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 		B7155DA61234A23E00A00429 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				B780E8201238122E00D309AB /* Classes */,
 				B7267A271235D28F00EA118C /* Other Sources */,
 				B7155DA71234A24800A00429 /* Resources */,
 			);
@@ -193,6 +198,15 @@
 				B7267A291235D2AC00EA118C /* BONotifications.m */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		B780E8201238122E00D309AB /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B780E8211238124B00D309AB /* BOBundle.h */,
+				B780E8221238124B00D309AB /* BOBundle.m */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		B783BF6E123163EF005AA38B /* Helper */ = {
@@ -320,6 +334,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* BOApplication.m in Sources */,
 				B7267A2B1235D2AC00EA118C /* BONotifications.m in Sources */,
+				B780E8241238124B00D309AB /* BOBundle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +344,7 @@
 			files = (
 				B7155E2A1234A3BA00A00429 /* BOPreferencePane.m in Sources */,
 				B7267A2A1235D2AC00EA118C /* BONotifications.m in Sources */,
+				B780E8231238124B00D309AB /* BOBundle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -392,7 +408,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
@@ -429,7 +445,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -466,7 +482,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_GC = supported;
@@ -490,7 +506,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_MODEL_TUNING = G5;

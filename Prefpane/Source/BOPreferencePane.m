@@ -24,13 +24,12 @@
 
 #import <CoreServices/CoreServices.h>
 
+#import "BOBundle.h"
 #import "BONotifications.h"
 #import "BOKeys.h"
 
 
 @interface BOPreferencePane ()
-- (NSBundle *)bundle;
-- (NSString *)notificationIdentifier;
 - (LSSharedFileListItemRef) loginItem:(LSSharedFileListRef *)items;
 - (void)updateRunningState:(BOOL)state;
 - (void)updateKeyCombo;
@@ -44,6 +43,8 @@
 
 @implementation BOPreferencePane
 
+@dynamic notificationIdentifier;
+
 - (void)awakeFromNib
 {
     [self updateRunningState:[self isBlackoutRunning]];
@@ -51,14 +52,9 @@
     [self updateLoginItemState];
 }
 
-- (NSBundle *)bundle
-{
-    return [NSBundle bundleForClass:[self class]];
-}
-
 - (NSString *)notificationIdentifier
 {
-    return [[[self bundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+    return [[BOBundle preferencePaneBundle] bundleIdentifier];
 }
 
 - (LSSharedFileListItemRef)loginItem:(LSSharedFileListRef *)items
@@ -123,7 +119,7 @@
 
 - (NSString *)blackoutHelperPath
 {
-    return [[self bundle] pathForResource:@"Blackout" ofType:@"app"];
+    return [[BOBundle preferencePaneBundle] pathForResource:@"Blackout" ofType:@"app"];
 }
 
 - (BOOL)isBlackoutRunning
