@@ -79,12 +79,10 @@
 {
     NSString *ident = [[BOBundle preferencePaneBundle] bundleIdentifier];
     NSLog(@"Checking preferences: %@", ident);
-    CFBooleanRef userPref = CFPreferencesCopyAppValue(CFSTR("SUEnableAutomaticChecks"), (CFStringRef) ident);
+    id userPref = [(id) CFMakeCollectable(CFPreferencesCopyAppValue(CFSTR("SUEnableAutomaticChecks"), (CFStringRef) ident)) autorelease];
     if (userPref) {
         NSLog(@"Pulled auto update pref from preferences");
-        Boolean doIt = CFBooleanGetValue(userPref);
-        CFRelease(userPref);
-        return doIt;
+        return [userPref boolValue];
     } else {
         NSLog(@"Checking Info.plist for auto update pref");
         NSDictionary *info = [[BOBundle preferencePaneBundle] infoDictionary];
