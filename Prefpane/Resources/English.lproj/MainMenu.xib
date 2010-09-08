@@ -21,7 +21,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="16"/>
+			<integer value="1"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -184,7 +184,7 @@
 																<reference key="NSSuperview" ref="1036722017"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSButtonCell" key="NSCell" id="1034884136">
-																	<int key="NSCellFlags">604110336</int>
+																	<int key="NSCellFlags">67239424</int>
 																	<int key="NSCellFlags2">0</int>
 																	<string key="NSContents">Check for updates automatically</string>
 																	<reference key="NSSupport" ref="711672796"/>
@@ -675,6 +675,14 @@
 					</object>
 					<int key="connectionID">54</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">toggleAutomaticUpdates:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="748539116"/>
+					</object>
+					<int key="connectionID">55</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1086,7 +1094,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">54</int>
+			<int key="maxID">55</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1103,9 +1111,11 @@
 							<string>removeFromLoginItems:</string>
 							<string>startBlackout:</string>
 							<string>stopBlackout:</string>
+							<string>toggleAutomaticUpdates:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -1122,6 +1132,7 @@
 							<string>removeFromLoginItems:</string>
 							<string>startBlackout:</string>
 							<string>stopBlackout:</string>
+							<string>toggleAutomaticUpdates:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1143,6 +1154,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">stopBlackout:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">toggleAutomaticUpdates:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>

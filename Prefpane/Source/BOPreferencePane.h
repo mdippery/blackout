@@ -49,5 +49,6 @@
 - (IBAction)addToLoginItems:(id)sender;
 - (IBAction)removeFromLoginItems:(id)sender;
 - (IBAction)checkForUpdate:(id)sender;
+- (IBAction)toggleAutomaticUpdates:(id)sender;
 
 @end

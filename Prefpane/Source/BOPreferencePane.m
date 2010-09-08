@@ -66,7 +66,7 @@
     
     [self updateRunningState:[self isBlackoutRunning]];
     [self updateKeyCombo];
-    [self updateLoginItemState];    
+    [self updateLoginItemState];
     [updateCheckbox setState:[self shouldUpdateAutomatically]];
 }
 
@@ -130,11 +130,13 @@
         [startButton setTitle:NSLocalizedString(@"Stop Blackout", nil)];
         [startButton setAction:@selector(stopBlackout:)];
         [updateButton setEnabled:YES];
+        //[updateCheckbox setEnabled:YES];
     } else {
         [runningLabel setStringValue:NSLocalizedString(@"Blackout is stopped.", nil)];
         [startButton setTitle:NSLocalizedString(@"Start Blackout", nil)];
         [startButton setAction:@selector(startBlackout:)];
         [updateButton setEnabled:NO];
+        //[updateCheckbox setEnabled:NO];
     }
 }
 
@@ -262,6 +264,15 @@
     [updateIndicator startAnimation:self];
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationShouldCheckForUpdate
                                                                    object:[self notificationIdentifier]];
+}
+
+- (IBAction)toggleAutomaticUpdates:(id)sender
+{
+    CFBooleanRef state = [sender state] ? kCFBooleanTrue : kCFBooleanFalse;
+    NSString *ident = [[BOBundle preferencePaneBundle] bundleIdentifier];
+    CFPreferencesSetValue(CFSTR("SUEnableAutomaticChecks"), state, (CFStringRef) ident, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
+    CFPreferencesSynchronize((CFStringRef) ident, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
+    NSLog(@"Updated auto updates: %@", state);
 }
 
 #pragma mark Shortcut Recorder
