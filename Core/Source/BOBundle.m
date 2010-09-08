@@ -32,7 +32,19 @@
 
 + (NSBundle *)helperBundle
 {
-    return [NSBundle bundleWithIdentifier:@"com.monkey-robot.Blackout"];
+    NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.monkey-robot.Blackout"];
+    if (!bundle) {
+        NSLog(@"Couldn't retrieve Blackout.app bundle -- trying the hard way");
+        NSBundle *prefBundle = [BOBundle preferencePaneBundle];
+        NSString *appPath = [prefBundle pathForResource:@"Blackout" ofType:@"app"];
+        if (!appPath) {
+            NSLog(@"Could not get path to Blackout.app -- now we're really boned");
+            return nil;
+        }
+        bundle = [NSBundle bundleWithPath:appPath];
+    }
+    NSLog(@"Cool, we got the Blackout.app bundle: %@", bundle);
+    return bundle;
 }
 
 @end
