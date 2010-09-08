@@ -29,13 +29,13 @@
 {
     NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.monkey-robot.Blackout.prefpane"];
     if (!bundle) {
-        NSLog(@"Could retrieve Blackout.prefPane bundle -- trying the hard way");
+        //NSLog(@"Could retrieve Blackout.prefPane bundle -- trying the hard way");
         NSString *appPath = [[BOBundle helperBundle] bundlePath];
         NSString *bundlePath = [[[appPath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent];
-        NSLog(@"Checking for bundle at path %@", bundlePath);
+        //NSLog(@"Checking for bundle at path %@", bundlePath);
         bundle = [NSBundle bundleWithPath:bundlePath];
     }
-    NSLog(@"Cool, we got the Blackout.prefPane bundle: %@", bundle);
+    //NSLog(@"Cool, we got the Blackout.prefPane bundle: %@", bundle);
     return bundle;
 }
 
@@ -43,16 +43,16 @@
 {
     NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.monkey-robot.Blackout"];
     if (!bundle) {
-        NSLog(@"Couldn't retrieve Blackout.app bundle -- trying the hard way");
+        //NSLog(@"Couldn't retrieve Blackout.app bundle -- trying the hard way");
         NSBundle *prefBundle = [BOBundle preferencePaneBundle];
         NSString *appPath = [prefBundle pathForResource:@"Blackout" ofType:@"app"];
         if (!appPath) {
-            NSLog(@"Could not get path to Blackout.app -- now we're really boned");
+            //NSLog(@"Could not get path to Blackout.app -- now we're really boned");
             return nil;
         }
         bundle = [NSBundle bundleWithPath:appPath];
     }
-    NSLog(@"Cool, we got the Blackout.app bundle: %@", bundle);
+    //NSLog(@"Cool, we got the Blackout.app bundle: %@", bundle);
     return bundle;
 }
 

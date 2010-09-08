@@ -28,6 +28,8 @@
 #import "BONotifications.h"
 #import "BOKeys.h"
 
+#define LOG_PREFIX  @"Blackout|"
+
 
 @interface BOPreferencePane ()
 - (BOOL)shouldUpdateAutomatically;
@@ -78,20 +80,20 @@
 - (BOOL)shouldUpdateAutomatically
 {
     NSString *ident = [[BOBundle preferencePaneBundle] bundleIdentifier];
-    NSLog(@"Checking preferences: %@", ident);
+    NSLog(LOG_PREFIX @"Checking preferences: %@", ident);
     id userPref = [(id) CFMakeCollectable(CFPreferencesCopyAppValue(CFSTR("SUEnableAutomaticChecks"), (CFStringRef) ident)) autorelease];
     if (userPref) {
-        NSLog(@"Pulled auto update pref from preferences");
+        NSLog(LOG_PREFIX @"Pulled auto update pref from preferences");
         return [userPref boolValue];
     } else {
-        NSLog(@"Checking Info.plist for auto update pref");
+        NSLog(LOG_PREFIX @"Checking Info.plist for auto update pref");
         NSDictionary *info = [[BOBundle preferencePaneBundle] infoDictionary];
         id appPref = [info objectForKey:@"SUEnableAutomaticChecks"];
         if (appPref) {
-            NSLog(@"Found auto update pref in Info.plist");
+            NSLog(LOG_PREFIX @"Found auto update pref in Info.plist");
             return [appPref boolValue];
         } else {
-            NSLog(@"Could not find update pref, returning default (NO)");
+            NSLog(LOG_PREFIX @"Could not find update pref, returning default (NO)");
             return NO;
         }
     }
@@ -259,7 +261,7 @@
 
 - (IBAction)checkForUpdate:(id)sender
 {
-    NSLog(@"Checking for updates");
+    NSLog(LOG_PREFIX @"Checking for updates");
     [updateButton setEnabled:NO];
     [updateIndicator startAnimation:self];
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationShouldCheckForUpdate
@@ -272,7 +274,7 @@
     NSString *ident = [[BOBundle preferencePaneBundle] bundleIdentifier];
     CFPreferencesSetValue(CFSTR("SUEnableAutomaticChecks"), state, (CFStringRef) ident, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
     CFPreferencesSynchronize((CFStringRef) ident, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
-    NSLog(@"Updated auto updates: %@", state);
+    NSLog(LOG_PREFIX @"Updated auto updates: %@", state);
 }
 
 #pragma mark Shortcut Recorder
@@ -296,7 +298,7 @@
 {
     [updateIndicator stopAnimation:self];
     [updateButton setEnabled:YES];
-    NSLog(@"Checked for updates");
+    NSLog(LOG_PREFIX @"Checked for updates");
 }
 
 @end
