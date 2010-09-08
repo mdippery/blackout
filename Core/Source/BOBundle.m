@@ -27,7 +27,16 @@
 
 + (NSBundle *)preferencePaneBundle
 {
-    return [NSBundle bundleWithIdentifier:@"com.monkey-robot.Blackout.prefpane"];
+    NSBundle *bundle = [NSBundle bundleWithIdentifier:@"com.monkey-robot.Blackout.prefpane"];
+    if (!bundle) {
+        NSLog(@"Could retrieve Blackout.prefPane bundle -- trying the hard way");
+        NSString *appPath = [[BOBundle helperBundle] bundlePath];
+        NSString *bundlePath = [[[appPath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] stringByDeletingLastPathComponent];
+        NSLog(@"Checking for bundle at path %@", bundlePath);
+        bundle = [NSBundle bundleWithPath:bundlePath];
+    }
+    NSLog(@"Cool, we got the Blackout.prefPane bundle: %@", bundle);
+    return bundle;
 }
 
 + (NSBundle *)helperBundle

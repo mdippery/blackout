@@ -72,6 +72,8 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 {
     [self registerGlobalHotkey:self];
     [self setupNotifications];
+    
+    NSLog(@"Using bundle for updates: %@", [updater hostBundle]);
 }
 
 - (void)applicationWillTerminate:(NSNotification *)note
