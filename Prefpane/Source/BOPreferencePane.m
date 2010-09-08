@@ -77,23 +77,23 @@
 
 - (BOOL)shouldUpdateAutomatically
 {
-    NSString *helperIdent = [[BOBundle helperBundle] bundleIdentifier];
-    NSLog(@"Checking preferences for %@", helperIdent);
-    CFBooleanRef userPref = CFPreferencesCopyAppValue(CFSTR("SUEnableAutomaticChecks"), (CFStringRef) helperIdent);
-    if (userPref && CFBooleanGetValue(userPref)) {
-        NSLog(@"Received user preference -- it's a yes!");
+    NSString *ident = [[BOBundle preferencePaneBundle] bundleIdentifier];
+    NSLog(@"Checking preferences: %@", ident);
+    CFBooleanRef userPref = CFPreferencesCopyAppValue(CFSTR("SUEnableAutomaticChecks"), (CFStringRef) ident);
+    if (userPref) {
+        NSLog(@"Pulled auto update pref from preferences");
+        Boolean doIt = CFBooleanGetValue(userPref);
         CFRelease(userPref);
-        return YES;
+        return doIt;
     } else {
-        NSLog(@"Failed to get preferences for %@", helperIdent);
-        if (userPref) CFRelease(userPref);
-        NSDictionary *info = [[BOBundle helperBundle] infoDictionary];
+        NSLog(@"Checking Info.plist for auto update pref");
+        NSDictionary *info = [[BOBundle preferencePaneBundle] infoDictionary];
         id appPref = [info objectForKey:@"SUEnableAutomaticChecks"];
         if (appPref) {
-            NSLog(@"No matter, got value from app info dict");
+            NSLog(@"Found auto update pref in Info.plist");
             return [appPref boolValue];
         } else {
-            NSLog(@"Hm, couldn't even get the info dict value");
+            NSLog(@"Could not find update pref, returning default (NO)");
             return NO;
         }
     }
