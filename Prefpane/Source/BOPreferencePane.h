@@ -32,6 +32,9 @@
     IBOutlet NSTextField *runningLabel;
     IBOutlet NSButton *loginItemsCheckbox;
     IBOutlet SRRecorderControl *shortcutRecorder;
+    IBOutlet NSButton *updateButton;
+    IBOutlet NSProgressIndicator *updateIndicator;
+    IBOutlet NSButton *updateCheckbox;
     IBOutlet NSTextField *versionLabel;
     IBOutlet NSTextField *copyrightLabel;
 }
@@ -45,5 +48,6 @@
 - (IBAction)stopBlackout:(id)sender;
 - (IBAction)addToLoginItems:(id)sender;
 - (IBAction)removeFromLoginItems:(id)sender;
+- (IBAction)checkForUpdate:(id)sender;
 
 @end

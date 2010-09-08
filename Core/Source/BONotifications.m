@@ -27,6 +27,8 @@ NSString * const BOApplicationShouldTerminate = @"BOApplicationShouldTerminate";
 NSString * const BOApplicationWillTerminate = @"BOApplicationWillTerminate";
 NSString * const BOApplicationShouldUpdateHotkeys = @"BOApplicationShouldUpdateHotkeys";
 NSString * const BOApplicationDidUpdateHotkeys = @"BOApplicationDidUpdateHotkeys";
+NSString * const BOApplicationShouldCheckForUpdate = @"BOApplicataionShouldCheckForUpdate";
+NSString * const BOApplicationDidCheckForUpdate = @"BOApplicationDidCheckForUpdate";
 
 NSString * const BOKeyCodeNotificationKey = @"BOGlobalKeys";
 NSString * const BOKeyFlagNotificationKey = @"BOModifierKeys";

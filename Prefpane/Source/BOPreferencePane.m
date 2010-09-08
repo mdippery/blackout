@@ -30,6 +30,7 @@
 
 
 @interface BOPreferencePane ()
+- (BOOL)shouldUpdateAutomatically;
 - (LSSharedFileListItemRef) loginItem:(LSSharedFileListRef *)items;
 - (void)updateRunningState:(BOOL)state;
 - (void)updateKeyCombo;
@@ -38,6 +39,7 @@
 - (void)launchBlackout;
 - (void)terminateBlackout;
 - (void)checkBlackoutIsRunning;
+- (void)checkedForUpdate:(NSNotification *)note;
 @end
 
 
@@ -59,14 +61,42 @@
     [versionLabel setStringValue:version];
     [copyrightLabel setStringValue:copyright];
     
+    NSDistributedNotificationCenter *dnc = [NSDistributedNotificationCenter defaultCenter];
+    [dnc addObserver:self selector:@selector(checkedForUpdate:) name:BOApplicationDidCheckForUpdate object:nil];
+    
     [self updateRunningState:[self isBlackoutRunning]];
     [self updateKeyCombo];
-    [self updateLoginItemState];
+    [self updateLoginItemState];    
+    [updateCheckbox setState:[self shouldUpdateAutomatically]];
 }
 
 - (NSString *)notificationIdentifier
 {
     return [[BOBundle preferencePaneBundle] bundleIdentifier];
+}
+
+- (BOOL)shouldUpdateAutomatically
+{
+    NSString *helperIdent = [[BOBundle helperBundle] bundleIdentifier];
+    NSLog(@"Checking preferences for %@", helperIdent);
+    CFBooleanRef userPref = CFPreferencesCopyAppValue(CFSTR("SUEnableAutomaticChecks"), (CFStringRef) helperIdent);
+    if (userPref && CFBooleanGetValue(userPref)) {
+        NSLog(@"Received user preference -- it's a yes!");
+        CFRelease(userPref);
+        return YES;
+    } else {
+        NSLog(@"Failed to get preferences for %@", helperIdent);
+        if (userPref) CFRelease(userPref);
+        NSDictionary *info = [[BOBundle helperBundle] infoDictionary];
+        id appPref = [info objectForKey:@"SUEnableAutomaticChecks"];
+        if (appPref) {
+            NSLog(@"No matter, got value from app info dict");
+            return [appPref boolValue];
+        } else {
+            NSLog(@"Hm, couldn't even get the info dict value");
+            return NO;
+        }
+    }
 }
 
 - (LSSharedFileListItemRef)loginItem:(LSSharedFileListRef *)items
@@ -101,10 +131,12 @@
         [runningLabel setStringValue:NSLocalizedString(@"Blackout is running.", nil)];
         [startButton setTitle:NSLocalizedString(@"Stop Blackout", nil)];
         [startButton setAction:@selector(stopBlackout:)];
+        [updateButton setEnabled:YES];
     } else {
         [runningLabel setStringValue:NSLocalizedString(@"Blackout is stopped.", nil)];
         [startButton setTitle:NSLocalizedString(@"Start Blackout", nil)];
         [startButton setAction:@selector(startBlackout:)];
+        [updateButton setEnabled:NO];
     }
 }
 
@@ -198,6 +230,8 @@
     [startButton setEnabled:YES];
 }
 
+#pragma mark Interface
+
 - (IBAction)addToLoginItems:(id)sender
 {
     // Source: http://cocoatutorial.grapewave.com/2010/02/creating-andor-removing-a-login-item/
@@ -221,27 +255,15 @@
         LSSharedFileListItemRemove(loginItems, item);
     }
     [loginItemsCheckbox setAction:@selector(addToLoginItems:)];
-    
-#if 0
-    // Source: http://cocoatutorial.grapewave.com/2010/02/creating-andor-removing-a-login-item/
-    
-    CFURLRef appPath = (CFURLRef) [NSURL fileURLWithPath:[self blackoutHelperPath]];
-    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    if (loginItems) {
-        UInt32 seedValue;
-        NSArray *loginItemsList = (NSArray *) LSSharedFileListCopySnapshot(loginItems, &seedValue);
-        for (NSUInteger i = 0; i < [loginItemsList count]; i++) {
-            LSSharedFileListItemRef item = (LSSharedFileListItemRef) [loginItemsList objectAtIndex:i];
-            if (LSSharedFileListItemResolve(item, 0, (CFURLRef *) &appPath, NULL) == noErr) {
-                if ([[(NSURL *) appPath path] isEqualToString:[self blackoutHelperPath]]) {
-                    LSSharedFileListItemRemove(loginItems, item);
-                    NSLog(@"Removed Blackout from login items");
-                }
-            }
-        }
-        [loginItemsList release];
-    }
-#endif
+}
+
+- (IBAction)checkForUpdate:(id)sender
+{
+    NSLog(@"Checking for updates");
+    [updateButton setEnabled:NO];
+    [updateIndicator startAnimation:self];
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationShouldCheckForUpdate
+                                                                   object:[self notificationIdentifier]];
 }
 
 #pragma mark Shortcut Recorder
@@ -257,6 +279,15 @@
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationShouldUpdateHotkeys
                                                                    object:[self notificationIdentifier]
                                                                  userInfo:info];
+}
+
+#pragma mark Notifications
+
+- (void)checkedForUpdate:(NSNotification *)note
+{
+    [updateIndicator stopAnimation:self];
+    [updateButton setEnabled:YES];
+    NSLog(@"Checked for updates");
 }
 
 @end

@@ -45,6 +45,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 @interface BOApplication (Notifications)
 - (void)terminate:(NSNotification *)note;
 - (void)updateHotkeys:(NSNotification *)note;
+- (void)update:(NSNotification *)note;
 @end
 
 
@@ -62,6 +63,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     NSDistributedNotificationCenter *dnc = [NSDistributedNotificationCenter defaultCenter];
     [dnc addObserver:self selector:@selector(terminate:) name:BOApplicationShouldTerminate object:nil];
     [dnc addObserver:self selector:@selector(updateHotkeys:) name:BOApplicationShouldUpdateHotkeys object:nil];
+    [dnc addObserver:self selector:@selector(update:) name:BOApplicationShouldCheckForUpdate object:nil];
 }
 
 #pragma mark Application Status
@@ -115,6 +117,12 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     NSNumber *code = [[note userInfo] objectForKey:BOKeyCodeNotificationKey];
     NSNumber *flags = [[note userInfo] objectForKey:BOKeyFlagNotificationKey];
     NSLog(@"Updating hot key with code: %u flags %u", [code unsignedShortValue], [flags unsignedIntValue]);
+}
+
+- (void)update:(NSNotification *)note
+{
+    NSLog(@"Checking for updates");
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationDidCheckForUpdate object:[self notificationIdentifier]];
 }
 
 @end

@@ -27,6 +27,8 @@ extern NSString * const BOApplicationShouldTerminate;
 extern NSString * const BOApplicationWillTerminate;
 extern NSString * const BOApplicationShouldUpdateHotkeys;
 extern NSString * const BOApplicationDidUpdateHotkeys;
+extern NSString * const BOApplicationShouldCheckForUpdate;
+extern NSString * const BOApplicationDidCheckForUpdate;
 
 extern NSString * const BOKeyCodeNotificationKey;
 extern NSString * const BOKeyFlagNotificationKey;
