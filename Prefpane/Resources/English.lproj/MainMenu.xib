@@ -21,7 +21,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="8"/>
+			<integer value="2"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -184,7 +184,7 @@
 																<reference key="NSSuperview" ref="1036722017"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSButtonCell" key="NSCell" id="1034884136">
-																	<int key="NSCellFlags">-2080244224</int>
+																	<int key="NSCellFlags">604110336</int>
 																	<int key="NSCellFlags2">0</int>
 																	<string key="NSContents">Check for updates automatically</string>
 																	<reference key="NSSupport" ref="711672796"/>
@@ -206,7 +206,7 @@
 																<reference key="NSSuperview" ref="1036722017"/>
 																<bool key="NSEnabled">YES</bool>
 																<object class="NSButtonCell" key="NSCell" id="845483067">
-																	<int key="NSCellFlags">67239424</int>
+																	<int key="NSCellFlags">604110336</int>
 																	<int key="NSCellFlags2">134217728</int>
 																	<string key="NSContents">Check Now</string>
 																	<reference key="NSSupport" ref="711672796"/>
@@ -354,7 +354,7 @@
 															<object class="NSTextView" id="331168712">
 																<reference key="NSNextResponder" ref="53751738"/>
 																<int key="NSvFlags">2322</int>
-																<string key="NSFrameSize">{503, 23}</string>
+																<string key="NSFrameSize">{503, 8}</string>
 																<reference key="NSSuperview" ref="53751738"/>
 																<object class="NSTextContainer" key="NSTextContainer" id="1020746830">
 																	<object class="NSLayoutManager" key="NSLayoutManager">
@@ -429,11 +429,11 @@
 																</object>
 																<int key="NSTVFlags">6</int>
 																<string key="NSMaxSize">{503, 1e+07}</string>
-																<string key="NSMinize">{223, 23}</string>
+																<string key="NSMinize">{223, 8}</string>
 																<nil key="NSDelegate"/>
 															</object>
 														</object>
-														<string key="NSFrame">{{1, 1}, {503, 223}}</string>
+														<string key="NSFrame">{{1, 1}, {503, 208}}</string>
 														<reference key="NSSuperview" ref="825530412"/>
 														<reference key="NSNextKeyView" ref="331168712"/>
 														<reference key="NSDocView" ref="331168712"/>
@@ -466,7 +466,7 @@
 														<double key="NSPercent">0.94565218687057495</double>
 													</object>
 												</object>
-												<string key="NSFrame">{{17, 2}, {505, 225}}</string>
+												<string key="NSFrame">{{17, 17}, {505, 210}}</string>
 												<reference key="NSSuperview" ref="928260623"/>
 												<reference key="NSNextKeyView" ref="53751738"/>
 												<int key="NSsFlags">530</int>
