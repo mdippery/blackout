@@ -72,8 +72,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 {
     [self registerGlobalHotkey:self];
     [self setupNotifications];
-    
-    NSLog(@"Using bundle for updates: %@", [updater hostBundle]);
+    NSAssert([BOBundle preferencePaneBundle] == [updater hostBundle], @"Sparkle is not using prefpane bundle");
 }
 
 - (void)applicationWillTerminate:(NSNotification *)note

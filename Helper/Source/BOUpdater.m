@@ -40,7 +40,6 @@
 
 - (id)init
 {
-    NSLog(@"prefpane bundle is %@", [BOBundle preferencePaneBundle]);
     return [self initForBundle:[BOBundle preferencePaneBundle]];
 }
 
