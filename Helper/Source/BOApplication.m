@@ -124,6 +124,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (void)update:(NSNotification *)note
 {
     NSLog(@"Checking for updates");
+    [updater checkForUpdatesInBackground];
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationDidCheckForUpdate object:[self notificationIdentifier]];
 }
 
