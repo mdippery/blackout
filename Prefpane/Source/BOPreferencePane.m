@@ -33,7 +33,7 @@
 
 @interface BOPreferencePane ()
 - (BOOL)shouldUpdateAutomatically;
-- (LSSharedFileListItemRef) loginItem:(LSSharedFileListRef *)items;
+- (LSSharedFileListItemRef) loginItem:(id *)items;
 - (void)updateRunningState:(BOOL)state;
 - (void)updateKeyCombo;
 - (void)updateLoginItemState;
@@ -81,7 +81,7 @@
 {
     NSString *ident = [[BOBundle preferencePaneBundle] bundleIdentifier];
     BOLog(@"Checking preferences: %@", ident);
-    id userPref = [(id) CFMakeCollectable(CFPreferencesCopyAppValue(CFSTR("SUEnableAutomaticChecks"), (CFStringRef) ident)) autorelease];
+    id userPref = [NSMakeCollectable(CFPreferencesCopyAppValue(CFSTR("SUEnableAutomaticChecks"), (CFStringRef) ident)) autorelease];
     if (userPref) {
         BOLog(@"Pulled auto update pref from preferences");
         return [userPref boolValue];
@@ -99,16 +99,16 @@
     }
 }
 
-- (LSSharedFileListItemRef)loginItem:(LSSharedFileListRef *)items
+- (LSSharedFileListItemRef)loginItem:(id *)items
 {
     // Source: http://cocoatutorial.grapewave.com/2010/02/creating-andor-removing-a-login-item/
     
     LSSharedFileListItemRef theItem = NULL;
     CFURLRef appPath = (CFURLRef) [NSURL fileURLWithPath:[self blackoutHelperPath]];
-    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
+    id loginItems = [NSMakeCollectable(LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL)) autorelease];
     if (loginItems) {
         UInt32 seedValue;
-        NSArray *loginItemsList = (NSArray *) LSSharedFileListCopySnapshot(loginItems, &seedValue);
+        id loginItemsList = [NSMakeCollectable(LSSharedFileListCopySnapshot((LSSharedFileListRef) loginItems, &seedValue)) autorelease];
         for (NSUInteger i = 0; i < [loginItemsList count]; i++) {
             LSSharedFileListItemRef item = (LSSharedFileListItemRef) [loginItemsList objectAtIndex:i];
             if (LSSharedFileListItemResolve(item, 0, (CFURLRef *) &appPath, NULL) == noErr) {
@@ -118,7 +118,7 @@
                 }
             }
         }
-        [loginItemsList release];
+        //[loginItemsList release];
     }
     
     if (items) *items = loginItems;
@@ -157,7 +157,7 @@
 
 - (void)updateLoginItemState
 {
-    LSSharedFileListItemRef item = [self loginItem:NULL];
+    LSSharedFileListItemRef item = [self loginItem:nil];
     BOOL isLoginItem = !!item;
     [loginItemsCheckbox setState:isLoginItem];
     [loginItemsCheckbox setAction:isLoginItem ? @selector(removeFromLoginItems:) : @selector(addToLoginItems:)];
@@ -251,10 +251,10 @@
 
 - (IBAction)removeFromLoginItems:(id)sender
 {
-    LSSharedFileListRef loginItems;
+    id loginItems;
     LSSharedFileListItemRef item = [self loginItem:&loginItems];
     if (item) {
-        LSSharedFileListItemRemove(loginItems, item);
+        LSSharedFileListItemRemove((LSSharedFileListRef) loginItems, item);
     }
     [loginItemsCheckbox setAction:@selector(addToLoginItems:)];
 }
