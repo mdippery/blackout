@@ -52,7 +52,8 @@
 - (void)awakeFromNib
 {
     NSDictionary *info = [[BOBundle preferencePaneBundle] infoDictionary];
-    NSString *version = [NSString stringWithFormat:@"v%@ (%@)",
+    NSString *version = [NSString stringWithFormat:@"%@ v%@ (%@)",
+                            [info objectForKey:@"CFBundleName"],
                             [info objectForKey:@"CFBundleShortVersionString"],
                             [info objectForKey:@"CFBundleVersion"]];
     NSString *copyright = NSLocalizedStringFromTableInBundle(
