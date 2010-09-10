@@ -44,10 +44,8 @@
 - (NSString *)blackoutHelperPath;
 - (BOOL)isBlackoutRunning;
 
-- (IBAction)startBlackout:(id)sender;
-- (IBAction)stopBlackout:(id)sender;
-- (IBAction)addToLoginItems:(id)sender;
-- (IBAction)removeFromLoginItems:(id)sender;
+- (IBAction)toggleStartStop:(id)sender;
+- (IBAction)toggleLoginItems:(id)sender;
 - (IBAction)checkForUpdate:(id)sender;
 - (IBAction)toggleAutomaticUpdates:(id)sender;
 

@@ -34,6 +34,7 @@
 @interface BOPreferencePane ()
 - (BOOL)shouldUpdateAutomatically;
 - (LSSharedFileListItemRef) loginItem:(id *)items;
+- (BOOL)isLoginItem;
 - (void)updateRunningState:(BOOL)state;
 - (void)updateKeyCombo;
 - (void)updateLoginItemState;
@@ -41,6 +42,8 @@
 - (void)launchBlackout;
 - (void)terminateBlackout;
 - (void)checkBlackoutIsRunning;
+- (void)addToLoginItems;
+- (void)removeFromLoginItems;
 - (void)checkedForUpdate:(NSNotification *)note;
 @end
 
@@ -81,20 +84,20 @@
 - (BOOL)shouldUpdateAutomatically
 {
     NSString *ident = [[BOBundle preferencePaneBundle] bundleIdentifier];
-    BOLog(@"Checking preferences: %@", ident);
+    //BOLog(@"Checking preferences: %@", ident);
     id userPref = [NSMakeCollectable(CFPreferencesCopyAppValue(CFSTR("SUEnableAutomaticChecks"), (CFStringRef) ident)) autorelease];
     if (userPref) {
-        BOLog(@"Pulled auto update pref from preferences");
+        //BOLog(@"Pulled auto update pref from preferences");
         return [userPref boolValue];
     } else {
-        BOLog(@"Checking Info.plist for auto update pref");
+        //BOLog(@"Checking Info.plist for auto update pref");
         NSDictionary *info = [[BOBundle preferencePaneBundle] infoDictionary];
         id appPref = [info objectForKey:@"SUEnableAutomaticChecks"];
         if (appPref) {
-            BOLog(@"Found auto update pref in Info.plist");
+            //BOLog(@"Found auto update pref in Info.plist");
             return [appPref boolValue];
         } else {
-            BOLog(@"Could not find update pref, returning default (NO)");
+            //BOLog(@"Could not find update pref, returning default (NO)");
             return NO;
         }
     }
@@ -126,18 +129,21 @@
     return theItem;
 }
 
+- (BOOL)isLoginItem
+{
+    return [self loginItem:nil] != NULL;
+}
+
 - (void)updateRunningState:(BOOL)state
 {
     if (state) {
         [runningLabel setStringValue:NSLocalizedString(@"Blackout is running.", nil)];
         [startButton setTitle:NSLocalizedString(@"Stop Blackout", nil)];
-        [startButton setAction:@selector(stopBlackout:)];
         [updateButton setEnabled:YES];
         //[updateCheckbox setEnabled:YES];
     } else {
         [runningLabel setStringValue:NSLocalizedString(@"Blackout is stopped.", nil)];
         [startButton setTitle:NSLocalizedString(@"Start Blackout", nil)];
-        [startButton setAction:@selector(startBlackout:)];
         [updateButton setEnabled:NO];
         //[updateCheckbox setEnabled:NO];
     }
@@ -158,10 +164,7 @@
 
 - (void)updateLoginItemState
 {
-    LSSharedFileListItemRef item = [self loginItem:nil];
-    BOOL isLoginItem = !!item;
-    [loginItemsCheckbox setState:isLoginItem];
-    [loginItemsCheckbox setAction:isLoginItem ? @selector(removeFromLoginItems:) : @selector(addToLoginItems:)];
+    [loginItemsCheckbox setState:[self isLoginItem]];
 }
 
 - (NSString *)blackoutHelperPath
@@ -196,17 +199,15 @@
     [runningLabel setStringValue:NSLocalizedString(labelKey, nil)];
 }
 
-- (IBAction)startBlackout:(id)sender
+- (IBAction)toggleStartStop:(id)sender
 {
-    [self disableControlsWithLabel:NSLocalizedString(@"Launching Blackout...", nil)];
-    [self launchBlackout];
-    [self performSelector:@selector(checkBlackoutIsRunning) withObject:nil afterDelay:4.0];
-}
-
-- (IBAction)stopBlackout:(id)sender
-{
-    [self disableControlsWithLabel:NSLocalizedString(@"Stopping Blackout...", nil)];
-    [self terminateBlackout];
+    if ([self isBlackoutRunning]) {
+        [self disableControlsWithLabel:NSLocalizedString(@"Stopping Blackout...", nil)];
+        [self terminateBlackout];
+    } else {
+        [self disableControlsWithLabel:NSLocalizedString(@"Launching Blackout...", nil)];
+        [self launchBlackout];
+    }
     [self performSelector:@selector(checkBlackoutIsRunning) withObject:nil afterDelay:4.0];
 }
 
@@ -233,9 +234,16 @@
     [startButton setEnabled:YES];
 }
 
-#pragma mark Interface
+- (IBAction)toggleLoginItems:(id)sender
+{
+    if ([self isLoginItem]) {
+        [self removeFromLoginItems];
+    } else {
+        [self addToLoginItems];
+    }
+}
 
-- (IBAction)addToLoginItems:(id)sender
+- (void)addToLoginItems
 {
     // Source: http://cocoatutorial.grapewave.com/2010/02/creating-andor-removing-a-login-item/
     
@@ -246,18 +254,15 @@
         NSLog(@"Added Blackout to login items");
         if (item) CFRelease(item);
     }
-    
-    [loginItemsCheckbox setAction:@selector(removeFromLoginItems:)];
 }
 
-- (IBAction)removeFromLoginItems:(id)sender
+- (void)removeFromLoginItems
 {
     id loginItems;
     LSSharedFileListItemRef item = [self loginItem:&loginItems];
     if (item) {
         LSSharedFileListItemRemove((LSSharedFileListRef) loginItems, item);
     }
-    [loginItemsCheckbox setAction:@selector(addToLoginItems:)];
 }
 
 - (IBAction)checkForUpdate:(id)sender
