@@ -50,22 +50,11 @@
 
 @implementation BOPreferencePane
 
-@dynamic notificationIdentifier;
-
 - (void)awakeFromNib
 {
-    NSDictionary *info = [[BOBundle preferencePaneBundle] infoDictionary];
-    NSString *version = [NSString stringWithFormat:@"%@ v%@ (%@)",
-                            [info objectForKey:@"CFBundleName"],
-                            [info objectForKey:@"CFBundleShortVersionString"],
-                            [info objectForKey:@"CFBundleVersion"]];
-    NSString *copyright = NSLocalizedStringFromTableInBundle(
-                              @"NSHumanReadableCopyright",
-                              @"InfoPlist",
-                              [BOBundle preferencePaneBundle],
-                              nil);
+    NSString *version = [NSString stringWithFormat:@"%@ v%@ (%@)", [self name], [self version], [self build]];
     [versionLabel setStringValue:version];
-    [copyrightLabel setStringValue:copyright];
+    [copyrightLabel setStringValue:[self copyright]];
     
     NSDistributedNotificationCenter *dnc = [NSDistributedNotificationCenter defaultCenter];
     [dnc addObserver:self selector:@selector(checkedForUpdate:) name:BOApplicationDidCheckForUpdate object:nil];
@@ -76,9 +65,74 @@
     [updateCheckbox setState:[self shouldUpdateAutomatically]];
 }
 
+- (NSString *)name
+{
+    return [[[BOBundle preferencePaneBundle] infoDictionary] objectForKey:@"CFBundleName"];
+}
+
+- (NSString *)build
+{
+    return [[[BOBundle preferencePaneBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
+- (NSString *)version
+{
+    return [[[BOBundle preferencePaneBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+}
+
+- (NSString *)copyright
+{
+    return NSLocalizedStringFromTableInBundle(@"NSHumanReadableCopyright", @"InfoPlist", [BOBundle preferencePaneBundle], nil);
+}
+
 - (NSString *)notificationIdentifier
 {
     return [[BOBundle preferencePaneBundle] bundleIdentifier];
+}
+
+- (NSString *)blackoutHelperPath
+{
+    return [[BOBundle preferencePaneBundle] pathForResource:@"Blackout" ofType:@"app"];
+}
+
+#pragma mark Process Control
+
+- (void)launchBlackout
+{
+    static NSWorkspaceLaunchOptions opts = NSWorkspaceLaunchWithoutAddingToRecents | NSWorkspaceLaunchWithoutActivation | NSWorkspaceLaunchAsync;
+    NSURL *url = [NSURL fileURLWithPath:[self blackoutHelperPath]];
+    [[NSWorkspace sharedWorkspace] openURLs:[NSArray arrayWithObject:url]
+                    withAppBundleIdentifier:nil
+                                    options:opts
+             additionalEventParamDescriptor:nil
+                          launchIdentifiers:NULL];
+}
+
+- (void)terminateBlackout
+{
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationShouldTerminate object:[self notificationIdentifier]];
+}
+
+#pragma mark Status
+
+- (BOOL)isBlackoutRunning
+{
+    ProcessSerialNumber psn = {0, kNoProcess };
+    
+    while (GetNextProcess(&psn) == noErr) {
+        NSDictionary *info = [NSMakeCollectable(ProcessInformationCopyDictionary(&psn, kProcessDictionaryIncludeAllInformationMask)) autorelease];
+        if (info) {
+            NSString *bundlePath = [info objectForKey:@"BundlePath"];
+            NSString *bundleID = [info objectForKey:(NSString *) kCFBundleIdentifierKey];
+            if (bundlePath && bundleID) {
+                if ([bundleID isEqualToString:@"com.monkey-robot.Blackout"]) {
+                    return YES;
+                }
+            }
+        }
+    }
+    
+    return NO;
 }
 
 - (BOOL)shouldUpdateAutomatically
@@ -134,6 +188,8 @@
     return [self loginItem:nil] != NULL;
 }
 
+#pragma mark UI State
+
 - (void)updateRunningState:(BOOL)state
 {
     if (state) {
@@ -167,31 +223,6 @@
     [loginItemsCheckbox setState:[self isLoginItem]];
 }
 
-- (NSString *)blackoutHelperPath
-{
-    return [[BOBundle preferencePaneBundle] pathForResource:@"Blackout" ofType:@"app"];
-}
-
-- (BOOL)isBlackoutRunning
-{
-    ProcessSerialNumber psn = {0, kNoProcess };
-    
-    while (GetNextProcess(&psn) == noErr) {
-        NSDictionary *info = [NSMakeCollectable(ProcessInformationCopyDictionary(&psn, kProcessDictionaryIncludeAllInformationMask)) autorelease];
-        if (info) {
-            NSString *bundlePath = [info objectForKey:@"BundlePath"];
-            NSString *bundleID = [info objectForKey:(NSString *) kCFBundleIdentifierKey];
-            if (bundlePath && bundleID) {
-                if ([bundleID isEqualToString:@"com.monkey-robot.Blackout"]) {
-                    return YES;
-                }
-            }
-        }
-    }
-    
-    return NO;
-}
-
 - (void)disableControlsWithLabel:(NSString *)labelKey
 {
     [startButton setEnabled:NO];
@@ -199,48 +230,13 @@
     [runningLabel setStringValue:NSLocalizedString(labelKey, nil)];
 }
 
-- (IBAction)toggleStartStop:(id)sender
-{
-    if ([self isBlackoutRunning]) {
-        [self disableControlsWithLabel:NSLocalizedString(@"Stopping Blackout...", nil)];
-        [self terminateBlackout];
-    } else {
-        [self disableControlsWithLabel:NSLocalizedString(@"Launching Blackout...", nil)];
-        [self launchBlackout];
-    }
-    [self performSelector:@selector(checkBlackoutIsRunning) withObject:nil afterDelay:4.0];
-}
-
-- (void)launchBlackout
-{
-    static NSWorkspaceLaunchOptions opts = NSWorkspaceLaunchWithoutAddingToRecents | NSWorkspaceLaunchWithoutActivation | NSWorkspaceLaunchAsync;
-    NSURL *url = [NSURL fileURLWithPath:[self blackoutHelperPath]];
-    [[NSWorkspace sharedWorkspace] openURLs:[NSArray arrayWithObject:url]
-                    withAppBundleIdentifier:nil
-                                    options:opts
-             additionalEventParamDescriptor:nil
-                          launchIdentifiers:NULL];
-}
-
-- (void)terminateBlackout
-{
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationShouldTerminate object:[self notificationIdentifier]];
-}
+#pragma mark Interface
 
 - (void)checkBlackoutIsRunning
 {
     [self updateRunningState:[self isBlackoutRunning]];
     [launchIndicator stopAnimation:self];
     [startButton setEnabled:YES];
-}
-
-- (IBAction)toggleLoginItems:(id)sender
-{
-    if ([self isLoginItem]) {
-        [self removeFromLoginItems];
-    } else {
-        [self addToLoginItems];
-    }
 }
 
 - (void)addToLoginItems
@@ -265,6 +261,27 @@
     }
 }
 
+- (IBAction)toggleStartStop:(id)sender
+{
+    if ([self isBlackoutRunning]) {
+        [self disableControlsWithLabel:NSLocalizedString(@"Stopping Blackout...", nil)];
+        [self terminateBlackout];
+    } else {
+        [self disableControlsWithLabel:NSLocalizedString(@"Launching Blackout...", nil)];
+        [self launchBlackout];
+    }
+    [self performSelector:@selector(checkBlackoutIsRunning) withObject:nil afterDelay:4.0];
+}
+
+- (IBAction)toggleLoginItems:(id)sender
+{
+    if ([self isLoginItem]) {
+        [self removeFromLoginItems];
+    } else {
+        [self addToLoginItems];
+    }
+}
+
 - (IBAction)checkForUpdate:(id)sender
 {
     BOLog(@"Checking for updates");
@@ -283,7 +300,7 @@
     BOLog(@"Updated auto updates: %@", state);
 }
 
-#pragma mark Shortcut Recorder
+#pragma mark Shortcut Recorder Delegate
 
 - (void)shortcutRecorder:(SRRecorderControl *)recorder keyComboDidChange:(KeyCombo)newKeyCombo
 {
@@ -298,13 +315,13 @@
                                                                  userInfo:info];
 }
 
-#pragma mark Notifications
+#pragma mark Notification Handlers
 
 - (void)checkedForUpdate:(NSNotification *)note
 {
     [updateIndicator stopAnimation:self];
     [updateButton setEnabled:YES];
-    BOLog(@"Checked for updates");
+    //BOLog(@"Checked for updates");
 }
 
 @end

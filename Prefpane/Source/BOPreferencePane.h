@@ -39,9 +39,13 @@
     IBOutlet NSTextField *copyrightLabel;
 }
 
+@property (readonly) NSString *name;
+@property (readonly) NSString *build;
+@property (readonly) NSString *version;
+@property (readonly) NSString *copyright;
 @property (readonly) NSString *notificationIdentifier;
+@property (readonly) NSString *blackoutHelperPath;
 
-- (NSString *)blackoutHelperPath;
 - (BOOL)isBlackoutRunning;
 
 - (IBAction)toggleStartStop:(id)sender;

@@ -39,10 +39,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 
 @interface BOApplication ()
-- (void)setupNotifications;
-@end
-
-@interface BOApplication (Notifications)
+- (void)initNotifications;
 - (void)terminate:(NSNotification *)note;
 - (void)updateHotkeys:(NSNotification *)note;
 - (void)update:(NSNotification *)note;
@@ -51,38 +48,18 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 @implementation BOApplication
 
-@dynamic notificationIdentifier;
-
 - (NSString *)notificationIdentifier
 {
     return [[BOBundle helperBundle] bundleIdentifier];
 }
 
-- (void)setupNotifications
+- (void)initNotifications
 {
     NSDistributedNotificationCenter *dnc = [NSDistributedNotificationCenter defaultCenter];
     [dnc addObserver:self selector:@selector(terminate:) name:BOApplicationShouldTerminate object:nil];
     [dnc addObserver:self selector:@selector(updateHotkeys:) name:BOApplicationShouldUpdateHotkeys object:nil];
     [dnc addObserver:self selector:@selector(update:) name:BOApplicationShouldCheckForUpdate object:nil];
 }
-
-#pragma mark Application Status
-
-- (void)applicationDidFinishLaunching:(NSNotification *)note
-{
-    [self registerGlobalHotkey:self];
-    [self setupNotifications];
-    NSAssert([BOBundle preferencePaneBundle] == [updater hostBundle], @"Sparkle is not using prefpane bundle");
-}
-
-- (void)applicationWillTerminate:(NSNotification *)note
-{
-    NSLog(@"Blackout is shutting down");
-    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationWillTerminate object:[self notificationIdentifier]];
-    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
-}
-
-#pragma mark Application Functionality
 
 - (void)registerGlobalHotkey:(id)sender;
 {
@@ -104,6 +81,22 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (void)activateScreenSaver:(id)sender
 {
     [[NSWorkspace sharedWorkspace] launchApplication:@"ScreenSaverEngine"];
+}
+
+#pragma mark NSApp Delegate
+
+- (void)applicationDidFinishLaunching:(NSNotification *)note
+{
+    [self registerGlobalHotkey:self];
+    [self initNotifications];
+    NSAssert([BOBundle preferencePaneBundle] == [updater hostBundle], @"Sparkle is not using prefpane bundle");
+}
+
+- (void)applicationWillTerminate:(NSNotification *)note
+{
+    NSLog(@"Blackout is shutting down");
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationWillTerminate object:[self notificationIdentifier]];
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark Notification Handlers
