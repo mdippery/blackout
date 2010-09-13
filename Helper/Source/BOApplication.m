@@ -48,6 +48,16 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 @implementation BOApplication
 
+- (NSString *)version
+{
+    return [[[BOBundle helperBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+}
+
+- (NSString *)buildNumber
+{
+    return [[[BOBundle helperBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
 - (NSString *)notificationIdentifier
 {
     return [[BOBundle helperBundle] bundleIdentifier];
@@ -90,6 +100,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [self registerGlobalHotkey:self];
     [self initNotifications];
     NSAssert([BOBundle preferencePaneBundle] == [updater hostBundle], @"Sparkle is not using prefpane bundle");
+    NSLog(@"Loaded Blackout v%@ (%@)", [self version], [self buildNumber]);
 }
 
 - (void)applicationWillTerminate:(NSNotification *)note

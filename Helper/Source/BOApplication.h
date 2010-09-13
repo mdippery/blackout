@@ -29,7 +29,10 @@
     IBOutlet BOUpdater *updater;
 }
 
+@property (readonly) NSString *version;
+@property (readonly) NSString *buildNumber;
 @property (readonly) NSString *notificationIdentifier;
+
 - (void)registerGlobalHotkey:(id)sender;
 - (void)activateScreenSaver:(id)sender;
 
