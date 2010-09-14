@@ -45,6 +45,8 @@
 - (void)checkBlackoutIsRunning;
 - (void)addToLoginItems;
 - (void)removeFromLoginItems;
+- (void)applicationDidLaunch:(NSNotification *)note;
+- (void)applicationDidTerminate:(NSNotification *)note;
 - (void)checkedForUpdate:(NSNotification *)note;
 - (void)foundUpdate:(NSNotification *)note;
 - (void)didNotFindUpdate:(NSNotification *)note;
@@ -63,6 +65,9 @@
     [dnc addObserver:self selector:@selector(checkedForUpdate:) name:BOApplicationDidCheckForUpdate object:nil];
     [dnc addObserver:self selector:@selector(foundUpdate:) name:BOApplicationFoundUpdate object:nil];
     [dnc addObserver:self selector:@selector(didNotFindUpdate:) name:BOApplicationDidNotFindUpdate object:nil];
+    NSNotificationCenter *wsnc = [[NSWorkspace sharedWorkspace] notificationCenter];
+    [wsnc addObserver:self selector:@selector(applicationDidLaunch:) name:NSWorkspaceDidLaunchApplicationNotification object:nil];
+    [wsnc addObserver:self selector:@selector(applicationDidTerminate:) name:NSWorkspaceDidTerminateApplicationNotification object:nil];
     
     [self updateRunningState:[self isBlackoutRunning]];
     [self updateKeyCombo];
@@ -70,6 +75,13 @@
     [updateCheckbox setState:[self shouldUpdateAutomatically]];
     
     [shortcutRecorder setEnabled:NO];
+}
+
+- (void)dealloc
+{
+    [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
+    [[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self];
+    [super dealloc];
 }
 
 - (NSString *)name
@@ -337,6 +349,32 @@
 }
 
 #pragma mark Notification Handlers
+
+- (void)applicationDidLaunch:(NSNotification *)note
+{
+    NSString *appBundle = nil;
+#if MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_5
+    appBundle = [[note userInfo] objectForKey:@"NSApplicationBundleIdentifier"];
+#else
+    appBundle = [[[note userInfo] objectForKey:NSWorkspaceApplicationKey] bundleIdentifier];
+#endif
+    if ([appBundle isEqualToString:[[BOBundle helperBundle] bundleIdentifier]]) {
+        NSLog(@"Noticed that Blackout.app is now running");
+    }
+}
+
+- (void)applicationDidTerminate:(NSNotification *)note
+{
+    NSString *appBundle = nil;
+#if MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_5
+    appBundle = [[note userInfo] objectForKey:@"NSApplicationBundleIdentifier"];
+#else
+    appBundle = [[[note userInfo] objectForKey:NSWorkspaceApplicationKey] bundleIdentifier];
+#endif
+    if ([appBundle isEqualToString:[[BOBundle helperBundle] bundleIdentifier]]) {
+        NSLog(@"Noticed that Blackout.app has terminated");
+    }
+}
 
 - (void)checkedForUpdate:(NSNotification *)note
 {
