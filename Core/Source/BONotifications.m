@@ -29,6 +29,8 @@ NSString * const BOApplicationShouldUpdateHotkeys = @"BOApplicationShouldUpdateH
 NSString * const BOApplicationDidUpdateHotkeys = @"BOApplicationDidUpdateHotkeys";
 NSString * const BOApplicationShouldCheckForUpdate = @"BOApplicataionShouldCheckForUpdate";
 NSString * const BOApplicationDidCheckForUpdate = @"BOApplicationDidCheckForUpdate";
+NSString * const BOApplicationFoundUpdate = @"BOApplicationFoundUpdate";
+NSString * const BOApplicationDidNotFindUpdate = @"BOApplicationDidNotFindUpdate";
 
 NSString * const BOKeyCodeNotificationKey = @"BOGlobalKeys";
 NSString * const BOKeyFlagNotificationKey = @"BOModifierKeys";

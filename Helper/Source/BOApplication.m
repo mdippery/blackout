@@ -133,6 +133,18 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 #pragma mark Sparkle Delegate
 
+- (void)updater:(SUUpdater *)theUpdater didFindValidUpdate:(SUAppcastItem *)update
+{
+    NSLog(@"Sparkle found an update");
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationFoundUpdate object:[self notificationIdentifier]];
+}
+
+- (void)updaterDidNotFindUpdate:(SUUpdater *)theUpdater
+{
+    NSLog(@"Sparkle did not find an update");
+    [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationDidNotFindUpdate object:[self notificationIdentifier]];
+}
+
 - (void)updater:(SUUpdater *)theUpdater willInstallUpdate:(SUAppcastItem *)update
 {
     NSLog(@"Sparkle is going to update Blackout.prefPane");

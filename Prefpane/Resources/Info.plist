@@ -8,6 +8,8 @@
 	<string>${EXECUTABLE_NAME}</string>
 	<key>NSPrefPaneIconFile</key>
 	<string>Moon</string>
+	<key>NSApplicationIcon</key>
+	<string>Moon</string>
 	<key>CFBundleGetInfoString</key>
 	<string>0.2dev, © 2010 Michael Dippery</string>
 	<key>CFBundleIdentifier</key>
@@ -23,7 +25,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>22</string>
+	<string>23</string>
 	<key>NSPrincipalClass</key>
 	<string>BOPreferencePane</string>
 	<key>NSMainNibFile</key>

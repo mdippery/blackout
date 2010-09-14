@@ -28,7 +28,8 @@
 #import "BONotifications.h"
 #import "BOKeys.h"
 
-#define BOLog(fmt, args...)     NSLog(@"Blackout|" fmt, ## args)
+#define BOLog(fmt, args...)             NSLog(@"Blackout|" fmt, ## args)
+#define BORunAlertPanel(title, msg)     NSRunAlertPanel(title, msg, nil, nil, nil)
 
 
 @interface BOPreferencePane ()
@@ -39,12 +40,15 @@
 - (void)updateKeyCombo;
 - (void)updateLoginItemState;
 - (void)disableControlsWithLabel:(NSString *)labelKey;
+- (void)stopUpdateAnimation;
 - (void)launchBlackout;
 - (void)terminateBlackout;
 - (void)checkBlackoutIsRunning;
 - (void)addToLoginItems;
 - (void)removeFromLoginItems;
 - (void)checkedForUpdate:(NSNotification *)note;
+- (void)foundUpdate:(NSNotification *)note;
+- (void)didNotFindUpdate:(NSNotification *)note;
 @end
 
 
@@ -58,6 +62,8 @@
     
     NSDistributedNotificationCenter *dnc = [NSDistributedNotificationCenter defaultCenter];
     [dnc addObserver:self selector:@selector(checkedForUpdate:) name:BOApplicationDidCheckForUpdate object:nil];
+    [dnc addObserver:self selector:@selector(foundUpdate:) name:BOApplicationFoundUpdate object:nil];
+    [dnc addObserver:self selector:@selector(didNotFindUpdate:) name:BOApplicationDidNotFindUpdate object:nil];
     
     [self updateRunningState:[self isBlackoutRunning]];
     [self updateKeyCombo];
@@ -232,6 +238,12 @@
     [runningLabel setStringValue:NSLocalizedString(labelKey, nil)];
 }
 
+- (void)stopUpdateAnimation
+{
+    [updateIndicator stopAnimation:self];
+    [updateButton setEnabled:YES];
+}
+
 #pragma mark Interface
 
 - (void)checkBlackoutIsRunning
@@ -321,9 +333,20 @@
 
 - (void)checkedForUpdate:(NSNotification *)note
 {
-    [updateIndicator stopAnimation:self];
-    [updateButton setEnabled:YES];
-    //BOLog(@"Checked for updates");
+    [self stopUpdateAnimation];
+}
+
+- (void)foundUpdate:(NSNotification *)note
+{
+    [self stopUpdateAnimation];
+    BOLog(@"Update is available");
+}
+
+- (void)didNotFindUpdate:(NSNotification *)note
+{
+    [self stopUpdateAnimation];
+    BOLog(@"No updates available");
+    BORunAlertPanel(NSLocalizedString(@"No updates are available.", nil), NSLocalizedString(@"You are currently using the latest version of Blackout.", nil));
 }
 
 @end
