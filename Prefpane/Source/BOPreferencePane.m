@@ -63,6 +63,8 @@
     [self updateKeyCombo];
     [self updateLoginItemState];
     [updateCheckbox setState:[self shouldUpdateAutomatically]];
+    
+    [shortcutRecorder setEnabled:NO];
 }
 
 - (NSString *)name
