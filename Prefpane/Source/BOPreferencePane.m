@@ -29,7 +29,6 @@
 #import "BOKeys.h"
 
 #define BOLog(fmt, args...)             NSLog(@"Blackout|" fmt, ## args)
-#define BORunAlertPanel(title, msg)     NSRunAlertPanel(title, msg, nil, nil, nil)
 
 
 @interface BOPreferencePane ()
@@ -346,7 +345,6 @@
 {
     [self stopUpdateAnimation];
     BOLog(@"No updates available");
-    BORunAlertPanel(NSLocalizedString(@"No updates are available.", nil), NSLocalizedString(@"You are currently using the latest version of Blackout.", nil));
 }
 
 @end
