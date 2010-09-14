@@ -124,7 +124,9 @@
 
 - (BOOL)isBlackoutRunning
 {
-    ProcessSerialNumber psn = {0, kNoProcess };
+#if MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_5
+    
+    ProcessSerialNumber psn = {0, kNoProcess};
     
     while (GetNextProcess(&psn) == noErr) {
         NSDictionary *info = [NSMakeCollectable(ProcessInformationCopyDictionary(&psn, kProcessDictionaryIncludeAllInformationMask)) autorelease];
@@ -140,6 +142,12 @@
     }
     
     return NO;
+
+#else
+    
+    return [[NSRunningApplication runningApplicationsWithBundleIdentifier:[[BOBundle helperBundle] bundleIdentifier]] count] > 0;
+    
+#endif
 }
 
 - (BOOL)shouldUpdateAutomatically
