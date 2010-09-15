@@ -31,6 +31,8 @@
 		B783C2001231695C005AA38B /* Blackout.app in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107320486CEB800E47090 /* Blackout.app */; };
 		B7B2446112493AD5004FA189 /* BOKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B2446012493AD5004FA189 /* BOKeys.m */; };
 		B7B2446212493AD5004FA189 /* BOKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B2446012493AD5004FA189 /* BOKeys.m */; };
+		B7B79F281241410C00AE27A1 /* BOUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B79F271241410C00AE27A1 /* BOUserDefaults.m */; };
+		B7B79F291241410C00AE27A1 /* BOUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B79F271241410C00AE27A1 /* BOUserDefaults.m */; };
 		B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D54A1226F53E00803D94 /* Moon.icns */; };
 		B7FB0A8F1235C31600C2B7C9 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0A8E1235C31600C2B7C9 /* CoreServices.framework */; };
 		B7FB0B651235CC6B00C2B7C9 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
@@ -104,6 +106,8 @@
 		B783C0E81231670E005AA38B /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Helper/Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B783C1DD12316841005AA38B /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Prefpane/Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B7B2446012493AD5004FA189 /* BOKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOKeys.m; path = Core/Source/BOKeys.m; sourceTree = "<group>"; };
+		B7B79F261241410C00AE27A1 /* BOUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOUserDefaults.h; path = Core/Source/BOUserDefaults.h; sourceTree = "<group>"; };
+		B7B79F271241410C00AE27A1 /* BOUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOUserDefaults.m; path = Core/Source/BOUserDefaults.m; sourceTree = "<group>"; };
 		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Moon.icns; path = Core/Resources/Moon.icns; sourceTree = "<group>"; };
 		B7FB0A8E1235C31600C2B7C9 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = Frameworks/ShortcutRecorder.framework; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 			children = (
 				B780E8211238124B00D309AB /* BOBundle.h */,
 				B780E8221238124B00D309AB /* BOBundle.m */,
+				B7B79F261241410C00AE27A1 /* BOUserDefaults.h */,
+				B7B79F271241410C00AE27A1 /* BOUserDefaults.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 				B780E8241238124B00D309AB /* BOBundle.m in Sources */,
 				B780E8EE12381EA200D309AB /* BOUpdater.m in Sources */,
 				B7B2446212493AD5004FA189 /* BOKeys.m in Sources */,
+				B7B79F291241410C00AE27A1 /* BOUserDefaults.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +385,7 @@
 				B7267A2A1235D2AC00EA118C /* BONotifications.m in Sources */,
 				B780E8231238124B00D309AB /* BOBundle.m in Sources */,
 				B7B2446112493AD5004FA189 /* BOKeys.m in Sources */,
+				B7B79F281241410C00AE27A1 /* BOUserDefaults.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
