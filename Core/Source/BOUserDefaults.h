@@ -21,11 +21,13 @@
  */
 
 #import <Cocoa/Cocoa.h>
+#import <ShortcutRecorder/ShortcutRecorder.h>
 
 
 @interface BOUserDefaults : NSObject
 @property NSUInteger hotkeyModifiers;
 @property NSInteger hotkeyCode;
+@property KeyCombo hotkey;
 @property BOOL startAtLogin;
 @property BOOL checkForUpdates;
 @end

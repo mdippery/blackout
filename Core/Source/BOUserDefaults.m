@@ -27,20 +27,30 @@
 
 - (NSUInteger)hotkeyModifiers
 {
-    return 0U;
+    return [self hotkey].flags;
 }
 
 - (void)setHotkeyModifiers:(NSUInteger)modifiers
 {
-    // Do nothing
+    [self setHotkey:SRMakeKeyCombo([self hotkeyCode], modifiers)];
 }
 
 - (NSInteger)hotkeyCode
 {
-    return 0;
+    return [self hotkey].code;
 }
 
 - (void)setHotkeyCode:(NSInteger)code
+{
+    [self setHotkey:SRMakeKeyCombo(code, [self hotkeyModifiers])];
+}
+
+- (KeyCombo)hotkey
+{
+    return SRMakeKeyCombo(0,0);
+}
+
+- (void)setHotkey:(KeyCombo)keyCombo
 {
     // Do nothing
 }

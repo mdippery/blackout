@@ -33,6 +33,8 @@
 		B7B2446212493AD5004FA189 /* BOKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B2446012493AD5004FA189 /* BOKeys.m */; };
 		B7B79F281241410C00AE27A1 /* BOUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B79F271241410C00AE27A1 /* BOUserDefaults.m */; };
 		B7B79F291241410C00AE27A1 /* BOUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = B7B79F271241410C00AE27A1 /* BOUserDefaults.m */; };
+		B7B79F581241448900AE27A1 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
+		B7B79F601241449500AE27A1 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
 		B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D54A1226F53E00803D94 /* Moon.icns */; };
 		B7FB0A8F1235C31600C2B7C9 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0A8E1235C31600C2B7C9 /* CoreServices.framework */; };
 		B7FB0B651235CC6B00C2B7C9 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
@@ -56,6 +58,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B7B79F601241449500AE27A1 /* ShortcutRecorder.framework in Copy Frameworks */,
 				B780E8E512381E4700D309AB /* Sparkle.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -118,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7B79F581241448900AE27A1 /* ShortcutRecorder.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */,
 				B780E8E012381E1900D309AB /* Sparkle.framework in Frameworks */,
