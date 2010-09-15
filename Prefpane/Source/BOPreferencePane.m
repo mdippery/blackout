@@ -35,7 +35,6 @@
 - (BOOL)shouldUpdateAutomatically;
 - (LSSharedFileListItemRef) loginItem:(id *)items;
 - (BOOL)isBlackoutRunning_Leopard;
-- (BOOL)isBlackoutRunning_SnowLeopard;
 - (BOOL)isLoginItem;
 - (void)updateRunningState:(BOOL)state;
 - (void)updateKeyCombo;
@@ -157,18 +156,12 @@
     return NO;
 }
 
-- (BOOL)isBlackoutRunning_SnowLeopard
-{
-    id runningAppClass = NSClassFromString(@"NSRunningApplication");
-    NSAssert(runningAppClass != nil, @"Expected to get NSRunningApplication");
-    return [[runningAppClass runningApplicationsWithBundleIdentifier:[[BOBundle helperBundle] bundleIdentifier]] count] > 0;
-}
-
 - (BOOL)isBlackoutRunning
 {
-    if (NSClassFromString(@"NSRunningApplication") != nil) {
+    id runningAppClass = NSClassFromString(@"NSRunningApplication");
+    if (runningAppClass != nil) {
         BOLog(@"Checking running application with Snow Leopard");
-        return [self isBlackoutRunning_SnowLeopard];
+        return [[runningAppClass runningApplicationsWithBundleIdentifier:[[BOBundle helperBundle] bundleIdentifier]] count] > 0;
     } else {
         BOLog(@"Checking running application with Leopard");
         return [self isBlackoutRunning_Leopard];
