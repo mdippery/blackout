@@ -439,7 +439,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
@@ -454,6 +454,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Prefpane/Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -464,7 +465,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = Blackout;
 				RUN_CLANG_STATIC_ANALYZER = YES;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = prefPane;
 			};
@@ -476,7 +477,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -490,6 +491,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Prefpane/Resources/Info.plist;
 				INSTALL_PATH = /Library/PreferencePanes;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -500,7 +502,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = Blackout;
 				RUN_CLANG_STATIC_ANALYZER = YES;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = prefPane;
 				ZERO_LINK = NO;
@@ -513,7 +515,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
@@ -528,10 +530,11 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Helper/Resources/Info.plist;
 				INSTALL_PATH = /Applications;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Blackout;
 				RUN_CLANG_STATIC_ANALYZER = YES;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -541,7 +544,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 25;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -554,10 +557,11 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = Helper/Resources/Info.plist;
 				INSTALL_PATH = /Applications;
+				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = Blackout;
 				RUN_CLANG_STATIC_ANALYZER = YES;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

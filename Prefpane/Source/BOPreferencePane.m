@@ -34,6 +34,8 @@
 @interface BOPreferencePane ()
 - (BOOL)shouldUpdateAutomatically;
 - (LSSharedFileListItemRef) loginItem:(id *)items;
+- (BOOL)isBlackoutRunning_Leopard;
+- (BOOL)isBlackoutRunning_SnowLeopard;
 - (BOOL)isLoginItem;
 - (void)updateRunningState:(BOOL)state;
 - (void)updateKeyCombo;
@@ -45,6 +47,7 @@
 - (void)checkBlackoutIsRunning;
 - (void)addToLoginItems;
 - (void)removeFromLoginItems;
+- (NSString *)retrieveBundleIdentifierFromNotification:(NSNotification *)note;
 - (void)applicationDidLaunch:(NSNotification *)note;
 - (void)applicationDidTerminate:(NSNotification *)note;
 - (void)checkedForUpdate:(NSNotification *)note;
@@ -134,10 +137,8 @@
 
 #pragma mark Status
 
-- (BOOL)isBlackoutRunning
+- (BOOL)isBlackoutRunning_Leopard
 {
-#if MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_5
-    
     ProcessSerialNumber psn = {0, kNoProcess};
     
     while (GetNextProcess(&psn) == noErr) {
@@ -154,12 +155,24 @@
     }
     
     return NO;
+}
 
-#else
-    
-    return [[NSRunningApplication runningApplicationsWithBundleIdentifier:[[BOBundle helperBundle] bundleIdentifier]] count] > 0;
-    
-#endif
+- (BOOL)isBlackoutRunning_SnowLeopard
+{
+    id runningAppClass = NSClassFromString(@"NSRunningApplication");
+    NSAssert(runningAppClass != nil, @"Expected to get NSRunningApplication");
+    return [[runningAppClass runningApplicationsWithBundleIdentifier:[[BOBundle helperBundle] bundleIdentifier]] count] > 0;
+}
+
+- (BOOL)isBlackoutRunning
+{
+    if (NSClassFromString(@"NSRunningApplication") != nil) {
+        BOLog(@"Checking running application with Snow Leopard");
+        return [self isBlackoutRunning_SnowLeopard];
+    } else {
+        BOLog(@"Checking running application with Leopard");
+        return [self isBlackoutRunning_Leopard];
+    }
 }
 
 - (BOOL)shouldUpdateAutomatically
@@ -350,29 +363,29 @@
 
 #pragma mark Notification Handlers
 
+- (NSString *)retrieveBundleIdentifierFromNotification:(NSNotification *)note
+{
+    id runningApp = [[note userInfo] objectForKey:NSWorkspaceApplicationKey];
+    if (runningApp == nil) {
+        BOLog(@"Retrieving key for Leopard");
+        return [[note userInfo] objectForKey:@"NSApplicationBundleIdentifier"];
+    } else {
+        BOLog(@"Retrieving key for Snow Leopard");
+        return [runningApp bundleIdentifier];
+    }
+}
+
 - (void)applicationDidLaunch:(NSNotification *)note
 {
-    NSString *appBundle = nil;
-#if MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_5
-    appBundle = [[note userInfo] objectForKey:@"NSApplicationBundleIdentifier"];
-#else
-    appBundle = [[[note userInfo] objectForKey:NSWorkspaceApplicationKey] bundleIdentifier];
-#endif
-    if ([appBundle isEqualToString:[[BOBundle helperBundle] bundleIdentifier]]) {
-        NSLog(@"Noticed that Blackout.app is now running");
+    if ([[self retrieveBundleIdentifierFromNotification:note] isEqualToString:[[BOBundle helperBundle] bundleIdentifier]]) {
+        BOLog(@"Noticed that Blackout.app is now running");
     }
 }
 
 - (void)applicationDidTerminate:(NSNotification *)note
 {
-    NSString *appBundle = nil;
-#if MAC_OS_X_VERSION_MIN_REQUIRED <= MAC_OS_X_VERSION_10_5
-    appBundle = [[note userInfo] objectForKey:@"NSApplicationBundleIdentifier"];
-#else
-    appBundle = [[[note userInfo] objectForKey:NSWorkspaceApplicationKey] bundleIdentifier];
-#endif
-    if ([appBundle isEqualToString:[[BOBundle helperBundle] bundleIdentifier]]) {
-        NSLog(@"Noticed that Blackout.app has terminated");
+    if ([[self retrieveBundleIdentifierFromNotification:note] isEqualToString:[[BOBundle helperBundle] bundleIdentifier]]) {
+        BOLog(@"Noticed that Blackout.app has terminated");
     }
 }
 
