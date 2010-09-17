@@ -103,7 +103,7 @@
 
 - (NSString *)copyright
 {
-    return NSLocalizedStringFromTableInBundle(@"NSHumanReadableCopyright", @"InfoPlist", [BOBundle preferencePaneBundle], nil);
+    return [[BOBundle preferencePaneBundle] localizedStringForKey:@"NSHumanReadableCopyright" value:@"" table:@"InfoPlist"];
 }
 
 - (NSString *)notificationIdentifier
