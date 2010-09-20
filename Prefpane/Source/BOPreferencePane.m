@@ -32,6 +32,7 @@
 
 
 @interface BOPreferencePane ()
+- (void)initNotifications;
 - (BOOL)shouldUpdateAutomatically;
 - (LSSharedFileListItemRef) loginItem:(id *)items;
 - (BOOL)isBlackoutRunning_Leopard;
@@ -57,12 +58,17 @@
 
 @implementation BOPreferencePane
 
-- (void)awakeFromNib
+- (id)initWithBundle:(NSBundle *)bundle
 {
-    NSString *version = [NSString stringWithFormat:@"%@ v%@ (%@)", [self name], [self version], [self build]];
-    [versionLabel setStringValue:version];
-    [copyrightLabel setStringValue:[self copyright]];
-    
+    if ((self = [super initWithBundle:bundle])) {
+        NSAssert(bundle == [BOBundle preferencePaneBundle], @"Initialization bundle is not global preferences bundle");
+        [self initNotifications];
+    }
+    return self;
+}
+
+- (void)initNotifications
+{
     NSDistributedNotificationCenter *dnc = [NSDistributedNotificationCenter defaultCenter];
     [dnc addObserver:self selector:@selector(checkedForUpdate:) name:BOApplicationDidCheckForUpdate object:nil];
     [dnc addObserver:self selector:@selector(foundUpdate:) name:BOApplicationFoundUpdate object:nil];
@@ -70,6 +76,14 @@
     NSNotificationCenter *wsnc = [[NSWorkspace sharedWorkspace] notificationCenter];
     [wsnc addObserver:self selector:@selector(applicationDidLaunch:) name:NSWorkspaceDidLaunchApplicationNotification object:nil];
     [wsnc addObserver:self selector:@selector(applicationDidTerminate:) name:NSWorkspaceDidTerminateApplicationNotification object:nil];
+    BOLog(@"Registered for notifications");
+}
+
+- (void)awakeFromNib
+{
+    NSString *version = [NSString stringWithFormat:@"%@ v%@ (%@)", [self name], [self version], [self build]];
+    [versionLabel setStringValue:version];
+    [copyrightLabel setStringValue:[self copyright]];
     
     [self updateRunningState:[self isBlackoutRunning]];
     [self updateKeyCombo];

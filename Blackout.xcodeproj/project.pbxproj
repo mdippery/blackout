@@ -30,7 +30,6 @@
 		B783C1E012316845005AA38B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B783C1DF12316845005AA38B /* InfoPlist.strings */; };
 		B783C2001231695C005AA38B /* Blackout.app in Resources */ = {isa = PBXBuildFile; fileRef = 8D1107320486CEB800E47090 /* Blackout.app */; };
 		B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D54A1226F53E00803D94 /* Moon.icns */; };
-		B7F79F3E123F00FD00CC9004 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = B7F79F3D123F00FD00CC9004 /* dsa_pub.pem */; };
 		B7FB0A8F1235C31600C2B7C9 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0A8E1235C31600C2B7C9 /* CoreServices.framework */; };
 		B7FB0B651235CC6B00C2B7C9 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
 		B7FB0B6C1235CC8E00C2B7C9 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
@@ -103,7 +102,6 @@
 		B783C0E81231670E005AA38B /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Helper/Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B783C1DD12316841005AA38B /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Prefpane/Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Moon.icns; path = Core/Resources/Moon.icns; sourceTree = "<group>"; };
-		B7F79F3D123F00FD00CC9004 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Prefpane/Resources/dsa_pub.pem; sourceTree = "<group>"; };
 		B7FB0A8E1235C31600C2B7C9 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
 		B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = Frameworks/ShortcutRecorder.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -261,7 +259,6 @@
 		B783C0EC1231674A005AA38B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B7F79F3D123F00FD00CC9004 /* dsa_pub.pem */,
 				B783C064123165BB005AA38B /* Info.plist */,
 				B783C1DF12316845005AA38B /* InfoPlist.strings */,
 				B7155DB11234A33600A00429 /* MainMenu.xib */,
@@ -350,7 +347,6 @@
 				B7155DA81234A25A00A00429 /* Moon.icns in Resources */,
 				B7155DB31234A33600A00429 /* MainMenu.xib in Resources */,
 				B75D74B11235578600AED14E /* Localizable.strings in Resources */,
-				B7F79F3E123F00FD00CC9004 /* dsa_pub.pem in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,7 +435,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
@@ -477,7 +473,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -515,7 +511,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
@@ -544,7 +540,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
