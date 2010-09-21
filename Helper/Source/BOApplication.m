@@ -75,7 +75,6 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 {
     // Source: http://dbachrach.com/blog/2005/11/program-global-hotkeys-in-cocoa-easily/
     
-    EventHotKeyRef hotKeyRef;
     EventHotKeyID hotKeyID;
     EventTypeSpec eventType;
     
@@ -90,7 +89,8 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     if (hotkeyModifiers == 0) hotkeyModifiers = BODefaultModifiers;
     
     InstallApplicationEventHandler(BOHotkeyHandler, 1, &eventType, self, NULL);
-    RegisterEventHotKey(hotkeyCode, hotkeyModifiers, hotKeyID, GetApplicationEventTarget(), 0, &hotKeyRef);
+    RegisterEventHotKey(hotkeyCode, hotkeyModifiers, hotKeyID, GetApplicationEventTarget(), 0, &hotkeyHandler);
+    NSLog(@"Registered global hotkey: code = %ld, mods = %lu", (long) hotkeyCode, (unsigned long) hotkeyModifiers);
 }
 
 - (void)activateScreenSaver:(id)sender
@@ -124,7 +124,9 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 - (void)updateHotkeys:(NSNotification *)note
 {
-    NSLog(@"Terminating to update hotkeys");
+    UnregisterEventHotKey(hotkeyHandler);
+    NSLog(@"Unregistered global hotkey");
+    [self registerGlobalHotkey:note];
 }
 
 - (void)update:(NSNotification *)note

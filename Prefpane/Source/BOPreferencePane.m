@@ -347,14 +347,10 @@
     BOPreferencesSetValue(BOKeyCodePreferencesKey, (CFNumberRef) code);
     BOPreferencesSetValue(BOModifierPreferencesKey, (CFNumberRef) flags);
     BOPreferencesSynchronize();
+    BOLog(@"Saved new hotkey preference: code = %@, flags = %@", code, flags);
     
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationShouldUpdateHotkeys
                                                                    object:[self notificationIdentifier]];
-    
-    BOLog(@"Terminating Blackout to reload hotkeys");
-    [self terminateBlackout];
-    [self performSelector:@selector(launchBlackout) withObject:nil afterDelay:1.0];
-    BOLog(@"Launched Blackout with new hotkeys");
 }
 
 #pragma mark Notification Handlers

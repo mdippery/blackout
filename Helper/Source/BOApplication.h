@@ -27,6 +27,9 @@
 @interface BOApplication : NSObject
 {
     IBOutlet BOUpdater *updater;
+
+@private
+    EventHotKeyRef hotkeyHandler;
 }
 
 @property (readonly) NSString *version;
