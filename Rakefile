@@ -28,6 +28,6 @@ task :prefpane do
 end
 
 desc "Bumps the version number"
-task :version do
+task :bump_version do
   agvtool
 end

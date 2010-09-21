@@ -89,8 +89,6 @@
     [self updateKeyCombo];
     [self updateLoginItemState];
     [updateCheckbox setState:[self shouldUpdateAutomatically]];
-    
-    [shortcutRecorder setEnabled:NO];
 }
 
 - (void)dealloc
@@ -184,21 +182,15 @@
 
 - (BOOL)shouldUpdateAutomatically
 {
-    NSString *ident = [[BOBundle preferencePaneBundle] bundleIdentifier];
-    //BOLog(@"Checking preferences: %@", ident);
-    id userPref = [NSMakeCollectable(CFPreferencesCopyAppValue(CFSTR("SUEnableAutomaticChecks"), (CFStringRef) ident)) autorelease];
+    id userPref = BOPreferencesGetValue(@"SUEnableAutomaticChecks");
     if (userPref) {
-        //BOLog(@"Pulled auto update pref from preferences");
         return [userPref boolValue];
     } else {
-        //BOLog(@"Checking Info.plist for auto update pref");
         NSDictionary *info = [[BOBundle preferencePaneBundle] infoDictionary];
         id appPref = [info objectForKey:@"SUEnableAutomaticChecks"];
         if (appPref) {
-            //BOLog(@"Found auto update pref in Info.plist");
             return [appPref boolValue];
         } else {
-            //BOLog(@"Could not find update pref, returning default (NO)");
             return NO;
         }
     }
@@ -223,7 +215,6 @@
                 }
             }
         }
-        //[loginItemsList release];
     }
     
     if (items) *items = loginItems;
@@ -254,10 +245,8 @@
 
 - (void)updateKeyCombo
 {
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSInteger keys = [prefs integerForKey:BOKeyCodeNotificationKey];
-    NSInteger mods = [prefs integerForKey:BOKeyFlagNotificationKey];
-    
+    NSInteger keys = [BOPreferencesGetValue(BOKeyCodePreferencesKey) integerValue];
+    NSUInteger mods = [BOPreferencesGetValue(BOModifierPreferencesKey) unsignedIntegerValue];
     if (keys == 0) keys = BODefaultKeyCode;
     if (mods == 0) mods = SRCarbonToCocoaFlags(BODefaultModifiers);
     
@@ -309,9 +298,7 @@
 {
     id loginItems;
     LSSharedFileListItemRef item = [self loginItem:&loginItems];
-    if (item) {
-        LSSharedFileListItemRemove((LSSharedFileListRef) loginItems, item);
-    }
+    if (item) LSSharedFileListItemRemove((LSSharedFileListRef) loginItems, item);
 }
 
 - (IBAction)toggleStartStop:(id)sender
@@ -346,26 +333,28 @@
 
 - (IBAction)toggleAutomaticUpdates:(id)sender
 {
-    CFBooleanRef state = [sender state] ? kCFBooleanTrue : kCFBooleanFalse;
-    NSString *ident = [[BOBundle preferencePaneBundle] bundleIdentifier];
-    CFPreferencesSetValue(CFSTR("SUEnableAutomaticChecks"), state, (CFStringRef) ident, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
-    CFPreferencesSynchronize((CFStringRef) ident, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
-    BOLog(@"Updated auto updates: %@", state);
+    CFBooleanRef state = [sender state] == NSOnState ? kCFBooleanTrue : kCFBooleanFalse;
+    BOPreferencesSetValue(@"SUEnableAutomaticChecks", state);
+    BOPreferencesSynchronize();
 }
 
 #pragma mark Shortcut Recorder Delegate
 
 - (void)shortcutRecorder:(SRRecorderControl *)recorder keyComboDidChange:(KeyCombo)newKeyCombo
 {
-    NSNumber *code = [NSNumber numberWithUnsignedShort:newKeyCombo.code];
+    NSNumber *code = [NSNumber numberWithInteger:newKeyCombo.code];
     NSNumber *flags = [NSNumber numberWithUnsignedInteger:SRCocoaToCarbonFlags(newKeyCombo.flags)];
-    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
-                             code, BOKeyCodeNotificationKey,
-                             flags, BOKeyFlagNotificationKey,
-                             nil];
+    BOPreferencesSetValue(BOKeyCodePreferencesKey, (CFNumberRef) code);
+    BOPreferencesSetValue(BOModifierPreferencesKey, (CFNumberRef) flags);
+    BOPreferencesSynchronize();
+    
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationShouldUpdateHotkeys
-                                                                   object:[self notificationIdentifier]
-                                                                 userInfo:info];
+                                                                   object:[self notificationIdentifier]];
+    
+    BOLog(@"Terminating Blackout to reload hotkeys");
+    [self terminateBlackout];
+    [self performSelector:@selector(launchBlackout) withObject:nil afterDelay:1.0];
+    BOLog(@"Launched Blackout with new hotkeys");
 }
 
 #pragma mark Notification Handlers

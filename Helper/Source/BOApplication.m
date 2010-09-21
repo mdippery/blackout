@@ -84,8 +84,13 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     eventType.eventClass = kEventClassKeyboard;
     eventType.eventKind = kEventHotKeyPressed;
     
+    NSInteger hotkeyCode = [BOPreferencesGetValue(BOKeyCodePreferencesKey) integerValue];
+    NSUInteger hotkeyModifiers = [BOPreferencesGetValue(BOModifierPreferencesKey) unsignedIntegerValue];
+    if (hotkeyCode == 0) hotkeyCode = BODefaultKeyCode;
+    if (hotkeyModifiers == 0) hotkeyModifiers = BODefaultModifiers;
+    
     InstallApplicationEventHandler(BOHotkeyHandler, 1, &eventType, self, NULL);
-    RegisterEventHotKey(BODefaultKeyCode, BODefaultModifiers, hotKeyID, GetApplicationEventTarget(), 0, &hotKeyRef);
+    RegisterEventHotKey(hotkeyCode, hotkeyModifiers, hotKeyID, GetApplicationEventTarget(), 0, &hotKeyRef);
 }
 
 - (void)activateScreenSaver:(id)sender
@@ -119,9 +124,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 - (void)updateHotkeys:(NSNotification *)note
 {
-    NSNumber *code = [[note userInfo] objectForKey:BOKeyCodeNotificationKey];
-    NSNumber *flags = [[note userInfo] objectForKey:BOKeyFlagNotificationKey];
-    NSLog(@"Updating hot key with code: %u flags %u", [code unsignedShortValue], [flags unsignedIntValue]);
+    NSLog(@"Terminating to update hotkeys");
 }
 
 - (void)update:(NSNotification *)note

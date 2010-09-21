@@ -20,15 +20,7 @@
  * THE SOFTWARE.
  */
 
-#define BOEscapeKeyCode     53
-#define BOCommandShiftMask  (cmdKey | shiftKey)
+#import "BOKeys.h"
 
-#define BODefaultKeyCode    BOEscapeKeyCode
-#define BODefaultModifiers  BOCommandShiftMask
-
-#define BOPreferencesSetValue(key, val) CFPreferencesSetValue((CFStringRef) key, val, (CFStringRef) [[BOBundle preferencePaneBundle] bundleIdentifier], kCFPreferencesCurrentUser, kCFPreferencesAnyHost)
-#define BOPreferencesGetValue(key)      [NSMakeCollectable(CFPreferencesCopyValue((CFStringRef) key, (CFStringRef) [[BOBundle preferencePaneBundle] bundleIdentifier], kCFPreferencesCurrentUser, kCFPreferencesAnyHost)) autorelease]
-#define BOPreferencesSynchronize()      CFPreferencesSynchronize((CFStringRef) [[BOBundle preferencePaneBundle] bundleIdentifier], kCFPreferencesCurrentUser, kCFPreferencesAnyHost)
-
-extern NSString * const BOKeyCodePreferencesKey;
-extern NSString * const BOModifierPreferencesKey;
+NSString * const BOKeyCodePreferencesKey = @"Hotkey Keycode";
+NSString * const BOModifierPreferencesKey = @"Hotkey Modifier";

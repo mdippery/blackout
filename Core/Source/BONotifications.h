@@ -31,6 +31,3 @@ extern NSString * const BOApplicationShouldCheckForUpdate;
 extern NSString * const BOApplicationDidCheckForUpdate;
 extern NSString * const BOApplicationFoundUpdate;
 extern NSString * const BOApplicationDidNotFindUpdate;
-
-extern NSString * const BOKeyCodeNotificationKey;
-extern NSString * const BOKeyFlagNotificationKey;
