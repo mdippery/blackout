@@ -66,54 +66,12 @@ static BOOL BOPreferencesSynchronize(void)
 @end
 
 
-static BOUserDefaults *shared = nil;
-
 @implementation BOUserDefaults
 
-+ (id)sharedUserDefaults
++ (id)userDefaults
 {
-    @synchronized (self) {
-        if (!shared) {
-            shared = [[self alloc] init];
-        }
-    }
-    return shared;
+    return [[[self alloc] init] autorelease];
 }
-
-+ (id)allocWithZone:(NSZone *)zone
-{
-    @synchronized (self) {
-        if (!shared) {
-            shared = [super allocWithZone:zone];
-            return shared;
-        }
-    }
-    return nil;
-}
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    return self;
-}
-
-- (id)retain
-{
-    return self;
-}
-
-- (NSUInteger)retainCount
-{
-    return UINT_MAX;
-}
-
-- (void) release {}
-
-- (id)autorelease
-{
-    return self;
-}
-
-#pragma mark Properties
 
 - (NSUInteger)hotkeyModifiers
 {

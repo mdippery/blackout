@@ -83,7 +83,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     eventType.eventClass = kEventClassKeyboard;
     eventType.eventKind = kEventHotKeyPressed;
     
-    BOUserDefaults *defaults = [BOUserDefaults sharedUserDefaults];
+    BOUserDefaults *defaults = [BOUserDefaults userDefaults];
     NSInteger hotkeyCode = [defaults hotkeyCode];
     NSUInteger hotkeyModifiers = [defaults hotkeyModifiers];
     

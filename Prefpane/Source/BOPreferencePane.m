@@ -82,7 +82,7 @@
     [self updateRunningState:[self isBlackoutRunning]];
     [self updateKeyCombo];
     [self updateLoginItemState];
-    [updateCheckbox setState:[[BOUserDefaults sharedUserDefaults] shouldUpdateAutomatically]];
+    [updateCheckbox setState:[[BOUserDefaults userDefaults] shouldUpdateAutomatically]];
 }
 
 - (void)dealloc
@@ -186,12 +186,12 @@
 
 - (void)updateKeyCombo
 {
-    [shortcutRecorder setKeyCombo:[[BOUserDefaults sharedUserDefaults] hotkey]];
+    [shortcutRecorder setKeyCombo:[[BOUserDefaults userDefaults] hotkey]];
 }
 
 - (void)updateLoginItemState
 {
-    [loginItemsCheckbox setState:[[BOUserDefaults sharedUserDefaults] startAtLogin]];
+    [loginItemsCheckbox setState:[[BOUserDefaults userDefaults] startAtLogin]];
 }
 
 - (void)disableControlsWithLabel:(NSString *)labelKey
@@ -230,7 +230,7 @@
 
 - (IBAction)toggleLoginItems:(id)sender
 {
-    BOUserDefaults *defaults = [BOUserDefaults sharedUserDefaults];
+    BOUserDefaults *defaults = [BOUserDefaults userDefaults];
     [defaults setStartAtLogin:![defaults startAtLogin]];
 }
 
@@ -245,14 +245,14 @@
 
 - (IBAction)toggleAutomaticUpdates:(id)sender
 {
-    [[BOUserDefaults sharedUserDefaults] setShouldUpdateAutomatically:[sender state] == NSOnState];
+    [[BOUserDefaults userDefaults] setShouldUpdateAutomatically:[sender state] == NSOnState];
 }
 
 #pragma mark Shortcut Recorder Delegate
 
 - (void)shortcutRecorder:(SRRecorderControl *)recorder keyComboDidChange:(KeyCombo)newKeyCombo
 {
-    [[BOUserDefaults sharedUserDefaults] setHotkey:newKeyCombo];
+    [[BOUserDefaults userDefaults] setHotkey:newKeyCombo];
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationShouldUpdateHotkeys
                                                                    object:[self notificationIdentifier]];
 }

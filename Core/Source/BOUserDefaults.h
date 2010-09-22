@@ -32,6 +32,6 @@
 @property BOOL startAtLogin;
 @property BOOL shouldUpdateAutomatically;
 
-+ (id)sharedUserDefaults;
++ (id)userDefaults;
 
 @end
