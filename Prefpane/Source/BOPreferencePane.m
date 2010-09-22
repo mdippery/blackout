@@ -29,8 +29,6 @@
 #import "BOPathUtilities.h"
 #import "BOUserDefaults.h"
 
-#define BOLog(fmt, args...)             NSLog(@"Blackout|" fmt, ## args)
-
 
 @interface BOPreferencePane ()
 - (void)initNotifications;
@@ -72,7 +70,7 @@
     NSNotificationCenter *wsnc = [[NSWorkspace sharedWorkspace] notificationCenter];
     [wsnc addObserver:self selector:@selector(applicationDidLaunch:) name:NSWorkspaceDidLaunchApplicationNotification object:nil];
     [wsnc addObserver:self selector:@selector(applicationDidTerminate:) name:NSWorkspaceDidTerminateApplicationNotification object:nil];
-    BOLog(@"Registered for notifications");
+    NSLog(@"Registered for notifications");
 }
 
 - (void)awakeFromNib
@@ -163,10 +161,10 @@
 {
     id runningAppClass = NSClassFromString(@"NSRunningApplication");
     if (runningAppClass != nil) {
-        BOLog(@"Checking running application with Snow Leopard");
+        NSLog(@"Checking running application with Snow Leopard");
         return [[runningAppClass runningApplicationsWithBundleIdentifier:[[BOBundle helperBundle] bundleIdentifier]] count] > 0;
     } else {
-        BOLog(@"Checking running application with Leopard");
+        NSLog(@"Checking running application with Leopard");
         return [self isBlackoutRunning_Leopard];
     }
 }
@@ -238,7 +236,7 @@
 
 - (IBAction)checkForUpdate:(id)sender
 {
-    BOLog(@"Checking for updates");
+    NSLog(@"Checking for updates");
     [updateButton setEnabled:NO];
     [updateIndicator startAnimation:self];
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationShouldCheckForUpdate
@@ -265,10 +263,10 @@
 {
     id runningApp = [[note userInfo] objectForKey:NSWorkspaceApplicationKey];
     if (runningApp == nil) {
-        BOLog(@"Retrieving key for Leopard");
+        NSLog(@"Retrieving key for Leopard");
         return [[note userInfo] objectForKey:@"NSApplicationBundleIdentifier"];
     } else {
-        BOLog(@"Retrieving key for Snow Leopard");
+        NSLog(@"Retrieving key for Snow Leopard");
         return [runningApp bundleIdentifier];
     }
 }
@@ -276,14 +274,14 @@
 - (void)applicationDidLaunch:(NSNotification *)note
 {
     if ([[self retrieveBundleIdentifierFromNotification:note] isEqualToString:[[BOBundle helperBundle] bundleIdentifier]]) {
-        BOLog(@"Noticed that Blackout.app is now running");
+        NSLog(@"Noticed that Blackout.app is now running");
     }
 }
 
 - (void)applicationDidTerminate:(NSNotification *)note
 {
     if ([[self retrieveBundleIdentifierFromNotification:note] isEqualToString:[[BOBundle helperBundle] bundleIdentifier]]) {
-        BOLog(@"Noticed that Blackout.app has terminated");
+        NSLog(@"Noticed that Blackout.app has terminated");
     }
 }
 
@@ -295,13 +293,13 @@
 - (void)foundUpdate:(NSNotification *)note
 {
     [self stopUpdateAnimation];
-    BOLog(@"Update is available");
+    NSLog(@"Blackout update is available");
 }
 
 - (void)didNotFindUpdate:(NSNotification *)note
 {
     [self stopUpdateAnimation];
-    BOLog(@"No updates available");
+    NSLog(@"No Blackout updates available");
 }
 
 @end
