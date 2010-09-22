@@ -26,7 +26,7 @@
 
 #import "BOBundle.h"
 #import "BONotifications.h"
-#import "BOKeys.h"
+#import "BOUserDefaults.h"
 
 
 static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData)
@@ -83,10 +83,9 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     eventType.eventClass = kEventClassKeyboard;
     eventType.eventKind = kEventHotKeyPressed;
     
-    NSInteger hotkeyCode = [BOPreferencesGetValue(BOKeyCodePreferencesKey) integerValue];
-    NSUInteger hotkeyModifiers = [BOPreferencesGetValue(BOModifierPreferencesKey) unsignedIntegerValue];
-    if (hotkeyCode == 0) hotkeyCode = BODefaultKeyCode;
-    if (hotkeyModifiers == 0) hotkeyModifiers = BODefaultModifiers;
+    BOUserDefaults *defaults = [BOUserDefaults sharedUserDefaults];
+    NSInteger hotkeyCode = [defaults hotkeyCode];
+    NSUInteger hotkeyModifiers = [defaults hotkeyModifiers];
     
     InstallApplicationEventHandler(BOHotkeyHandler, 1, &eventType, self, NULL);
     RegisterEventHotKey(hotkeyCode, hotkeyModifiers, hotKeyID, GetApplicationEventTarget(), 0, &hotkeyHandler);

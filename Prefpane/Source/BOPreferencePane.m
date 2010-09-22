@@ -26,17 +26,14 @@
 
 #import "BOBundle.h"
 #import "BONotifications.h"
-#import "BOKeys.h"
+#import "BOUserDefaults.h"
 
 #define BOLog(fmt, args...)             NSLog(@"Blackout|" fmt, ## args)
 
 
 @interface BOPreferencePane ()
 - (void)initNotifications;
-- (BOOL)shouldUpdateAutomatically;
-- (LSSharedFileListItemRef) loginItem:(id *)items;
 - (BOOL)isBlackoutRunning_Leopard;
-- (BOOL)isLoginItem;
 - (void)updateRunningState:(BOOL)state;
 - (void)updateKeyCombo;
 - (void)updateLoginItemState;
@@ -45,8 +42,6 @@
 - (void)launchBlackout;
 - (void)terminateBlackout;
 - (void)checkBlackoutIsRunning;
-- (void)addToLoginItems;
-- (void)removeFromLoginItems;
 - (NSString *)retrieveBundleIdentifierFromNotification:(NSNotification *)note;
 - (void)applicationDidLaunch:(NSNotification *)note;
 - (void)applicationDidTerminate:(NSNotification *)note;
@@ -88,7 +83,7 @@
     [self updateRunningState:[self isBlackoutRunning]];
     [self updateKeyCombo];
     [self updateLoginItemState];
-    [updateCheckbox setState:[self shouldUpdateAutomatically]];
+    [updateCheckbox setState:[[BOUserDefaults sharedUserDefaults] shouldUpdateAutomatically]];
 }
 
 - (void)dealloc
@@ -180,52 +175,6 @@
     }
 }
 
-- (BOOL)shouldUpdateAutomatically
-{
-    id userPref = BOPreferencesGetValue(@"SUEnableAutomaticChecks");
-    if (userPref) {
-        return [userPref boolValue];
-    } else {
-        NSDictionary *info = [[BOBundle preferencePaneBundle] infoDictionary];
-        id appPref = [info objectForKey:@"SUEnableAutomaticChecks"];
-        if (appPref) {
-            return [appPref boolValue];
-        } else {
-            return NO;
-        }
-    }
-}
-
-- (LSSharedFileListItemRef)loginItem:(id *)items
-{
-    // Source: http://cocoatutorial.grapewave.com/2010/02/creating-andor-removing-a-login-item/
-    
-    LSSharedFileListItemRef theItem = NULL;
-    CFURLRef appPath = (CFURLRef) [NSURL fileURLWithPath:[self blackoutHelperPath]];
-    id loginItems = [NSMakeCollectable(LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL)) autorelease];
-    if (loginItems) {
-        UInt32 seedValue;
-        id loginItemsList = [NSMakeCollectable(LSSharedFileListCopySnapshot((LSSharedFileListRef) loginItems, &seedValue)) autorelease];
-        for (NSUInteger i = 0; i < [loginItemsList count]; i++) {
-            LSSharedFileListItemRef item = (LSSharedFileListItemRef) [loginItemsList objectAtIndex:i];
-            if (LSSharedFileListItemResolve(item, 0, (CFURLRef *) &appPath, NULL) == noErr) {
-                if ([[(NSURL *) appPath path] isEqualToString:[self blackoutHelperPath]]) {
-                    theItem = item;
-                    break;
-                }
-            }
-        }
-    }
-    
-    if (items) *items = loginItems;
-    return theItem;
-}
-
-- (BOOL)isLoginItem
-{
-    return [self loginItem:nil] != NULL;
-}
-
 #pragma mark UI State
 
 - (void)updateRunningState:(BOOL)state
@@ -234,29 +183,21 @@
         [runningLabel setStringValue:NSLocalizedString(@"Blackout is running.", nil)];
         [startButton setTitle:NSLocalizedString(@"Stop Blackout", nil)];
         [updateButton setEnabled:YES];
-        //[updateCheckbox setEnabled:YES];
     } else {
         [runningLabel setStringValue:NSLocalizedString(@"Blackout is stopped.", nil)];
         [startButton setTitle:NSLocalizedString(@"Start Blackout", nil)];
         [updateButton setEnabled:NO];
-        //[updateCheckbox setEnabled:NO];
     }
 }
 
 - (void)updateKeyCombo
 {
-    NSInteger keys = [BOPreferencesGetValue(BOKeyCodePreferencesKey) integerValue];
-    NSUInteger mods = [BOPreferencesGetValue(BOModifierPreferencesKey) unsignedIntegerValue];
-    if (keys == 0) keys = BODefaultKeyCode;
-    if (mods == 0) mods = SRCarbonToCocoaFlags(BODefaultModifiers);
-    
-    KeyCombo keyCombo = SRMakeKeyCombo(keys, mods);
-    [shortcutRecorder setKeyCombo:keyCombo];
+    [shortcutRecorder setKeyCombo:[[BOUserDefaults sharedUserDefaults] hotkey]];
 }
 
 - (void)updateLoginItemState
 {
-    [loginItemsCheckbox setState:[self isLoginItem]];
+    [loginItemsCheckbox setState:[[BOUserDefaults sharedUserDefaults] startAtLogin]];
 }
 
 - (void)disableControlsWithLabel:(NSString *)labelKey
@@ -281,26 +222,6 @@
     [startButton setEnabled:YES];
 }
 
-- (void)addToLoginItems
-{
-    // Source: http://cocoatutorial.grapewave.com/2010/02/creating-andor-removing-a-login-item/
-    
-    CFURLRef appPath = (CFURLRef) [NSURL fileURLWithPath:[self blackoutHelperPath]];
-    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
-    if (loginItems) {
-        LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemLast, NULL, NULL, appPath, NULL, NULL);
-        NSLog(@"Added Blackout to login items");
-        if (item) CFRelease(item);
-    }
-}
-
-- (void)removeFromLoginItems
-{
-    id loginItems;
-    LSSharedFileListItemRef item = [self loginItem:&loginItems];
-    if (item) LSSharedFileListItemRemove((LSSharedFileListRef) loginItems, item);
-}
-
 - (IBAction)toggleStartStop:(id)sender
 {
     if ([self isBlackoutRunning]) {
@@ -315,11 +236,8 @@
 
 - (IBAction)toggleLoginItems:(id)sender
 {
-    if ([self isLoginItem]) {
-        [self removeFromLoginItems];
-    } else {
-        [self addToLoginItems];
-    }
+    BOUserDefaults *defaults = [BOUserDefaults sharedUserDefaults];
+    [defaults setStartAtLogin:![defaults startAtLogin]];
 }
 
 - (IBAction)checkForUpdate:(id)sender
@@ -333,22 +251,14 @@
 
 - (IBAction)toggleAutomaticUpdates:(id)sender
 {
-    CFBooleanRef state = [sender state] == NSOnState ? kCFBooleanTrue : kCFBooleanFalse;
-    BOPreferencesSetValue(@"SUEnableAutomaticChecks", state);
-    BOPreferencesSynchronize();
+    [[BOUserDefaults sharedUserDefaults] setShouldUpdateAutomatically:[sender state] == NSOnState];
 }
 
 #pragma mark Shortcut Recorder Delegate
 
 - (void)shortcutRecorder:(SRRecorderControl *)recorder keyComboDidChange:(KeyCombo)newKeyCombo
 {
-    NSNumber *code = [NSNumber numberWithInteger:newKeyCombo.code];
-    NSNumber *flags = [NSNumber numberWithUnsignedInteger:SRCocoaToCarbonFlags(newKeyCombo.flags)];
-    BOPreferencesSetValue(BOKeyCodePreferencesKey, (CFNumberRef) code);
-    BOPreferencesSetValue(BOModifierPreferencesKey, (CFNumberRef) flags);
-    BOPreferencesSynchronize();
-    BOLog(@"Saved new hotkey preference: code = %@, flags = %@", code, flags);
-    
+    [[BOUserDefaults sharedUserDefaults] setKeyCombo:newKeyCombo];
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationShouldUpdateHotkeys
                                                                    object:[self notificationIdentifier]];
 }
