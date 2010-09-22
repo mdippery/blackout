@@ -20,36 +20,10 @@
  * THE SOFTWARE.
  */
 
-#import <Cocoa/Cocoa.h>
-#import <PreferencePanes/PreferencePanes.h>
-#import <ShortcutRecorder/ShortcutRecorder.h>
+#import "BOPathUtilities.h"
+#import "BOBundle.h"
 
-
-@interface BOPreferencePane : NSPreferencePane
+NSString *BOBlackoutHelperPath(void)
 {
-    IBOutlet NSButton *startButton;
-    IBOutlet NSProgressIndicator *launchIndicator;
-    IBOutlet NSTextField *runningLabel;
-    IBOutlet NSButton *loginItemsCheckbox;
-    IBOutlet SRRecorderControl *shortcutRecorder;
-    IBOutlet NSButton *updateButton;
-    IBOutlet NSProgressIndicator *updateIndicator;
-    IBOutlet NSButton *updateCheckbox;
-    IBOutlet NSTextField *versionLabel;
-    IBOutlet NSTextField *copyrightLabel;
+    return [[BOBundle preferencePaneBundle] pathForResource:@"Blackout" ofType:@"app"];
 }
-
-@property (readonly) NSString *name;
-@property (readonly) NSString *build;
-@property (readonly) NSString *version;
-@property (readonly) NSString *copyright;
-@property (readonly) NSString *notificationIdentifier;
-
-- (BOOL)isBlackoutRunning;
-
-- (IBAction)toggleStartStop:(id)sender;
-- (IBAction)toggleLoginItems:(id)sender;
-- (IBAction)checkForUpdate:(id)sender;
-- (IBAction)toggleAutomaticUpdates:(id)sender;
-
-@end

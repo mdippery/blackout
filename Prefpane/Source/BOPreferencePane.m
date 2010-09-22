@@ -26,6 +26,7 @@
 
 #import "BOBundle.h"
 #import "BONotifications.h"
+#import "BOPathUtilities.h"
 #import "BOUserDefaults.h"
 
 #define BOLog(fmt, args...)             NSLog(@"Blackout|" fmt, ## args)
@@ -118,17 +119,12 @@
     return [[BOBundle preferencePaneBundle] bundleIdentifier];
 }
 
-- (NSString *)blackoutHelperPath
-{
-    return [[BOBundle preferencePaneBundle] pathForResource:@"Blackout" ofType:@"app"];
-}
-
 #pragma mark Process Control
 
 - (void)launchBlackout
 {
     static NSWorkspaceLaunchOptions opts = NSWorkspaceLaunchWithoutAddingToRecents | NSWorkspaceLaunchWithoutActivation | NSWorkspaceLaunchAsync;
-    NSURL *url = [NSURL fileURLWithPath:[self blackoutHelperPath]];
+    NSURL *url = [NSURL fileURLWithPath:BOBlackoutHelperPath()];
     [[NSWorkspace sharedWorkspace] openURLs:[NSArray arrayWithObject:url]
                     withAppBundleIdentifier:nil
                                     options:opts
@@ -258,7 +254,7 @@
 
 - (void)shortcutRecorder:(SRRecorderControl *)recorder keyComboDidChange:(KeyCombo)newKeyCombo
 {
-    [[BOUserDefaults sharedUserDefaults] setKeyCombo:newKeyCombo];
+    [[BOUserDefaults sharedUserDefaults] setHotkey:newKeyCombo];
     [[NSDistributedNotificationCenter defaultCenter] postNotificationName:BOApplicationShouldUpdateHotkeys
                                                                    object:[self notificationIdentifier]];
 }

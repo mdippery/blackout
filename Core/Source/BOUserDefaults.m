@@ -21,10 +21,10 @@
  */
 
 #import "BOUserDefaults.h"
+#import "BOBundle.h"
+#import "BOPathUtilities.h"
 
 #import <ShortcutRecorder/ShortcutRecorder.h>
-
-#import "BOBundle.h"
 
 #define BOEscapeKeyCode     53
 #define BOCommandShiftMask  (cmdKey | shiftKey)
@@ -189,13 +189,13 @@ static BOUserDefaults *shared = nil;
 - (void)addToLoginItems
 {
     // Source: http://cocoatutorial.grapewave.com/2010/02/creating-andor-removing-a-login-item/
-    CFURLRef appPath = (CFURLRef) [NSURL fileURLWithPath:[self blackoutHelperPath]];
-    id loginItems = [NSMakeCollectable(LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL)) autorelease];
+    
+    CFURLRef appPath = (CFURLRef) [NSURL fileURLWithPath:BOBlackoutHelperPath()];
+    LSSharedFileListRef loginItems = LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL);
     if (loginItems) {
-        id item = [NSMakeCollectable(LSSharedFileListInsertItemURL((LSSharedFileListRef) loginItems, kLSSharedFileListItemLast, NULL, NULL, appPath, NULL, NULL)) autorelease];
-        if (item) {
-            NSLog(@"Added Blackout to login items");
-        }
+        LSSharedFileListItemRef item = LSSharedFileListInsertItemURL(loginItems, kLSSharedFileListItemLast, NULL, NULL, appPath, NULL, NULL);
+        NSLog(@"Added Blackout to login items");
+        if (item) CFRelease(item);
     }
 }
 
@@ -211,7 +211,8 @@ static BOUserDefaults *shared = nil;
     // Source: http://cocoatutorial.grapewave.com/2010/02/creating-andor-removing-a-login-item/
     
     LSSharedFileListItemRef theItem = NULL;
-    CFURLRef appPath = (CFURLRef) [NSURL fileURLWithPath:[self blackoutHelperPath]];
+    NSString *blackoutApp = BOBlackoutHelperPath();
+    CFURLRef appPath = (CFURLRef) [NSURL fileURLWithPath:blackoutApp];
     id loginItems = [NSMakeCollectable(LSSharedFileListCreate(NULL, kLSSharedFileListSessionLoginItems, NULL)) autorelease];
     if (loginItems) {
         UInt32 seedValue;
@@ -219,7 +220,7 @@ static BOUserDefaults *shared = nil;
         for (NSUInteger i = 0; i < [loginItemsList count]; i++) {
             LSSharedFileListItemRef item = (LSSharedFileListItemRef) [loginItemsList objectAtIndex:i];
             if (LSSharedFileListItemResolve(item, 0, (CFURLRef *) &appPath, NULL) == noErr) {
-                if ([[(NSURL *) appPath path] isEqualToString:[self blackoutHelperPath]]) {
+                if ([[(NSURL *) appPath path] isEqualToString:blackoutApp]) {
                     theItem = item;
                     break;
                 }

@@ -10,6 +10,8 @@
 		256AC3DA0F4B6AC300CF3369 /* BOApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* BOApplication.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		B7022BA61249CC3600CA1DB9 /* BOPathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B7022BA51249CC3600CA1DB9 /* BOPathUtilities.m */; };
+		B7022BA71249CC3600CA1DB9 /* BOPathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = B7022BA51249CC3600CA1DB9 /* BOPathUtilities.m */; };
 		B7155DA81234A25A00A00429 /* Moon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D54A1226F53E00803D94 /* Moon.icns */; };
 		B7155DB31234A33600A00429 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7155DB11234A33600A00429 /* MainMenu.xib */; };
 		B7155E2A1234A3BA00A00429 /* BOPreferencePane.m in Sources */ = {isa = PBXBuildFile; fileRef = B7155E291234A3BA00A00429 /* BOPreferencePane.m */; };
@@ -86,6 +88,8 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Helper/Resources/Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Blackout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blackout.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7022BA41249CC3600CA1DB9 /* BOPathUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOPathUtilities.h; path = Core/Source/BOPathUtilities.h; sourceTree = "<group>"; };
+		B7022BA51249CC3600CA1DB9 /* BOPathUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOPathUtilities.m; path = Core/Source/BOPathUtilities.m; sourceTree = "<group>"; };
 		B7155DB21234A33600A00429 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Prefpane/Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B7155E281234A3BA00A00429 /* BOPreferencePane.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOPreferencePane.h; path = Prefpane/Source/BOPreferencePane.h; sourceTree = "<group>"; };
 		B7155E291234A3BA00A00429 /* BOPreferencePane.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOPreferencePane.m; path = Prefpane/Source/BOPreferencePane.m; sourceTree = "<group>"; };
@@ -218,6 +222,8 @@
 			children = (
 				B7267A281235D2AC00EA118C /* BONotifications.h */,
 				B7267A291235D2AC00EA118C /* BONotifications.m */,
+				B7022BA41249CC3600CA1DB9 /* BOPathUtilities.h */,
+				B7022BA51249CC3600CA1DB9 /* BOPathUtilities.m */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -371,6 +377,7 @@
 				B780E8241238124B00D309AB /* BOBundle.m in Sources */,
 				B780E8EE12381EA200D309AB /* BOUpdater.m in Sources */,
 				B7B79F291241410C00AE27A1 /* BOUserDefaults.m in Sources */,
+				B7022BA71249CC3600CA1DB9 /* BOPathUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,6 +389,7 @@
 				B7267A2A1235D2AC00EA118C /* BONotifications.m in Sources */,
 				B780E8231238124B00D309AB /* BOBundle.m in Sources */,
 				B7B79F281241410C00AE27A1 /* BOUserDefaults.m in Sources */,
+				B7022BA61249CC3600CA1DB9 /* BOPathUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,7 +453,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 32;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
@@ -483,7 +491,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 32;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -521,7 +529,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 32;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
@@ -550,7 +558,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 32;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
