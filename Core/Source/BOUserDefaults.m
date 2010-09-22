@@ -21,6 +21,39 @@
  */
 
 #import "BOUserDefaults.h"
+#import "BOBundle.h"
+
+#define BOEscapeKeyCode     53
+#define BOCommandShiftMask  (cmdKey | shiftKey)
+
+#define BODefaultKeyCode    BOEscapeKeyCode
+#define BODefaultModifiers  BOCommandShiftMask
+
+
+static void BOPreferencesSetValue(NSString *key, CFPropertyListRef val)
+{
+    CFPreferencesSetValue((CFStringRef) key,
+                          val,
+                          (CFStringRef) [[BOBundle preferencePaneBundle] bundleIdentifier],
+                          kCFPreferencesCurrentUser,
+                          kCFPreferencesAnyHost);
+}
+
+static id BOPreferencesGetValue(NSString *key)
+{
+    CFPropertyListRef val = CFPreferencesCopyValue((CFStringRef) key,
+                                                   (CFStringRef) [[BOBundle preferencePaneBundle] bundleIdentifier],
+                                                   kCFPreferencesCurrentUser,
+                                                   kCFPreferencesAnyHost);
+    return [NSMakeCollectable(val) autorelease];
+}
+
+static BOOL BOPreferencesSynchronize(void)
+{
+    return CFPreferencesSynchronize((CFStringRef) [[BOBundle preferencePaneBundle] bundleIdentifier],
+                                    kCFPreferencesCurrentUser,
+                                    kCFPreferencesAnyHost);
+}
 
 
 @implementation BOUserDefaults
