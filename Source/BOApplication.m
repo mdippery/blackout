@@ -52,11 +52,6 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
 
-- (NSString *)notificationIdentifier
-{
-    return [[NSBundle mainBundle] bundleIdentifier];
-}
-
 - (void)registerGlobalHotkey:(id)sender;
 {
     // Source: http://dbachrach.com/blog/2005/11/program-global-hotkeys-in-cocoa-easily/

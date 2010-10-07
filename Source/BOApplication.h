@@ -21,6 +21,7 @@
  */
 
 #import <Cocoa/Cocoa.h>
+#import <Sparkle/Sparkle.h>
 
 
 @interface BOApplication : NSObject
@@ -31,7 +32,6 @@
 
 @property (readonly) NSString *version;
 @property (readonly) NSString *buildNumber;
-@property (readonly) NSString *notificationIdentifier;
 
 - (void)registerGlobalHotkey:(id)sender;
 - (void)activateScreenSaver:(id)sender;

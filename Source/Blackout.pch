@@ -1,5 +1,6 @@
 #ifdef __OBJC__
     #import <Carbon/Carbon.h>
     #import <Cocoa/Cocoa.h>
+    #import <ShortcutRecorder/ShortcutRecorder.h>
     #import <Sparkle/Sparkle.h>
 #endif
