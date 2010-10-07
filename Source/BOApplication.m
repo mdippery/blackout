@@ -21,6 +21,7 @@
  */
 
 #import "BOApplication.h"
+#import "NSEvent+ModifierKeys.h"
 #import <ShortcutRecorder/ShortcutRecorder.h>
 #import <Carbon/Carbon.h>
 
@@ -32,6 +33,11 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [(BOApplication *)userData performSelector:@selector(activateScreenSaver:) withObject:(BOApplication *)userData afterDelay:0.5];
     return noErr;
 }
+
+
+@interface BOApplication ()
+- (void)showPreferences;
+@end
 
 
 @implementation BOApplication
@@ -82,10 +88,19 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 #pragma mark NSApp Delegate
 
+- (void)showPreferences
+{
+    NSLog(@"Will show preferences window");
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)note
 {
     [self registerGlobalHotkey:self];
     NSLog(@"Loaded Blackout v%@ (%@)", [self version], [self buildNumber]);
+    
+    if ([NSEvent optionKey]) {
+        [self showPreferences];
+    }
 }
 
 - (void)applicationWillTerminate:(NSNotification *)note
