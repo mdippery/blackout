@@ -18,6 +18,7 @@
 		B7A2D3CE125D58BA008D6BAD /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = B7A2D3CD125D58BA008D6BAD /* dsa_pub.pem */; };
 		B7B79F581241448900AE27A1 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
 		B7B79F601241449500AE27A1 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
+		B7D1C417125D6D0500C74190 /* UserDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7D1C416125D6D0500C74190 /* UserDefaults.plist */; };
 		B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D54A1226F53E00803D94 /* Moon.icns */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		B780E8DE12381E0800D309AB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		B783BE6B123146EC005AA38B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		B7A2D3CD125D58BA008D6BAD /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Resources/dsa_pub.pem; sourceTree = "<group>"; };
+		B7D1C416125D6D0500C74190 /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = UserDefaults.plist; path = Resources/UserDefaults.plist; sourceTree = "<group>"; };
 		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Moon.icns; path = Resources/Moon.icns; sourceTree = "<group>"; };
 		B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = Frameworks/ShortcutRecorder.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 			children = (
 				8D1107310486CEB800E47090 /* Info.plist */,
 				B716F974125D501100606308 /* InfoPlist.strings */,
+				B7D1C416125D6D0500C74190 /* UserDefaults.plist */,
 				B716F978125D502900606308 /* MainMenu.xib */,
 				B7D1D54A1226F53E00803D94 /* Moon.icns */,
 				B7A2D3CD125D58BA008D6BAD /* dsa_pub.pem */,
@@ -206,6 +209,7 @@
 				B716F976125D501100606308 /* InfoPlist.strings in Resources */,
 				B716F97A125D502900606308 /* MainMenu.xib in Resources */,
 				B7A2D3CE125D58BA008D6BAD /* dsa_pub.pem in Resources */,
+				B7D1C417125D6D0500C74190 /* UserDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +253,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 36;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
@@ -278,7 +282,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 36;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

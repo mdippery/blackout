@@ -25,12 +25,6 @@
 #import <Carbon/Carbon.h>
 
 
-#define DEFAULT_HOTKEY_CODE             53
-#define DEFAULT_HOTKEY_MODIFIERS        (cmdKey | shiftKey)
-#define USER_DEFAULTS_HOTKEY_CODE       @"Hotkey Code"
-#define USER_DEFAULTS_HOTKEY_MODIFIERS  @"Hotkey Modifier"
-
-
 static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData)
 {
     // Delay screen saver activation for a half-second -- otherwise
@@ -41,6 +35,14 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 
 @implementation BOApplication
+
++ (void)initialize
+{
+    NSString *defaultsPlist = [[NSBundle mainBundle] pathForResource:@"UserDefaults" ofType:@"plist"];
+    NSAssert(defaultsPlist != nil, @"Path to Defaults.plist could not be retrieved");
+    NSDictionary *defaults = [NSDictionary dictionaryWithContentsOfFile:defaultsPlist];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+}
 
 - (NSString *)version
 {
@@ -65,18 +67,8 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     eventType.eventKind = kEventHotKeyPressed;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSInteger hotkeyCode = [defaults integerForKey:USER_DEFAULTS_HOTKEY_CODE];
-    NSInteger hotkeyModifiers = [defaults integerForKey:USER_DEFAULTS_HOTKEY_MODIFIERS];
-    
-    if (hotkeyCode == 0) {
-        hotkeyCode = DEFAULT_HOTKEY_CODE;
-        [defaults setInteger:hotkeyCode forKey:USER_DEFAULTS_HOTKEY_CODE];
-    }
-    if (hotkeyModifiers == 0) {
-        hotkeyModifiers = DEFAULT_HOTKEY_MODIFIERS;
-        [defaults setInteger:hotkeyModifiers forKey:USER_DEFAULTS_HOTKEY_MODIFIERS];
-    }
-    [defaults synchronize];
+    NSInteger hotkeyCode = [defaults integerForKey:@"Hotkey Code"];
+    NSInteger hotkeyModifiers = [defaults integerForKey:@"Hotkey Modifiers"];
     
     InstallApplicationEventHandler(BOHotkeyHandler, 1, &eventType, self, NULL);
     RegisterEventHotKey(hotkeyCode, hotkeyModifiers, hotKeyID, GetApplicationEventTarget(), 0, &hotkeyHandler);
