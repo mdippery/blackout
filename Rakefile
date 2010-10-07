@@ -1,12 +1,9 @@
-PROJECT = 'Blackout.xcodeproj'
-TARGET  = 'Blackout'
-
-def xcodebuild(project, target, configuration)
-  sh "xcodebuild -project #{project} -target #{target} -configuration #{configuration} build"
+def xcodebuild(configuration)
+  sh "xcodebuild -project Blackout.xcodeproj -target Blackout -configuration #{configuration} build"
 end
 
-def xcodeclean(project, configuration)
-  sh "xcodebuild -project #{project} -alltargets -configuration #{configuration} clean"
+def xcodeclean(configuration)
+  sh "xcodebuild -project Blackout.xcodeproj -alltargets -configuration #{configuration} clean"
 end
 
 def agvtool
@@ -15,18 +12,18 @@ end
 
 desc "Build a release version"
 task :default do
-  xcodebuild PROJECT, TARGET, 'Release'
+  xcodebuild 'Release'
 end
 
 desc "Build a debug version"
 task :debug do
-  xcodebuild PROJECT, TARGET, 'Debug'
+  xcodebuild 'Debug'
 end
 
 desc "Clean the project"
 task :clean do
-  xcodeclean PROJECT, 'Debug'
-  xcodeclean PROJECT, 'Release'
+  xcodeclean 'Debug'
+  xcodeclean 'Release'
 end
 
 desc "Bumps the version number"
