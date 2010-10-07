@@ -6,8 +6,8 @@ def xcodeclean(configuration)
   sh "xcodebuild -project Blackout.xcodeproj -alltargets -configuration #{configuration} clean"
 end
 
-def agvtool
-  sh "agvtool next-version -all"
+def agvtool(subcommand)
+  sh "agvtool #{subcommand}"
 end
 
 desc "Build a release version"
@@ -28,5 +28,5 @@ end
 
 desc "Bumps the version number"
 task :bump_version do
-  agvtool
+  agvtool 'next-version -all'
 end
