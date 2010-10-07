@@ -21,35 +21,19 @@
  */
 
 #import <Cocoa/Cocoa.h>
-#import <PreferencePanes/PreferencePanes.h>
-#import <ShortcutRecorder/ShortcutRecorder.h>
 
 
-@interface BOPreferencePane : NSPreferencePane
+@interface BOApplication : NSObject
 {
-    IBOutlet NSButton *startButton;
-    IBOutlet NSProgressIndicator *launchIndicator;
-    IBOutlet NSTextField *runningLabel;
-    IBOutlet NSButton *loginItemsCheckbox;
-    IBOutlet SRRecorderControl *shortcutRecorder;
-    IBOutlet NSButton *updateButton;
-    IBOutlet NSProgressIndicator *updateIndicator;
-    IBOutlet NSButton *updateCheckbox;
-    IBOutlet NSTextField *versionLabel;
-    IBOutlet NSTextField *copyrightLabel;
+@private
+    EventHotKeyRef hotkeyHandler;
 }
 
-@property (readonly) NSString *name;
-@property (readonly) NSString *build;
 @property (readonly) NSString *version;
-@property (readonly) NSString *copyright;
+@property (readonly) NSString *buildNumber;
 @property (readonly) NSString *notificationIdentifier;
 
-- (BOOL)isBlackoutRunning;
-
-- (IBAction)toggleStartStop:(id)sender;
-- (IBAction)toggleLoginItems:(id)sender;
-- (IBAction)checkForUpdate:(id)sender;
-- (IBAction)toggleAutomaticUpdates:(id)sender;
+- (void)registerGlobalHotkey:(id)sender;
+- (void)activateScreenSaver:(id)sender;
 
 @end
