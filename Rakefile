@@ -13,18 +13,20 @@ def agvtool
   sh "agvtool next-version -all"
 end
 
-desc "Build the preference pane"
-task :default => [:prefpane]
+desc "Build a release version"
+task :default do
+  xcodebuild PROJECT, TARGET, 'Release'
+end
 
-desc "Cleans the project"
+desc "Build a debug version"
+task :debug do
+  xcodebuild PROJECT, TARGET, 'Debug'
+end
+
+desc "Clean the project"
 task :clean do
   xcodeclean PROJECT, 'Debug'
   xcodeclean PROJECT, 'Release'
-end
-
-desc "Builds the preference pane"
-task :prefpane do
-  xcodebuild PROJECT, TARGET, 'Release'
 end
 
 desc "Bumps the version number"
