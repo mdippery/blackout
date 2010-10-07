@@ -55,7 +55,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
 }
 
-- (NSString *)buildNumber
+- (NSString *)build
 {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
@@ -96,7 +96,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (void)applicationDidFinishLaunching:(NSNotification *)note
 {
     [self registerGlobalHotkey:self];
-    NSLog(@"Loaded Blackout v%@ (%@)", [self version], [self buildNumber]);
+    NSLog(@"Loaded Blackout v%@ (%@)", [self version], [self build]);
     
     if ([NSEvent optionKey]) {
         [self showPreferences];

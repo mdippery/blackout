@@ -31,7 +31,7 @@
 }
 
 @property (readonly) NSString *version;
-@property (readonly) NSString *buildNumber;
+@property (readonly) NSString *build;
 
 - (void)registerGlobalHotkey:(id)sender;
 - (void)activateScreenSaver:(id)sender;
