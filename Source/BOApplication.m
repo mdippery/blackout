@@ -73,8 +73,8 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     eventType.eventKind = kEventHotKeyPressed;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSInteger hotkeyCode = [defaults integerForKey:@"Hotkey Code"];
-    NSInteger hotkeyModifiers = [defaults integerForKey:@"Hotkey Modifiers"];
+    NSInteger hotkeyCode = [defaults integerForKey:@"HotkeyCode"];
+    NSInteger hotkeyModifiers = [defaults integerForKey:@"HotkeyModifiers"];
     
     InstallApplicationEventHandler(BOHotkeyHandler, 1, &eventType, self, NULL);
     RegisterEventHotKey(hotkeyCode, hotkeyModifiers, hotKeyID, GetApplicationEventTarget(), 0, &hotkeyHandler);
