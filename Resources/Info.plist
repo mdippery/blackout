@@ -36,5 +36,7 @@
 	<string>http://software.monkey-robot.com/blackout/appcast.xml</string>
 	<key>SUEnableSystemProfiling</key>
 	<true/>
+	<key>SUPublicDSAKeyFile</key>
+	<string>dsa_pub.pem</string>
 </dict>
 </plist>
