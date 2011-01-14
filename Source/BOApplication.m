@@ -30,6 +30,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 {
     // Delay screen saver activation for a half-second -- otherwise
     // it gets kicked off almost immediately.
+    NSLog(@"Invoked hotkey");
     [(BOApplication *)userData performSelector:@selector(activateScreenSaver:) withObject:(BOApplication *)userData afterDelay:0.5];
     return noErr;
 }
@@ -83,6 +84,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 - (void)activateScreenSaver:(id)sender
 {
+    NSLog(@"Activating screen saver");
     [[NSWorkspace sharedWorkspace] launchApplication:@"ScreenSaverEngine"];
 }
 
