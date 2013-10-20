@@ -6,10 +6,6 @@ def xcodeclean(conf)
   sh "xcodebuild -project Blackout.xcodeproj -alltargets -configuration #{conf.to_s.capitalize} clean"
 end
 
-def agvtool(subcommand)
-  sh "agvtool #{subcommand}"
-end
-
 desc "Build a release version"
 task :default do
   xcodebuild :release
@@ -24,9 +20,4 @@ desc "Clean the project"
 task :clean do
   xcodeclean :debug
   xcodeclean :release
-end
-
-desc "Bumps the version number"
-task :bump_version do
-  agvtool 'next-version -all'
 end
