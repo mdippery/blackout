@@ -21,9 +21,9 @@
  */
 
 #import "BOApplication.h"
-#import "NSEvent+ModifierKeys.h"
-#import <ShortcutRecorder/ShortcutRecorder.h>
 #import <Carbon/Carbon.h>
+#import <ShortcutRecorder/ShortcutRecorder.h>
+#import "NSEvent+ModifierKeys.h"
 
 
 static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData)
