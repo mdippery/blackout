@@ -21,7 +21,6 @@
  */
 
 #import <Cocoa/Cocoa.h>
-#import <Sparkle/Sparkle.h>
 
 
 @interface BOApplication : NSObject
