@@ -31,6 +31,10 @@ You need:
 
 * Mac OS X 10.5 (yep, that's it!)
 
+## How do I activate the screen saver?
+
+Press ⌘+⇧+⎋. (Eventually this will be customizable; for now, it's hardcoded.)
+
 ## Who are you?
 
 I'm [Michael Dippery][mpd], and I made this thing.
