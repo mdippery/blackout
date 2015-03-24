@@ -7,7 +7,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGetInfoString</key>
-	<string>0.3a1, © 2010 Michael Dippery</string>
+	<string>0.3a1, © 2015 Michael Dippery</string>
 	<key>CFBundleIconFile</key>
 	<string>Moon</string>
 	<key>CFBundleIdentifier</key>
