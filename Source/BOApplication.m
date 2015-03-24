@@ -37,6 +37,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 
 @interface BOApplication ()
+- (BOOL)hasShownGreeting;
 - (void)showPreferences;
 @end
 
@@ -90,6 +91,11 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 #pragma mark NSApp Delegate
 
+- (BOOL)hasShownGreeting
+{
+    return NO;
+}
+
 - (void)showPreferences
 {
     NSLog(@"Will show preferences window");
@@ -100,7 +106,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [self registerGlobalHotkey:self];
     NSLog(@"Loaded Blackout v%@ (%@)", [self version], [self build]);
     
-    if ([NSEvent optionKey]) {
+    if ([NSEvent optionKey] || ![self hasShownGreeting]) {
         [self showPreferences];
     }
 }
