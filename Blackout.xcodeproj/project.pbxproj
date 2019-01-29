@@ -12,10 +12,7 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		B716F976125D501100606308 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B716F974125D501100606308 /* InfoPlist.strings */; };
 		B716F97A125D502900606308 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B716F978125D502900606308 /* MainMenu.xib */; };
-		B780E8E012381E1900D309AB /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B780E8DE12381E0800D309AB /* Sparkle.framework */; };
-		B780E8E512381E4700D309AB /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B780E8DE12381E0800D309AB /* Sparkle.framework */; };
 		B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783BE6B123146EC005AA38B /* Carbon.framework */; };
-		B7A2D3CE125D58BA008D6BAD /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = B7A2D3CD125D58BA008D6BAD /* dsa_pub.pem */; };
 		B7B79F581241448900AE27A1 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
 		B7B79F601241449500AE27A1 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
 		B7D1C417125D6D0500C74190 /* UserDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7D1C416125D6D0500C74190 /* UserDefaults.plist */; };
@@ -31,7 +28,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				B7B79F601241449500AE27A1 /* ShortcutRecorder.framework in Copy Frameworks */,
-				B780E8E512381E4700D309AB /* Sparkle.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,9 +47,7 @@
 		8D1107320486CEB800E47090 /* Blackout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blackout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B716F975125D501100606308 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B716F979125D502900606308 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		B780E8DE12381E0800D309AB /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = Frameworks/Sparkle.framework; sourceTree = "<group>"; };
 		B783BE6B123146EC005AA38B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		B7A2D3CD125D58BA008D6BAD /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = dsa_pub.pem; path = Resources/dsa_pub.pem; sourceTree = "<group>"; };
 		B7D1C416125D6D0500C74190 /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = UserDefaults.plist; path = Resources/UserDefaults.plist; sourceTree = "<group>"; };
 		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Moon.icns; path = Resources/Moon.icns; sourceTree = "<group>"; };
 		B7E0267C125D7F9E00D832E7 /* NSEvent+ModifierKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSEvent+ModifierKeys.h"; path = "Source/NSEvent+ModifierKeys.h"; sourceTree = "<group>"; };
@@ -69,7 +63,6 @@
 				B7B79F581241448900AE27A1 /* ShortcutRecorder.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */,
-				B780E8E012381E1900D309AB /* Sparkle.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,7 +109,6 @@
 				B7D1C416125D6D0500C74190 /* UserDefaults.plist */,
 				B716F978125D502900606308 /* MainMenu.xib */,
 				B7D1D54A1226F53E00803D94 /* Moon.icns */,
-				B7A2D3CD125D58BA008D6BAD /* dsa_pub.pem */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -143,7 +135,6 @@
 				B783BE6B123146EC005AA38B /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
 				B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */,
-				B780E8DE12381E0800D309AB /* Sparkle.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";
@@ -224,7 +215,6 @@
 				B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */,
 				B716F976125D501100606308 /* InfoPlist.strings in Resources */,
 				B716F97A125D502900606308 /* MainMenu.xib in Resources */,
-				B7A2D3CE125D58BA008D6BAD /* dsa_pub.pem in Resources */,
 				B7D1C417125D6D0500C74190 /* UserDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
