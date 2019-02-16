@@ -111,6 +111,12 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     }
 }
 
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag
+{
+    [self showPreferences];
+    return YES;
+}
+
 - (void)applicationWillTerminate:(NSNotification *)note
 {
     NSLog(@"Blackout is shutting down");
