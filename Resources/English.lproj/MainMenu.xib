@@ -83,5 +83,22 @@ DQ
             </view>
             <point key="canvasLocation" x="-359.5" y="-309.5"/>
         </window>
+        <menu title="Main Menu" systemMenu="main" id="vWa-JZ-7cm">
+            <items>
+                <menuItem title="File" id="Wak-K5-chA">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="File" id="fAJ-hO-a93">
+                        <items>
+                            <menuItem title="Close" keyEquivalent="w" id="yMu-cZ-fUQ">
+                                <connections>
+                                    <action selector="performClose:" target="-1" id="a0K-ay-dbk"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-570" y="-478"/>
+        </menu>
     </objects>
 </document>
