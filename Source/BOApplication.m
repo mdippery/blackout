@@ -20,9 +20,8 @@
  * THE SOFTWARE.
  */
 
-#import "BOApplication.h"
 #import <Carbon/Carbon.h>
-#import <ShortcutRecorder/ShortcutRecorder.h>
+#import "BOApplication.h"
 #import "NSEvent+ModifierKeys.h"
 
 
@@ -57,7 +56,15 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (void)dealloc
 {
     [_preferencesWindow release];
+    [_shortcutControl release];
+    [_loginItemButton release];
     [super dealloc];
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    [[self loginItemButton] setState:[self isLoginItem] ? NSControlStateValueOn : NSControlStateValueOff];
 }
 
 #pragma mark Properties
@@ -70,6 +77,12 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (NSString *)build
 {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
+- (BOOL)isLoginItem
+{
+    // TODO: Calculate if Blackout is login item already
+    return NO;
 }
 
 #pragma mark Application
@@ -101,15 +114,25 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [[NSWorkspace sharedWorkspace] launchApplication:@"ScreenSaverEngine"];
 }
 
+#pragma mark User Interface
+
 - (IBAction)closePreferencesWindow:(id)sender
 {
     [[self preferencesWindow] close];
+}
+
+- (IBAction)toggleLoginItem:(id)sender
+{
+    // TODO: Set login item status
+    NSString *state = [sender state] == NSControlStateValueOn ? @"YES" : @"NO";
+    NSLog(@"Toggling login item status: %@", state);
 }
 
 #pragma mark NSApp Delegate
 
 - (BOOL)hasShownGreeting
 {
+    // TODO: Determine if greeting has been shown
     return NO;
 }
 

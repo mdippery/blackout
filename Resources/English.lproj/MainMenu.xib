@@ -15,7 +15,9 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="494" userLabel="BOApplication" customClass="BOApplication">
             <connections>
+                <outlet property="loginItemButton" destination="F11-LH-LU2" id="eIh-9B-Kdj"/>
                 <outlet property="preferencesWindow" destination="5ly-y8-Vm9" id="NGY-oc-6jq"/>
+                <outlet property="shortcutControl" destination="08g-lP-NB8" id="DvC-M6-oL6"/>
             </connections>
         </customObject>
         <window title="Blackout" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="Preferences" animationBehavior="default" tabbingIdentifier="Preferences" id="5ly-y8-Vm9">
@@ -59,6 +61,9 @@
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
+                        <connections>
+                            <action selector="toggleLoginItem:" target="494" id="oMn-p6-wJV"/>
+                        </connections>
                     </button>
                     <button verticalHuggingPriority="750" id="5Da-Bv-pjE">
                         <rect key="frame" x="402" y="13" width="81" height="32"/>

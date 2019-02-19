@@ -21,6 +21,7 @@
  */
 
 #import <Cocoa/Cocoa.h>
+#import <ShortcutRecorder/ShortcutRecorder.h>
 
 
 @interface BOApplication : NSObject
@@ -31,12 +32,16 @@
 
 @property (readonly) NSString *version;
 @property (readonly) NSString *build;
+@property (readonly) BOOL isLoginItem;
 
 @property (strong, nonatomic) IBOutlet NSWindow *preferencesWindow;
+@property (strong, nonatomic) IBOutlet SRRecorderControl *shortcutControl;
+@property (strong, nonatomic) IBOutlet NSButton *loginItemButton;
 
 - (void)registerGlobalHotkey:(id)sender;
 - (void)activateScreenSaver:(id)sender;
 
 - (IBAction)closePreferencesWindow:(id)sender;
+- (IBAction)toggleLoginItem:(id)sender;
 
 @end
