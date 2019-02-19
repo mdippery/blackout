@@ -55,6 +55,7 @@ BOCarbonKeyCombo;
 - (void)registerGlobalHotkey:(id)sender;
 - (void)activateScreenSaver:(id)sender;
 
+- (IBAction)showPreferencesWindow:(id)sender;
 - (IBAction)closePreferencesWindow:(id)sender;
 - (IBAction)toggleLoginItem:(id)sender;
 

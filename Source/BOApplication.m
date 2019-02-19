@@ -45,7 +45,6 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 @interface BOApplication ()
 - (BOOL)hasShownGreeting;
-- (void)showPreferences;
 - (void)markGreetingShown;
 @end
 
@@ -156,6 +155,11 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 #pragma mark User Interface
 
+- (IBAction)showPreferencesWindow:(id)sender
+{
+    [[self preferencesWindow] makeKeyAndOrderFront:self];
+}
+
 - (IBAction)closePreferencesWindow:(id)sender
 {
     [[self preferencesWindow] close];
@@ -179,11 +183,6 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     return [[NSUserDefaults standardUserDefaults] objectForKey:BOGreetingDisplayKey] != nil;
 }
 
-- (void)showPreferences
-{
-    [[self preferencesWindow] makeKeyAndOrderFront:self];
-}
-
 - (void)markGreetingShown
 {
     [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:BOGreetingDisplayKey];
@@ -195,14 +194,14 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     NSLog(@"Loaded Blackout v%@ (%@)", [self version], [self build]);
 
     if ([NSEvent optionKey] || ![self hasShownGreeting]) {
-        [self showPreferences];
+        [self showPreferencesWindow:self];
         [self markGreetingShown];
     }
 }
 
 - (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag
 {
-    [self showPreferences];
+    [self showPreferencesWindow:self];
     return YES;
 }
 
