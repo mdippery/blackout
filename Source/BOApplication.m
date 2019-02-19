@@ -44,6 +44,8 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 @implementation BOApplication
 
+#pragma mark Lifecyle
+
 + (void)initialize
 {
     NSString *defaultsPlist = [[NSBundle mainBundle] pathForResource:@"UserDefaults" ofType:@"plist"];
@@ -51,6 +53,14 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     NSDictionary *defaults = [NSDictionary dictionaryWithContentsOfFile:defaultsPlist];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
 }
+
+- (void)dealloc
+{
+    [_preferencesWindow release];
+    [super dealloc];
+}
+
+#pragma mark Properties
 
 - (NSString *)version
 {
@@ -61,6 +71,8 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
 }
+
+#pragma mark Application
 
 - (void)registerGlobalHotkey:(id)sender;
 {
@@ -89,6 +101,11 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [[NSWorkspace sharedWorkspace] launchApplication:@"ScreenSaverEngine"];
 }
 
+- (IBAction)closePreferencesWindow:(id)sender
+{
+    [[self preferencesWindow] close];
+}
+
 #pragma mark NSApp Delegate
 
 - (BOOL)hasShownGreeting
@@ -98,7 +115,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 - (void)showPreferences
 {
-    NSLog(@"Will show preferences window");
+    [[self preferencesWindow] makeKeyAndOrderFront:self];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)note

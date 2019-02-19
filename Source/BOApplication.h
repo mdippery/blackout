@@ -32,7 +32,11 @@
 @property (readonly) NSString *version;
 @property (readonly) NSString *build;
 
+@property (strong, nonatomic) IBOutlet NSWindow *preferencesWindow;
+
 - (void)registerGlobalHotkey:(id)sender;
 - (void)activateScreenSaver:(id)sender;
+
+- (IBAction)closePreferencesWindow:(id)sender;
 
 @end
