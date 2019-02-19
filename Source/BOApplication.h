@@ -24,6 +24,16 @@
 #import <ShortcutRecorder/ShortcutRecorder.h>
 
 
+typedef KeyCombo BOCocoaKeyCombo;
+
+typedef struct
+{
+    NSInteger flags;
+    NSInteger code;
+}
+BOCarbonKeyCombo;
+
+
 @interface BOApplication : NSObject
 {
 @private
@@ -34,6 +44,9 @@
 @property (readonly) NSString *build;
 @property (readonly) NSDictionary *environment;
 @property (readonly) BOOL isLoginItem;
+
+@property (readonly) BOCarbonKeyCombo carbonKeyCombo;
+@property (readonly) BOCocoaKeyCombo cocoaKeyCombo;
 
 @property (strong, nonatomic) IBOutlet NSWindow *preferencesWindow;
 @property (strong, nonatomic) IBOutlet SRRecorderControl *shortcutControl;

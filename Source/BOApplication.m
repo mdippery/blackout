@@ -74,15 +74,8 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 {
     [super awakeFromNib];
 
-    SRRecorderControl *shortcutControl = [self shortcutControl];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSInteger hotkeyCode = [defaults integerForKey:BOHotkeyCodeKey];
-    NSInteger hotkeyModifiers = [defaults integerForKey:BOHotkeyModifierKey];
-    KeyCombo combo;
-    combo.code = hotkeyCode;
-    combo.flags = [shortcutControl carbonToCocoaFlags:hotkeyModifiers];
-    [shortcutControl setKeyCombo:combo];
-    NSLog(@"Current key combo: %@", [shortcutControl keyComboString]);
+    [[self shortcutControl] setKeyCombo:[self cocoaKeyCombo]];
+    NSLog(@"Current key combo: %@", [[self shortcutControl] keyComboString]);
 
     [[self loginItemButton] setState:[self isLoginItem] ? NSControlStateValueOn : NSControlStateValueOff];
 }
@@ -110,6 +103,30 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     return NO;
 }
 
+- (BOCarbonKeyCombo)carbonKeyCombo
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger hotkeyCode = [defaults integerForKey:BOHotkeyCodeKey];
+    NSInteger hotkeyModifiers = [defaults integerForKey:BOHotkeyModifierKey];
+
+    BOCarbonKeyCombo combo;
+    combo.code = hotkeyCode;
+    combo.flags = hotkeyModifiers;
+
+    return combo;
+}
+
+- (BOCocoaKeyCombo)cocoaKeyCombo
+{
+    BOCarbonKeyCombo carbonCombo = [self carbonKeyCombo];
+
+    BOCocoaKeyCombo combo;
+    combo.code = carbonCombo.code;
+    combo.flags = [[self shortcutControl] carbonToCocoaFlags:carbonCombo.flags];
+
+    return combo;
+}
+
 #pragma mark Application
 
 - (void)registerGlobalHotkey:(id)sender;
@@ -124,13 +141,11 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     eventType.eventClass = kEventClassKeyboard;
     eventType.eventKind = kEventHotKeyPressed;
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSInteger hotkeyCode = [defaults integerForKey:BOHotkeyCodeKey];
-    NSInteger hotkeyModifiers = [defaults integerForKey:BOHotkeyModifierKey];
+    BOCarbonKeyCombo combo = [self carbonKeyCombo];
     
     InstallApplicationEventHandler(BOHotkeyHandler, 1, &eventType, self, NULL);
-    RegisterEventHotKey(hotkeyCode, hotkeyModifiers, hotKeyID, GetApplicationEventTarget(), 0, &hotkeyHandler);
-    NSLog(@"Registered global hotkey: code = %ld, mods = %ld", (long) hotkeyCode, (long) hotkeyModifiers);
+    RegisterEventHotKey(combo.code, combo.flags, hotKeyID, GetApplicationEventTarget(), 0, &hotkeyHandler);
+    NSLog(@"Registered global hotkey: code = %ld, mods = %ld", (long) combo.code, (long) combo.flags);
 }
 
 - (void)activateScreenSaver:(id)sender
