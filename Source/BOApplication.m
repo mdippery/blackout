@@ -25,6 +25,8 @@
 #import "NSEvent+ModifierKeys.h"
 
 
+static NSString * const BOHotkeyCodeKey = @"HotkeyCode";
+static NSString * const BOHotkeyModifierKey = @"HotkeyModifiers";
 static NSString * const BOGreetingDisplayKey = @"GreetingDisplayed";
 
 
@@ -68,6 +70,17 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (void)awakeFromNib
 {
     [super awakeFromNib];
+
+    SRRecorderControl *shortcutControl = [self shortcutControl];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger hotkeyCode = [defaults integerForKey:BOHotkeyCodeKey];
+    NSInteger hotkeyModifiers = [defaults integerForKey:BOHotkeyModifierKey];
+    KeyCombo combo;
+    combo.code = hotkeyCode;
+    combo.flags = [shortcutControl carbonToCocoaFlags:hotkeyModifiers];
+    [shortcutControl setKeyCombo:combo];
+    NSLog(@"Current key combo: %@", [shortcutControl keyComboString]);
+
     [[self loginItemButton] setState:[self isLoginItem] ? NSControlStateValueOn : NSControlStateValueOff];
 }
 
@@ -109,8 +122,8 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     eventType.eventKind = kEventHotKeyPressed;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSInteger hotkeyCode = [defaults integerForKey:@"HotkeyCode"];
-    NSInteger hotkeyModifiers = [defaults integerForKey:@"HotkeyModifiers"];
+    NSInteger hotkeyCode = [defaults integerForKey:BOHotkeyCodeKey];
+    NSInteger hotkeyModifiers = [defaults integerForKey:BOHotkeyModifierKey];
     
     InstallApplicationEventHandler(BOHotkeyHandler, 1, &eventType, self, NULL);
     RegisterEventHotKey(hotkeyCode, hotkeyModifiers, hotKeyID, GetApplicationEventTarget(), 0, &hotkeyHandler);
