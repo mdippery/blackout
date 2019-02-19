@@ -32,6 +32,7 @@
 
 @property (readonly) NSString *version;
 @property (readonly) NSString *build;
+@property (readonly) NSDictionary *environment;
 @property (readonly) BOOL isLoginItem;
 
 @property (strong, nonatomic) IBOutlet NSWindow *preferencesWindow;

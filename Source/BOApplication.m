@@ -25,6 +25,9 @@
 #import "NSEvent+ModifierKeys.h"
 
 
+static NSString * const BOGreetingDisplayKey = @"GreetingDisplayed";
+
+
 static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData)
 {
     // Delay screen saver activation for a half-second -- otherwise
@@ -38,6 +41,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 @interface BOApplication ()
 - (BOOL)hasShownGreeting;
 - (void)showPreferences;
+- (void)markGreetingShown;
 @end
 
 
@@ -77,6 +81,11 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (NSString *)build
 {
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+}
+
+- (NSDictionary *)environment
+{
+    return [[NSProcessInfo processInfo] environment];
 }
 
 - (BOOL)isLoginItem
@@ -132,8 +141,11 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 - (BOOL)hasShownGreeting
 {
-    // TODO: Determine if greeting has been shown
-    return NO;
+    if ([[[self environment] objectForKey:@"BLACKOUT_ALWAYS_SHOW_GREETING"] isEqualToString:@"true"]) {
+        return NO;
+    }
+
+    return [[NSUserDefaults standardUserDefaults] objectForKey:BOGreetingDisplayKey] != nil;
 }
 
 - (void)showPreferences
@@ -141,13 +153,19 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [[self preferencesWindow] makeKeyAndOrderFront:self];
 }
 
+- (void)markGreetingShown
+{
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:BOGreetingDisplayKey];
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)note
 {
     [self registerGlobalHotkey:self];
     NSLog(@"Loaded Blackout v%@ (%@)", [self version], [self build]);
-    
+
     if ([NSEvent optionKey] || ![self hasShownGreeting]) {
         [self showPreferences];
+        [self markGreetingShown];
     }
 }
 
