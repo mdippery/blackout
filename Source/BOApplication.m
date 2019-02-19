@@ -28,6 +28,7 @@
 static NSString * const BOHotkeyCodeKey = @"HotkeyCode";
 static NSString * const BOHotkeyModifierKey = @"HotkeyModifiers";
 static NSString * const BOGreetingDisplayKey = @"GreetingDisplayed";
+static const NSTimeInterval screensaverDelay = 0.5;
 
 
 static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData)
@@ -35,7 +36,9 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     // Delay screen saver activation for a half-second -- otherwise
     // it gets kicked off almost immediately.
     NSLog(@"Invoked hotkey");
-    [(BOApplication *)userData performSelector:@selector(activateScreenSaver:) withObject:(BOApplication *)userData afterDelay:0.5];
+    [(BOApplication *)userData performSelector:@selector(activateScreenSaver:)
+                                    withObject:(BOApplication *)userData
+                                    afterDelay:screensaverDelay];
     return noErr;
 }
 
