@@ -72,10 +72,6 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-
-    [[self shortcutControl] setKeyCombo:[self cocoaKeyCombo]];
-    NSLog(@"Current key combo: %@", [[self shortcutControl] keyComboString]);
-
     [[self loginItemButton] setState:[self isLoginItem] ? NSControlStateValueOn : NSControlStateValueOff];
 }
 
@@ -138,6 +134,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 - (void)setCocoaKeyCombo:(BOCocoaKeyCombo)combo
 {
+    NSAssert([self shortcutControl] != nil, @"shortcutControl is nil");
     BOCarbonKeyCombo newCombo;
     newCombo.code = combo.code;
     newCombo.flags = [[self shortcutControl] cocoaToCarbonFlags:combo.flags];
@@ -163,14 +160,14 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     
     InstallApplicationEventHandler(BOHotkeyHandler, 1, &eventType, self, NULL);
     RegisterEventHotKey(combo.code, combo.flags, hotKeyID, GetApplicationEventTarget(), 0, &hotkeyHandler);
-    NSLog(@"Registered global hotkey: code = %ld, mods = %ld", (long) combo.code, (long) combo.flags);
+    NSLog(@"Registered global hotkey: code = %ld, mods = %ld, ref = %p", (long) combo.code, (long) combo.flags, hotkeyHandler);
 }
 
 - (void)unregisterGlobalHotkey:(id)sender
 {
-    OSStatus res = UnregisterEventHotKey(hotkeyHandler);
+    NSLog(@"Removing old hot key (%p)", hotkeyHandler);
+    UnregisterEventHotKey(hotkeyHandler);
     hotkeyHandler = NULL;
-    NSLog(@"Removing old hotkey (%d)", res);
 }
 
 - (void)activateScreenSaver:(id)sender
@@ -183,6 +180,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 - (IBAction)showPreferencesWindow:(id)sender
 {
+    [[self shortcutControl] setKeyCombo:[self cocoaKeyCombo]];
     [[self preferencesWindow] makeKeyAndOrderFront:self];
 }
 
@@ -224,8 +222,9 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 - (void)applicationDidFinishLaunching:(NSNotification *)note
 {
-    [self registerGlobalHotkey:self];
     NSLog(@"Loaded Blackout v%@ (%@)", [self version], [self build]);
+
+    [self registerGlobalHotkey:self];
 
     if ([NSEvent optionKey] || ![self hasShownGreeting]) {
         [self showPreferencesWindow:self];
