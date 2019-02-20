@@ -11,6 +11,7 @@
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		A23A9779221DDC54003389C7 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A9778221DDC3F003389C7 /* ServiceManagement.framework */; };
+		A23A97A3221E0B4A003389C7 /* BlackoutLauncher.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = A23A97A1221E0AEF003389C7 /* BlackoutLauncher.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B716F976125D501100606308 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B716F974125D501100606308 /* InfoPlist.strings */; };
 		B716F97A125D502900606308 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B716F978125D502900606308 /* MainMenu.xib */; };
 		B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783BE6B123146EC005AA38B /* Carbon.framework */; };
@@ -21,7 +22,27 @@
 		B7E0267E125D7F9E00D832E7 /* NSEvent+ModifierKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E0267D125D7F9E00D832E7 /* NSEvent+ModifierKeys.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A23A97A0221E0AEF003389C7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A23A979C221E0AEF003389C7 /* BlackoutLauncher.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A23A9783221E07E4003389C7;
+			remoteInfo = BlackoutLauncher;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
+		A23A97A2221E0B20003389C7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				A23A97A3221E0B4A003389C7 /* BlackoutLauncher.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B780E8EA12381E5300D309AB /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -47,6 +68,7 @@
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Blackout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blackout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A23A9778221DDC3F003389C7 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		A23A979C221E0AEF003389C7 /* BlackoutLauncher.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BlackoutLauncher.xcodeproj; path = BlackoutLauncher/BlackoutLauncher.xcodeproj; sourceTree = "<group>"; };
 		B716F975125D501100606308 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B716F979125D502900606308 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B783BE6B123146EC005AA38B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
@@ -88,6 +110,7 @@
 				B7E0267B125D7F8700D832E7 /* Additions */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				A23A979C221E0AEF003389C7 /* BlackoutLauncher.xcodeproj */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -123,6 +146,14 @@
 				B7A2D3D0125D58D0008D6BAD /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A23A979D221E0AEF003389C7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A23A97A1221E0AEF003389C7 /* BlackoutLauncher.app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		B7A2D3CF125D58CA008D6BAD /* Linked Frameworks */ = {
@@ -166,6 +197,7 @@
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
 				B780E8EA12381E5300D309AB /* Copy Frameworks */,
+				A23A97A2221E0B20003389C7 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -197,12 +229,28 @@
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Blackout */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A23A979D221E0AEF003389C7 /* Products */;
+					ProjectRef = A23A979C221E0AEF003389C7 /* BlackoutLauncher.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* Blackout */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		A23A97A1221E0AEF003389C7 /* BlackoutLauncher.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = BlackoutLauncher.app;
+			remoteRef = A23A97A0221E0AEF003389C7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		8D1107290486CEB800E47090 /* Resources */ = {
