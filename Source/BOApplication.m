@@ -200,8 +200,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     BOOL state = [sender state] == NSControlStateValueOn;
     NSLog(@"Toggling login item status to %@", state ? @"YES" : @"NO");
 
-    NSString *helperID = [[NSBundle mainBundle] bundleIdentifier];
-    helperID = [helperID stringByAppendingString:@"Helper"];
+    NSString *helperID = [[[NSBundle mainBundle] bundleIdentifier] stringByAppendingString:@"Launcher"];
     NSLog(@"Loading helper application with ID %@", helperID);
     BOOL res = SMLoginItemSetEnabled((CFStringRef) helperID, state);
     NSLog(@"SMLoginItemSetEnabled? %@", res ? @"YES" : @"NO");
