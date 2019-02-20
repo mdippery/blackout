@@ -21,6 +21,7 @@
  */
 
 #import <Carbon/Carbon.h>
+#import <ServiceManagement/ServiceManagement.h>
 #import "BOApplication.h"
 #import "NSEvent+ModifierKeys.h"
 
@@ -28,6 +29,7 @@
 static NSString * const BOHotkeyCodeKey = @"HotkeyCode";
 static NSString * const BOHotkeyModifierKey = @"HotkeyModifiers";
 static NSString * const BOGreetingDisplayKey = @"GreetingDisplayed";
+static NSString * const BOLoginItemKey = @"IsLoginItem";
 static const NSTimeInterval screensaverDelay = 0.5;
 
 
@@ -94,8 +96,12 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 - (BOOL)isLoginItem
 {
-    // TODO: Calculate if Blackout is login item already
-    return NO;
+    return [[NSUserDefaults standardUserDefaults] boolForKey:BOLoginItemKey];
+}
+
+- (void)setIsLoginItem:(BOOL)isLoginItem
+{
+    [[NSUserDefaults standardUserDefaults] setBool:isLoginItem forKey:BOLoginItemKey];
 }
 
 - (BOCarbonKeyCombo)carbonKeyCombo
@@ -191,9 +197,18 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 - (IBAction)toggleLoginItem:(id)sender
 {
-    // TODO: Set login item status
-    NSString *state = [sender state] == NSControlStateValueOn ? @"YES" : @"NO";
-    NSLog(@"Toggling login item status: %@", state);
+    BOOL state = [sender state] == NSControlStateValueOn;
+    NSLog(@"Toggling login item status to %@", state ? @"YES" : @"NO");
+
+    NSString *helperID = [[NSBundle mainBundle] bundleIdentifier];
+    helperID = [helperID stringByAppendingString:@"Helper"];
+    NSLog(@"Loading helper application with ID %@", helperID);
+    BOOL res = SMLoginItemSetEnabled((CFStringRef) helperID, state);
+    NSLog(@"SMLoginItemSetEnabled? %@", res ? @"YES" : @"NO");
+
+    if (res) {
+        [self setIsLoginItem:state];
+    }
 }
 
 - (void)shortcutRecorder:(SRRecorderControl *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo

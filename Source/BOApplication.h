@@ -43,7 +43,7 @@ BOCarbonKeyCombo;
 @property (readonly) NSString *version;
 @property (readonly) NSString *build;
 @property (readonly) NSDictionary *environment;
-@property (readonly) BOOL isLoginItem;
+@property (assign, nonatomic) BOOL isLoginItem;
 
 @property (assign, nonatomic) BOCarbonKeyCombo carbonKeyCombo;
 @property (assign, nonatomic) BOCocoaKeyCombo cocoaKeyCombo;

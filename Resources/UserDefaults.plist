@@ -6,5 +6,7 @@
 	<integer>53</integer>
 	<key>HotkeyModifiers</key>
 	<integer>768</integer>
+	<key>IsLoginItem</key>
+	<false/>
 </dict>
 </plist>
