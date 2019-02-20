@@ -115,6 +115,16 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     return combo;
 }
 
+- (void)setCarbonKeyCombo:(BOCarbonKeyCombo)combo
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger hotkeyCode = combo.code;
+    NSInteger hotkeyModifiers = combo.flags;
+
+    [defaults setInteger:hotkeyCode forKey:BOHotkeyCodeKey];
+    [defaults setInteger:hotkeyModifiers forKey:BOHotkeyModifierKey];
+}
+
 - (BOCocoaKeyCombo)cocoaKeyCombo
 {
     BOCarbonKeyCombo carbonCombo = [self carbonKeyCombo];
@@ -124,6 +134,15 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     combo.flags = [[self shortcutControl] carbonToCocoaFlags:carbonCombo.flags];
 
     return combo;
+}
+
+- (void)setCocoaKeyCombo:(BOCocoaKeyCombo)combo
+{
+    BOCarbonKeyCombo newCombo;
+    newCombo.code = combo.code;
+    newCombo.flags = [[self shortcutControl] cocoaToCarbonFlags:combo.flags];
+
+    [self setCarbonKeyCombo:newCombo];
 }
 
 #pragma mark Application

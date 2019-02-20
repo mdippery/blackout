@@ -45,8 +45,8 @@ BOCarbonKeyCombo;
 @property (readonly) NSDictionary *environment;
 @property (readonly) BOOL isLoginItem;
 
-@property (readonly) BOCarbonKeyCombo carbonKeyCombo;
-@property (readonly) BOCocoaKeyCombo cocoaKeyCombo;
+@property (assign, nonatomic) BOCarbonKeyCombo carbonKeyCombo;
+@property (assign, nonatomic) BOCocoaKeyCombo cocoaKeyCombo;
 
 @property (strong, nonatomic) IBOutlet NSWindow *preferencesWindow;
 @property (strong, nonatomic) IBOutlet SRRecorderControl *shortcutControl;
