@@ -26,6 +26,9 @@
 #import "NSEvent+ModifierKeys.h"
 
 
+#define YESORNO(b)  (b ? @"YES" : @"NO")
+
+
 static NSString * const BOHotkeyCodeKey = @"HotkeyCode";
 static NSString * const BOHotkeyModifierKey = @"HotkeyModifiers";
 static NSString * const BOGreetingDisplayKey = @"GreetingDisplayed";
@@ -198,12 +201,12 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (IBAction)toggleLoginItem:(id)sender
 {
     BOOL state = [sender state] == NSControlStateValueOn;
-    NSLog(@"Toggling login item status to %@", state ? @"YES" : @"NO");
+    NSLog(@"Toggling login item status to %@", YESORNO(state));
 
     NSString *helperID = [[[NSBundle mainBundle] bundleIdentifier] stringByAppendingString:@"Launcher"];
     NSLog(@"Loading helper application with ID %@", helperID);
     BOOL res = SMLoginItemSetEnabled((CFStringRef) helperID, state);
-    NSLog(@"SMLoginItemSetEnabled? %@", res ? @"YES" : @"NO");
+    NSLog(@"SMLoginItemSetEnabled? %@", YESORNO(res));
 
     if (res) {
         [self setIsLoginItem:state];
