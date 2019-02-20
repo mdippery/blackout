@@ -25,9 +25,14 @@
 
 @implementation BOLApplication
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+- (void)applicationDidFinishLaunching:(NSNotification *)note
 {
-    // Insert code here to initialize your application
+    NSArray *pathComponents = [[[NSBundle mainBundle] bundlePath] pathComponents];
+    pathComponents = [pathComponents subarrayWithRange:NSMakeRange(0, [pathComponents count] - 4)];
+    NSString *appPath = [NSString pathWithComponents:pathComponents];
+    NSLog(@"Launching Blackout at path: %@", appPath);
+    [[NSWorkspace sharedWorkspace] launchApplication:appPath];
+    [NSApp terminate:nil];
 }
 
 @end

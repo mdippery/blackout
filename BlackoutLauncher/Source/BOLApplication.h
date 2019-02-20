@@ -22,5 +22,6 @@
 
 #import <Cocoa/Cocoa.h>
 
+
 @interface BOLApplication : NSObject
 @end

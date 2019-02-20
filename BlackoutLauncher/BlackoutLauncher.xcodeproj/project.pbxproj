@@ -11,6 +11,8 @@
 		A23A978D221E07E6003389C7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A23A978B221E07E6003389C7 /* MainMenu.xib */; };
 		A23A9790221E07E6003389C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A23A978F221E07E6003389C7 /* main.m */; };
 		A23A979A221E09CA003389C7 /* Moon.icns in Resources */ = {isa = PBXBuildFile; fileRef = A23A9799221E09CA003389C7 /* Moon.icns */; };
+		A23A97A6221E0BDC003389C7 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A97A5221E0BDC003389C7 /* Cocoa.framework */; };
+		A23A97A9221E0C74003389C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A23A97A7221E0C74003389C7 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		A23A978F221E07E6003389C7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A23A9799221E09CA003389C7 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Moon.icns; sourceTree = "<group>"; };
 		A23A979B221E0A98003389C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		A23A97A5221E0BDC003389C7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		A23A97A8221E0C74003389C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A23A97A6221E0BDC003389C7 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +46,7 @@
 				A23A9787221E07E4003389C7 /* BOLApplication.m */,
 				A23A9798221E08D9003389C7 /* Resources */,
 				A23A9797221E08B5003389C7 /* Other Sources */,
+				A23A97A4221E0BDC003389C7 /* Frameworks */,
 				A23A9784221E07E4003389C7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,11 +72,20 @@
 			isa = PBXGroup;
 			children = (
 				A23A978E221E07E6003389C7 /* Info.plist */,
+				A23A97A7221E0C74003389C7 /* InfoPlist.strings */,
 				A23A978B221E07E6003389C7 /* MainMenu.xib */,
 				A23A9799221E09CA003389C7 /* Moon.icns */,
 			);
 			path = Resources;
 			sourceTree = SOURCE_ROOT;
+		};
+		A23A97A4221E0BDC003389C7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A23A97A5221E0BDC003389C7 /* Cocoa.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -130,6 +145,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A23A978D221E07E6003389C7 /* MainMenu.xib in Resources */,
+				A23A97A9221E0C74003389C7 /* InfoPlist.strings in Resources */,
 				A23A979A221E09CA003389C7 /* Moon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,6 +171,14 @@
 				A23A979B221E0A98003389C7 /* en */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		A23A97A7221E0C74003389C7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A23A97A8221E0C74003389C7 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -285,6 +309,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mipadi.BlackoutLauncher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -302,6 +327,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mipadi.BlackoutLauncher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
