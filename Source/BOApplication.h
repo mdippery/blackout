@@ -53,10 +53,13 @@ BOCarbonKeyCombo;
 @property (strong, nonatomic) IBOutlet NSButton *loginItemButton;
 
 - (void)registerGlobalHotkey:(id)sender;
+- (void)unregisterGlobalHotkey:(id)sender;
 - (void)activateScreenSaver:(id)sender;
 
 - (IBAction)showPreferencesWindow:(id)sender;
 - (IBAction)closePreferencesWindow:(id)sender;
 - (IBAction)toggleLoginItem:(id)sender;
+
+- (void)shortcutRecorder:(SRRecorderControl *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo;
 
 @end

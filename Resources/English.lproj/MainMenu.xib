@@ -40,6 +40,9 @@
                     <customView id="08g-lP-NB8" customClass="SRRecorderControl">
                         <rect key="frame" x="85" y="102" width="392" height="25"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <connections>
+                            <outlet property="delegate" destination="494" id="V8v-Rj-Lhf"/>
+                        </connections>
                     </customView>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="pRa-oB-fab">
                         <rect key="frame" x="18" y="49" width="461" height="14"/>

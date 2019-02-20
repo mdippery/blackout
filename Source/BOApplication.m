@@ -166,6 +166,13 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     NSLog(@"Registered global hotkey: code = %ld, mods = %ld", (long) combo.code, (long) combo.flags);
 }
 
+- (void)unregisterGlobalHotkey:(id)sender
+{
+    OSStatus res = UnregisterEventHotKey(hotkeyHandler);
+    hotkeyHandler = NULL;
+    NSLog(@"Removing old hotkey (%d)", res);
+}
+
 - (void)activateScreenSaver:(id)sender
 {
     NSLog(@"Activating screen saver");
@@ -189,6 +196,14 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     // TODO: Set login item status
     NSString *state = [sender state] == NSControlStateValueOn ? @"YES" : @"NO";
     NSLog(@"Toggling login item status: %@", state);
+}
+
+- (void)shortcutRecorder:(SRRecorderControl *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo
+{
+    NSLog(@"Changing key combo to %@", [aRecorder keyComboString]);
+    [self setCocoaKeyCombo:newKeyCombo];
+    [self unregisterGlobalHotkey:self];
+    [self registerGlobalHotkey:self];
 }
 
 #pragma mark NSApp Delegate
