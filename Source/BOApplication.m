@@ -61,7 +61,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 + (void)initialize
 {
     NSString *defaultsPlist = [[NSBundle mainBundle] pathForResource:@"UserDefaults" ofType:@"plist"];
-    NSAssert(defaultsPlist != nil, @"Path to Defaults.plist could not be retrieved");
+    NSAssert(defaultsPlist != nil, @"Path to UserDefaults.plist could not be retrieved");
     NSDictionary *defaults = [NSDictionary dictionaryWithContentsOfFile:defaultsPlist];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
 }
