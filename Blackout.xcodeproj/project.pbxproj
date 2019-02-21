@@ -10,6 +10,7 @@
 		256AC3DA0F4B6AC300CF3369 /* BOApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* BOApplication.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		A20E0C81221F1DA7009B65A6 /* StatusMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = A20E0C80221F1DA7009B65A6 /* StatusMenu.png */; };
 		A23A9779221DDC54003389C7 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A9778221DDC3F003389C7 /* ServiceManagement.framework */; };
 		B716F976125D501100606308 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B716F974125D501100606308 /* InfoPlist.strings */; };
 		B716F97A125D502900606308 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B716F978125D502900606308 /* MainMenu.xib */; };
@@ -45,6 +46,7 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Blackout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blackout.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A20E0C80221F1DA7009B65A6 /* StatusMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusMenu.png; path = Resources/StatusMenu.png; sourceTree = "<group>"; };
 		A23A9778221DDC3F003389C7 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		B716F975125D501100606308 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B716F979125D502900606308 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 				B7D1C416125D6D0500C74190 /* UserDefaults.plist */,
 				B716F978125D502900606308 /* MainMenu.xib */,
 				B7D1D54A1226F53E00803D94 /* Moon.icns */,
+				A20E0C80221F1DA7009B65A6 /* StatusMenu.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */,
+				A20E0C81221F1DA7009B65A6 /* StatusMenu.png in Resources */,
 				B716F976125D501100606308 /* InfoPlist.strings in Resources */,
 				B716F97A125D502900606308 /* MainMenu.xib in Resources */,
 				B7D1C417125D6D0500C74190 /* UserDefaults.plist in Resources */,
