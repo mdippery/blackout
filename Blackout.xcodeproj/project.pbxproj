@@ -11,9 +11,10 @@
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		A20E0C81221F1DA7009B65A6 /* StatusMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = A20E0C80221F1DA7009B65A6 /* StatusMenu.png */; };
+		A2346706221F3220002A194B /* StatusMenu18x18.png in Resources */ = {isa = PBXBuildFile; fileRef = A2346705221F3220002A194B /* StatusMenu18x18.png */; };
+		A2346709221F32AF002A194B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A2346707221F32AF002A194B /* InfoPlist.strings */; };
+		A234670C221F32BA002A194B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A234670A221F32BA002A194B /* MainMenu.xib */; };
 		A23A9779221DDC54003389C7 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A9778221DDC3F003389C7 /* ServiceManagement.framework */; };
-		B716F976125D501100606308 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B716F974125D501100606308 /* InfoPlist.strings */; };
-		B716F97A125D502900606308 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B716F978125D502900606308 /* MainMenu.xib */; };
 		B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783BE6B123146EC005AA38B /* Carbon.framework */; };
 		B7B79F581241448900AE27A1 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
 		B7B79F601241449500AE27A1 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
@@ -44,15 +45,16 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Source/main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Blackout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blackout.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A20E0C80221F1DA7009B65A6 /* StatusMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = StatusMenu.png; path = Resources/StatusMenu.png; sourceTree = "<group>"; };
+		A20E0C80221F1DA7009B65A6 /* StatusMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StatusMenu.png; sourceTree = "<group>"; };
+		A2346705221F3220002A194B /* StatusMenu18x18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StatusMenu18x18.png; sourceTree = "<group>"; };
+		A2346708221F32AF002A194B /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A234670B221F32BA002A194B /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		A23A9778221DDC3F003389C7 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
-		B716F975125D501100606308 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B716F979125D502900606308 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B783BE6B123146EC005AA38B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		B7D1C416125D6D0500C74190 /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = UserDefaults.plist; path = Resources/UserDefaults.plist; sourceTree = "<group>"; };
-		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Moon.icns; path = Resources/Moon.icns; sourceTree = "<group>"; };
+		B7D1C416125D6D0500C74190 /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserDefaults.plist; sourceTree = "<group>"; };
+		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Moon.icns; sourceTree = "<group>"; };
 		B7E0267C125D7F9E00D832E7 /* NSEvent+ModifierKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSEvent+ModifierKeys.h"; path = "Source/NSEvent+ModifierKeys.h"; sourceTree = "<group>"; };
 		B7E0267D125D7F9E00D832E7 /* NSEvent+ModifierKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSEvent+ModifierKeys.m"; path = "Source/NSEvent+ModifierKeys.m"; sourceTree = "<group>"; };
 		B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = Frameworks/ShortcutRecorder.framework; sourceTree = "<group>"; };
@@ -108,14 +110,15 @@
 			isa = PBXGroup;
 			children = (
 				8D1107310486CEB800E47090 /* Info.plist */,
-				B716F974125D501100606308 /* InfoPlist.strings */,
+				A2346707221F32AF002A194B /* InfoPlist.strings */,
 				B7D1C416125D6D0500C74190 /* UserDefaults.plist */,
-				B716F978125D502900606308 /* MainMenu.xib */,
+				A234670A221F32BA002A194B /* MainMenu.xib */,
 				B7D1D54A1226F53E00803D94 /* Moon.icns */,
 				A20E0C80221F1DA7009B65A6 /* StatusMenu.png */,
+				A2346705221F3220002A194B /* StatusMenu18x18.png */,
 			);
-			name = Resources;
-			sourceTree = "<group>";
+			path = Resources;
+			sourceTree = SOURCE_ROOT;
 		};
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
@@ -211,10 +214,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */,
+				A2346706221F3220002A194B /* StatusMenu18x18.png in Resources */,
 				A20E0C81221F1DA7009B65A6 /* StatusMenu.png in Resources */,
-				B716F976125D501100606308 /* InfoPlist.strings in Resources */,
-				B716F97A125D502900606308 /* MainMenu.xib in Resources */,
 				B7D1C417125D6D0500C74190 /* UserDefaults.plist in Resources */,
+				A2346709221F32AF002A194B /* InfoPlist.strings in Resources */,
+				A234670C221F32BA002A194B /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,18 +238,18 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B716F974125D501100606308 /* InfoPlist.strings */ = {
+		A2346707221F32AF002A194B /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B716F975125D501100606308 /* English */,
+				A2346708221F32AF002A194B /* English */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		B716F978125D502900606308 /* MainMenu.xib */ = {
+		A234670A221F32BA002A194B /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B716F979125D502900606308 /* English */,
+				A234670B221F32BA002A194B /* English */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";

@@ -21,16 +21,16 @@
                 <outlet property="statusMenu" destination="dwl-zR-HuB" id="RjN-fn-5BQ"/>
             </connections>
         </customObject>
-        <window title="Blackout" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="Preferences" animationBehavior="default" tabbingIdentifier="Preferences" id="5ly-y8-Vm9">
+        <window title="Blackout Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="Preferences" animationBehavior="default" tabbingIdentifier="Preferences" id="5ly-y8-Vm9">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-            <rect key="contentRect" x="473" y="289" width="497" height="147"/>
+            <rect key="contentRect" x="473" y="289" width="381" height="96"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="zt2-sZ-L3X">
-                <rect key="frame" x="0.0" y="0.0" width="497" height="147"/>
+                <rect key="frame" x="0.0" y="0.0" width="381" height="96"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="GlW-o3-MLh">
-                        <rect key="frame" x="18" y="106" width="61" height="17"/>
+                        <rect key="frame" x="18" y="55" width="61" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Shortcut:" id="sYm-Xc-01A">
                             <font key="font" usesAppearanceFont="YES"/>
@@ -39,27 +39,18 @@
                         </textFieldCell>
                     </textField>
                     <customView id="08g-lP-NB8" customClass="SRRecorderControl">
-                        <rect key="frame" x="85" y="102" width="392" height="25"/>
+                        <rect key="frame" x="85" y="51" width="276" height="25"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <connections>
                             <outlet property="delegate" destination="494" id="V8v-Rj-Lhf"/>
                         </connections>
                     </customView>
-                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="pRa-oB-fab">
-                        <rect key="frame" x="18" y="49" width="461" height="14"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" selectable="YES" alignment="left" title="You can display the preferences window again by double-clicking on the Blackout icon." id="LbZ-rA-Ofj">
-                            <font key="font" metaFont="smallSystem"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <box verticalHuggingPriority="750" boxType="separator" id="WHq-ay-MAi">
-                        <rect key="frame" x="12" y="69" width="472" height="5"/>
+                        <rect key="frame" x="12" y="40" width="358" height="5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                     </box>
                     <button verticalHuggingPriority="750" id="F11-LH-LU2">
-                        <rect key="frame" x="18" y="78" width="461" height="18"/>
+                        <rect key="frame" x="10" y="18" width="345" height="18"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="check" title="Automatically Run at Login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="vcI-dr-wUk">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -69,23 +60,9 @@
                             <action selector="toggleLoginItem:" target="494" id="oMn-p6-wJV"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" id="5Da-Bv-pjE">
-                        <rect key="frame" x="402" y="13" width="81" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BvU-7K-DaU">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="closePreferencesWindow:" target="494" id="koQ-DB-rUW"/>
-                        </connections>
-                    </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-359.5" y="-309.5"/>
+            <point key="canvasLocation" x="-585" y="-528"/>
         </window>
         <menu title="Main Menu" systemMenu="main" id="vWa-JZ-7cm">
             <items>
@@ -102,7 +79,7 @@ DQ
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-738" y="-663"/>
+            <point key="canvasLocation" x="-550" y="-728"/>
         </menu>
         <menu title="Status" id="dwl-zR-HuB">
             <items>
@@ -127,7 +104,7 @@ DQ
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-573" y="-516"/>
+            <point key="canvasLocation" x="-715" y="-697"/>
         </menu>
     </objects>
 </document>

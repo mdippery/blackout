@@ -38,12 +38,16 @@ BOCarbonKeyCombo;
 {
 @private
     EventHotKeyRef hotkeyHandler;
+    NSStatusItem *statusItem;
 }
 
 @property (readonly) NSString *version;
 @property (readonly) NSString *build;
 @property (readonly) NSDictionary *environment;
 @property (assign, nonatomic) BOOL isLoginItem;
+
+
+@property (readonly) NSImage *statusMenuImage;
 
 @property (assign, nonatomic) BOCarbonKeyCombo carbonKeyCombo;
 @property (assign, nonatomic) BOCocoaKeyCombo cocoaKeyCombo;
@@ -58,7 +62,6 @@ BOCarbonKeyCombo;
 - (void)activateScreenSaver:(id)sender;
 
 - (IBAction)showPreferencesWindow:(id)sender;
-- (IBAction)closePreferencesWindow:(id)sender;
 - (IBAction)toggleLoginItem:(id)sender;
 
 - (void)shortcutRecorder:(SRRecorderControl *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo;

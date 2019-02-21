@@ -65,10 +65,20 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [_shortcutControl release];
     [_loginItemButton release];
     [_statusMenu release];
+    [statusItem release];
+    hotkeyHandler = NULL;
     [super dealloc];
 }
 
 #pragma mark - Properties
+
+- (void)awakeFromNib
+{
+    NSStatusBar *bar = [NSStatusBar systemStatusBar];
+    statusItem = [[bar statusItemWithLength:NSSquareStatusItemLength] retain];
+    [statusItem setMenu:[self statusMenu]];
+    [[statusItem button] setImage:[self statusMenuImage]];
+}
 
 - (NSString *)version
 {
@@ -93,6 +103,12 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (void)setIsLoginItem:(BOOL)isLoginItem
 {
     [[NSUserDefaults standardUserDefaults] setBool:isLoginItem forKey:BOLoginItemKey];
+}
+
+- (NSImage *)statusMenuImage
+{
+    // TODO: Adjust for dark mode
+    return [NSImage imageNamed:@"StatusMenu18x18.png"];
 }
 
 - (BOCarbonKeyCombo)carbonKeyCombo
@@ -182,17 +198,13 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [[self preferencesWindow] makeKeyAndOrderFront:self];
 }
 
-- (IBAction)closePreferencesWindow:(id)sender
-{
-    [[self preferencesWindow] close];
-}
-
 - (IBAction)toggleLoginItem:(id)sender
 {
     BOOL state = [sender state] == NSControlStateValueOn;
     NSLog(@"Toggling login item status to %@", YESORNO(state));
 
-    NSString *helperID = [[[NSBundle mainBundle] bundleIdentifier] stringByAppendingString:@"Launcher"];
+    // TODO: Actually have this run as a login item
+    NSString *helperID = [[NSBundle mainBundle] bundleIdentifier];
     NSLog(@"Loading helper application with ID %@", helperID);
     BOOL res = SMLoginItemSetEnabled((CFStringRef) helperID, state);
     NSLog(@"SMLoginItemSetEnabled? %@", YESORNO(res));
@@ -215,7 +227,6 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (void)applicationDidFinishLaunching:(NSNotification *)note
 {
     NSLog(@"Loaded Blackout v%@ (%@)", [self version], [self build]);
-
     [self registerGlobalHotkey:self];
 }
 
