@@ -31,7 +31,6 @@
 
 static NSString * const BOHotkeyCodeKey = @"HotkeyCode";
 static NSString * const BOHotkeyModifierKey = @"HotkeyModifiers";
-static NSString * const BOGreetingDisplayKey = @"GreetingDisplayed";
 static NSString * const BOLoginItemKey = @"IsLoginItem";
 static const NSTimeInterval screensaverDelay = 0.5;
 
@@ -46,14 +45,6 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
                                     afterDelay:screensaverDelay];
     return noErr;
 }
-
-
-#pragma mark -
-
-@interface BOApplication ()
-- (BOOL)hasShownGreeting;
-- (void)markGreetingShown;
-@end
 
 
 @implementation BOApplication
@@ -75,12 +66,6 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [_loginItemButton release];
     [_statusMenu release];
     [super dealloc];
-}
-
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    [[self loginItemButton] setState:[self isLoginItem] ? NSControlStateValueOn : NSControlStateValueOff];
 }
 
 #pragma mark - Properties
@@ -193,6 +178,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (IBAction)showPreferencesWindow:(id)sender
 {
     [[self shortcutControl] setKeyCombo:[self cocoaKeyCombo]];
+    [[self loginItemButton] setState:[self isLoginItem] ? NSControlStateValueOn : NSControlStateValueOff];
     [[self preferencesWindow] makeKeyAndOrderFront:self];
 }
 
@@ -226,36 +212,11 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 #pragma mark - NSApp Delegate
 
-- (BOOL)hasShownGreeting
-{
-    if ([[[self environment] objectForKey:@"BLACKOUT_ALWAYS_SHOW_GREETING"] isEqualToString:@"true"]) {
-        return NO;
-    }
-
-    return [[NSUserDefaults standardUserDefaults] objectForKey:BOGreetingDisplayKey] != nil;
-}
-
-- (void)markGreetingShown
-{
-    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:BOGreetingDisplayKey];
-}
-
 - (void)applicationDidFinishLaunching:(NSNotification *)note
 {
     NSLog(@"Loaded Blackout v%@ (%@)", [self version], [self build]);
 
     [self registerGlobalHotkey:self];
-
-    if ([NSEvent optionKey] || ![self hasShownGreeting]) {
-        [self showPreferencesWindow:self];
-        [self markGreetingShown];
-    }
-}
-
-- (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag
-{
-    [self showPreferencesWindow:self];
-    return YES;
 }
 
 - (void)applicationWillTerminate:(NSNotification *)note
