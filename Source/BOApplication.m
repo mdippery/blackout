@@ -73,6 +73,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [_preferencesWindow release];
     [_shortcutControl release];
     [_loginItemButton release];
+    [_statusMenu release];
     [super dealloc];
 }
 

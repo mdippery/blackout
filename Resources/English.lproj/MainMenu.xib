@@ -18,6 +18,7 @@
                 <outlet property="loginItemButton" destination="F11-LH-LU2" id="eIh-9B-Kdj"/>
                 <outlet property="preferencesWindow" destination="5ly-y8-Vm9" id="NGY-oc-6jq"/>
                 <outlet property="shortcutControl" destination="08g-lP-NB8" id="DvC-M6-oL6"/>
+                <outlet property="statusMenu" destination="dwl-zR-HuB" id="RjN-fn-5BQ"/>
             </connections>
         </customObject>
         <window title="Blackout" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="Preferences" animationBehavior="default" tabbingIdentifier="Preferences" id="5ly-y8-Vm9">
@@ -101,7 +102,32 @@ DQ
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-570" y="-478"/>
+            <point key="canvasLocation" x="-738" y="-663"/>
+        </menu>
+        <menu title="Status" id="dwl-zR-HuB">
+            <items>
+                <menuItem title="About Blackout…" id="weN-gH-FgH">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="orderFrontStandardAboutPanel:" target="-1" id="mHI-b0-4r6"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="uPN-Yy-7ME"/>
+                <menuItem title="Preferences…" id="Jgi-jz-Sla">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showPreferencesWindow:" target="494" id="Hep-e0-ok2"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="XHp-LG-wTN"/>
+                <menuItem title="Quit Blackout" id="8i7-Z7-fIe">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="terminate:" target="-1" id="HrP-QD-CzA"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="-573" y="-516"/>
         </menu>
     </objects>
 </document>

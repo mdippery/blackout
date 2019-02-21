@@ -48,6 +48,7 @@ BOCarbonKeyCombo;
 @property (assign, nonatomic) BOCarbonKeyCombo carbonKeyCombo;
 @property (assign, nonatomic) BOCocoaKeyCombo cocoaKeyCombo;
 
+@property (strong, nonatomic) IBOutlet NSMenu *statusMenu;
 @property (strong, nonatomic) IBOutlet NSWindow *preferencesWindow;
 @property (strong, nonatomic) IBOutlet SRRecorderControl *shortcutControl;
 @property (strong, nonatomic) IBOutlet NSButton *loginItemButton;
