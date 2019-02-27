@@ -24,6 +24,7 @@
 #import <ServiceManagement/ServiceManagement.h>
 #import "BOApplication.h"
 #import "NSEvent+ModifierKeys.h"
+#import "SRCommon.h"
 
 
 #define YESORNO(b)  (b ? @"YES" : @"NO")
@@ -64,20 +65,6 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     NSAssert(defaultsPlist != nil, @"Path to UserDefaults.plist could not be retrieved");
     NSDictionary *defaults = [NSDictionary dictionaryWithContentsOfFile:defaultsPlist];
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
-}
-
-- (void)dealloc
-{
-    [_preferencesWindow release];
-    [_shortcutControl release];
-    [_loginItemButton release];
-    [super dealloc];
-}
-
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
-    [[self loginItemButton] setState:[self isLoginItem] ? NSControlStateValueOn : NSControlStateValueOff];
 }
 
 #pragma mark Properties
@@ -136,17 +123,16 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
     BOCocoaKeyCombo combo;
     combo.code = carbonCombo.code;
-    combo.flags = [[self shortcutControl] carbonToCocoaFlags:carbonCombo.flags];
+    combo.flags = SRCarbonToCocoaFlags(carbonCombo.flags);
 
     return combo;
 }
 
 - (void)setCocoaKeyCombo:(BOCocoaKeyCombo)combo
 {
-    NSAssert([self shortcutControl] != nil, @"shortcutControl is nil");
     BOCarbonKeyCombo newCombo;
     newCombo.code = combo.code;
-    newCombo.flags = [[self shortcutControl] cocoaToCarbonFlags:combo.flags];
+    newCombo.flags = SRCocoaToCarbonFlags(combo.flags);
 
     [self setCarbonKeyCombo:newCombo];
 }
@@ -185,42 +171,6 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [[NSWorkspace sharedWorkspace] launchApplication:@"ScreenSaverEngine"];
 }
 
-#pragma mark User Interface
-
-- (IBAction)showPreferencesWindow:(id)sender
-{
-    [[self shortcutControl] setKeyCombo:[self cocoaKeyCombo]];
-    [[self preferencesWindow] makeKeyAndOrderFront:self];
-}
-
-- (IBAction)closePreferencesWindow:(id)sender
-{
-    [[self preferencesWindow] close];
-}
-
-- (IBAction)toggleLoginItem:(id)sender
-{
-    BOOL state = [sender state] == NSControlStateValueOn;
-    NSLog(@"Toggling login item status to %@", YESORNO(state));
-
-    NSString *helperID = [[[NSBundle mainBundle] bundleIdentifier] stringByAppendingString:@"Launcher"];
-    NSLog(@"Loading helper application with ID %@", helperID);
-    BOOL res = SMLoginItemSetEnabled((CFStringRef) helperID, state);
-    NSLog(@"SMLoginItemSetEnabled? %@", YESORNO(res));
-
-    if (res) {
-        [self setIsLoginItem:state];
-    }
-}
-
-- (void)shortcutRecorder:(SRRecorderControl *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo
-{
-    NSLog(@"Changing key combo to %@", [aRecorder keyComboString]);
-    [self setCocoaKeyCombo:newKeyCombo];
-    [self unregisterGlobalHotkey:self];
-    [self registerGlobalHotkey:self];
-}
-
 #pragma mark NSApp Delegate
 
 - (BOOL)hasShownGreeting
@@ -240,19 +190,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (void)applicationDidFinishLaunching:(NSNotification *)note
 {
     NSLog(@"Loaded Blackout v%@ (%@)", [self version], [self build]);
-
     [self registerGlobalHotkey:self];
-
-    if ([NSEvent optionKey] || ![self hasShownGreeting]) {
-        [self showPreferencesWindow:self];
-        [self markGreetingShown];
-    }
-}
-
-- (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag
-{
-    [self showPreferencesWindow:self];
-    return YES;
 }
 
 - (void)applicationWillTerminate:(NSNotification *)note

@@ -11,29 +11,13 @@
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		A23A9779221DDC54003389C7 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A9778221DDC3F003389C7 /* ServiceManagement.framework */; };
-		B716F976125D501100606308 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B716F974125D501100606308 /* InfoPlist.strings */; };
-		B716F97A125D502900606308 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B716F978125D502900606308 /* MainMenu.xib */; };
+		A2DA46D822261F4F00DB89A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A2DA46DA22261F4F00DB89A6 /* InfoPlist.strings */; };
+		A2DA46DE222622D600DB89A6 /* SRCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DA46DD222622D600DB89A6 /* SRCommon.m */; };
 		B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783BE6B123146EC005AA38B /* Carbon.framework */; };
-		B7B79F581241448900AE27A1 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
-		B7B79F601241449500AE27A1 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
 		B7D1C417125D6D0500C74190 /* UserDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7D1C416125D6D0500C74190 /* UserDefaults.plist */; };
 		B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D54A1226F53E00803D94 /* Moon.icns */; };
 		B7E0267E125D7F9E00D832E7 /* NSEvent+ModifierKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E0267D125D7F9E00D832E7 /* NSEvent+ModifierKeys.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		B780E8EA12381E5300D309AB /* Copy Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				B7B79F601241449500AE27A1 /* ShortcutRecorder.framework in Copy Frameworks */,
-			);
-			name = "Copy Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -46,8 +30,9 @@
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Blackout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blackout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A23A9778221DDC3F003389C7 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
-		B716F975125D501100606308 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = Resources/English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B716F979125D502900606308 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = Resources/English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		A2DA46D922261F4F00DB89A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A2DA46DC222622D600DB89A6 /* SRCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRCommon.h; path = Source/SRCommon.h; sourceTree = "<group>"; };
+		A2DA46DD222622D600DB89A6 /* SRCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRCommon.m; path = Source/SRCommon.m; sourceTree = "<group>"; };
 		B783BE6B123146EC005AA38B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		B7D1C416125D6D0500C74190 /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = UserDefaults.plist; path = Resources/UserDefaults.plist; sourceTree = "<group>"; };
 		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Moon.icns; path = Resources/Moon.icns; sourceTree = "<group>"; };
@@ -64,7 +49,6 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */,
 				A23A9779221DDC54003389C7 /* ServiceManagement.framework in Frameworks */,
-				B7B79F581241448900AE27A1 /* ShortcutRecorder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,9 +90,8 @@
 			isa = PBXGroup;
 			children = (
 				8D1107310486CEB800E47090 /* Info.plist */,
-				B716F974125D501100606308 /* InfoPlist.strings */,
+				A2DA46DA22261F4F00DB89A6 /* InfoPlist.strings */,
 				B7D1C416125D6D0500C74190 /* UserDefaults.plist */,
-				B716F978125D502900606308 /* MainMenu.xib */,
 				B7D1D54A1226F53E00803D94 /* Moon.icns */,
 			);
 			name = Resources;
@@ -149,6 +132,8 @@
 			children = (
 				B7E0267C125D7F9E00D832E7 /* NSEvent+ModifierKeys.h */,
 				B7E0267D125D7F9E00D832E7 /* NSEvent+ModifierKeys.m */,
+				A2DA46DC222622D600DB89A6 /* SRCommon.h */,
+				A2DA46DD222622D600DB89A6 /* SRCommon.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -163,7 +148,6 @@
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
 				8D11072E0486CEB800E47090 /* Frameworks */,
-				B780E8EA12381E5300D309AB /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -208,8 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */,
-				B716F976125D501100606308 /* InfoPlist.strings in Resources */,
-				B716F97A125D502900606308 /* MainMenu.xib in Resources */,
+				A2DA46D822261F4F00DB89A6 /* InfoPlist.strings in Resources */,
 				B7D1C417125D6D0500C74190 /* UserDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,26 +207,20 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				256AC3DA0F4B6AC300CF3369 /* BOApplication.m in Sources */,
 				B7E0267E125D7F9E00D832E7 /* NSEvent+ModifierKeys.m in Sources */,
+				A2DA46DE222622D600DB89A6 /* SRCommon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B716F974125D501100606308 /* InfoPlist.strings */ = {
+		A2DA46DA22261F4F00DB89A6 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				B716F975125D501100606308 /* English */,
+				A2DA46D922261F4F00DB89A6 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		B716F978125D502900606308 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B716F979125D502900606308 /* English */,
-			);
-			name = MainMenu.xib;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

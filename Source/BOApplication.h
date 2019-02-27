@@ -34,7 +34,7 @@ typedef struct
 BOCarbonKeyCombo;
 
 
-@interface BOApplication : NSObject
+@interface BOApplication : NSObject <NSApplicationDelegate>
 {
 @private
     EventHotKeyRef hotkeyHandler;
@@ -48,18 +48,8 @@ BOCarbonKeyCombo;
 @property (assign, nonatomic) BOCarbonKeyCombo carbonKeyCombo;
 @property (assign, nonatomic) BOCocoaKeyCombo cocoaKeyCombo;
 
-@property (strong, nonatomic) IBOutlet NSWindow *preferencesWindow;
-@property (strong, nonatomic) IBOutlet SRRecorderControl *shortcutControl;
-@property (strong, nonatomic) IBOutlet NSButton *loginItemButton;
-
 - (void)registerGlobalHotkey:(id)sender;
 - (void)unregisterGlobalHotkey:(id)sender;
 - (void)activateScreenSaver:(id)sender;
-
-- (IBAction)showPreferencesWindow:(id)sender;
-- (IBAction)closePreferencesWindow:(id)sender;
-- (IBAction)toggleLoginItem:(id)sender;
-
-- (void)shortcutRecorder:(SRRecorderControl *)aRecorder keyComboDidChange:(KeyCombo)newKeyCombo;
 
 @end
