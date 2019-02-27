@@ -10,8 +10,8 @@
 		256AC3DA0F4B6AC300CF3369 /* BOApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* BOApplication.m */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		A213889222271C7F00EF5703 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A213889022271C7F00EF5703 /* InfoPlist.strings */; };
 		A23A9779221DDC54003389C7 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A9778221DDC3F003389C7 /* ServiceManagement.framework */; };
-		A2DA46D822261F4F00DB89A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A2DA46DA22261F4F00DB89A6 /* InfoPlist.strings */; };
 		A2DA46DE222622D600DB89A6 /* SRCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = A2DA46DD222622D600DB89A6 /* SRCommon.m */; };
 		B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783BE6B123146EC005AA38B /* Carbon.framework */; };
 		B7D1C417125D6D0500C74190 /* UserDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7D1C416125D6D0500C74190 /* UserDefaults.plist */; };
@@ -24,20 +24,20 @@
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		256AC3D80F4B6AC300CF3369 /* BOApplication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BOApplication.h; path = Source/BOApplication.h; sourceTree = "<group>"; };
 		256AC3D90F4B6AC300CF3369 /* BOApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BOApplication.m; path = Source/BOApplication.m; sourceTree = "<group>"; };
-		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Source/main.m; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Blackout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blackout.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A213889122271C7F00EF5703 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A23A9778221DDC3F003389C7 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
-		A2DA46D922261F4F00DB89A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A2DA46DC222622D600DB89A6 /* SRCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SRCommon.h; path = Source/SRCommon.h; sourceTree = "<group>"; };
-		A2DA46DD222622D600DB89A6 /* SRCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SRCommon.m; path = Source/SRCommon.m; sourceTree = "<group>"; };
+		A2DA46DC222622D600DB89A6 /* SRCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRCommon.h; sourceTree = "<group>"; };
+		A2DA46DD222622D600DB89A6 /* SRCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRCommon.m; sourceTree = "<group>"; };
 		B783BE6B123146EC005AA38B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
-		B7D1C416125D6D0500C74190 /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = UserDefaults.plist; path = Resources/UserDefaults.plist; sourceTree = "<group>"; };
-		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = Moon.icns; path = Resources/Moon.icns; sourceTree = "<group>"; };
-		B7E0267C125D7F9E00D832E7 /* NSEvent+ModifierKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSEvent+ModifierKeys.h"; path = "Source/NSEvent+ModifierKeys.h"; sourceTree = "<group>"; };
-		B7E0267D125D7F9E00D832E7 /* NSEvent+ModifierKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSEvent+ModifierKeys.m"; path = "Source/NSEvent+ModifierKeys.m"; sourceTree = "<group>"; };
+		B7D1C416125D6D0500C74190 /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserDefaults.plist; sourceTree = "<group>"; };
+		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Moon.icns; sourceTree = "<group>"; };
+		B7E0267C125D7F9E00D832E7 /* NSEvent+ModifierKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSEvent+ModifierKeys.h"; sourceTree = "<group>"; };
+		B7E0267D125D7F9E00D832E7 /* NSEvent+ModifierKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSEvent+ModifierKeys.m"; sourceTree = "<group>"; };
 		B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = Frameworks/ShortcutRecorder.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,7 +68,6 @@
 			children = (
 				256AC3D80F4B6AC300CF3369 /* BOApplication.h */,
 				256AC3D90F4B6AC300CF3369 /* BOApplication.m */,
-				B7E0267B125D7F8700D832E7 /* Additions */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -81,21 +80,26 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				B7E0267C125D7F9E00D832E7 /* NSEvent+ModifierKeys.h */,
+				B7E0267D125D7F9E00D832E7 /* NSEvent+ModifierKeys.m */,
+				A2DA46DC222622D600DB89A6 /* SRCommon.h */,
+				A2DA46DD222622D600DB89A6 /* SRCommon.m */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
-			sourceTree = "<group>";
+			path = Source;
+			sourceTree = SOURCE_ROOT;
 		};
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				8D1107310486CEB800E47090 /* Info.plist */,
-				A2DA46DA22261F4F00DB89A6 /* InfoPlist.strings */,
+				A213889022271C7F00EF5703 /* InfoPlist.strings */,
 				B7D1C416125D6D0500C74190 /* UserDefaults.plist */,
 				B7D1D54A1226F53E00803D94 /* Moon.icns */,
 			);
-			name = Resources;
-			sourceTree = "<group>";
+			path = Resources;
+			sourceTree = SOURCE_ROOT;
 		};
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
@@ -125,17 +129,6 @@
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		B7E0267B125D7F8700D832E7 /* Additions */ = {
-			isa = PBXGroup;
-			children = (
-				B7E0267C125D7F9E00D832E7 /* NSEvent+ModifierKeys.h */,
-				B7E0267D125D7F9E00D832E7 /* NSEvent+ModifierKeys.m */,
-				A2DA46DC222622D600DB89A6 /* SRCommon.h */,
-				A2DA46DD222622D600DB89A6 /* SRCommon.m */,
-			);
-			name = Additions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +169,7 @@
 				Japanese,
 				French,
 				German,
+				en,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Blackout */;
 			projectDirPath = "";
@@ -192,7 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */,
-				A2DA46D822261F4F00DB89A6 /* InfoPlist.strings in Resources */,
+				A213889222271C7F00EF5703 /* InfoPlist.strings in Resources */,
 				B7D1C417125D6D0500C74190 /* UserDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -214,13 +208,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A2DA46DA22261F4F00DB89A6 /* InfoPlist.strings */ = {
+		A213889022271C7F00EF5703 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A2DA46D922261F4F00DB89A6 /* en */,
+				A213889122271C7F00EF5703 /* en */,
 			);
 			name = InfoPlist.strings;
-			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
