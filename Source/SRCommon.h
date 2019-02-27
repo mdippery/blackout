@@ -12,6 +12,12 @@
 //      Jamie Kirkpatrick
 
 
+#pragma mark -
+#pragma mark Macros
+
+#define ShortcutRecorderEmptyFlags 0
+
+#pragma mark -
 #pragma mark Converting between Cocoa and Carbon modifier flags
 
 extern NSUInteger SRCarbonToCocoaFlags( NSUInteger carbonFlags );

@@ -12,6 +12,10 @@
 //      Jamie Kirkpatrick
 //      Andy Kim
 
+#import <Carbon/Carbon.h>
+#import <Cocoa/Cocoa.h>
+#import "SRCommon.h"
+
 
 //----------------------------------------------------------
 // SRCarbonToCocoaFlags()
