@@ -32,7 +32,6 @@
 
 static NSString * const BOHotkeyCodeKey = @"HotkeyCode";
 static NSString * const BOHotkeyModifierKey = @"HotkeyModifiers";
-static NSString * const BOGreetingDisplayKey = @"GreetingDisplayed";
 static NSString * const BOLoginItemKey = @"IsLoginItem";
 static const NSTimeInterval screensaverDelay = 0.5;
 
@@ -47,12 +46,6 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
                                     afterDelay:screensaverDelay];
     return noErr;
 }
-
-
-@interface BOApplication ()
-- (BOOL)hasShownGreeting;
-- (void)markGreetingShown;
-@end
 
 
 @implementation BOApplication
@@ -172,20 +165,6 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 }
 
 #pragma mark NSApp Delegate
-
-- (BOOL)hasShownGreeting
-{
-    if ([[[self environment] objectForKey:@"BLACKOUT_ALWAYS_SHOW_GREETING"] isEqualToString:@"true"]) {
-        return NO;
-    }
-
-    return [[NSUserDefaults standardUserDefaults] objectForKey:BOGreetingDisplayKey] != nil;
-}
-
-- (void)markGreetingShown
-{
-    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:BOGreetingDisplayKey];
-}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)note
 {
