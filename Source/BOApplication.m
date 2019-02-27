@@ -50,6 +50,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 @implementation BOApplication
 
+#pragma mark -
 #pragma mark Lifecyle
 
 + (void)initialize
@@ -60,6 +61,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
 }
 
+#pragma mark -
 #pragma mark Properties
 
 - (NSString *)version
@@ -130,6 +132,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [self setCarbonKeyCombo:newCombo];
 }
 
+#pragma mark -
 #pragma mark Application
 
 - (void)registerGlobalHotkey:(id)sender;
@@ -164,6 +167,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [[NSWorkspace sharedWorkspace] launchApplication:@"ScreenSaverEngine"];
 }
 
+#pragma mark -
 #pragma mark NSApp Delegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)note
