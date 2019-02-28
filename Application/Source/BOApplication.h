@@ -20,8 +20,9 @@
  * THE SOFTWARE.
  */
 
+#import <Carbon/Carbon.h>
 #import <Cocoa/Cocoa.h>
-#import <ShortcutRecorder/ShortcutRecorder.h>
+#import "SRCommon.h"
 
 
 typedef KeyCombo BOCocoaKeyCombo;
