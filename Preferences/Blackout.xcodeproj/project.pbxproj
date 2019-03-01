@@ -1,0 +1,327 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A2C87DFA2229F5F400295F41 /* Blackout.h in Headers */ = {isa = PBXBuildFile; fileRef = A2C87DF92229F5F400295F41 /* Blackout.h */; };
+		A2C87DFC2229F5F400295F41 /* Blackout.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C87DFB2229F5F400295F41 /* Blackout.m */; };
+		A2C87DFE2229F5F400295F41 /* Blackout.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A2C87DFD2229F5F400295F41 /* Blackout.tiff */; };
+		A2C87E012229F5F400295F41 /* Blackout.xib in Resources */ = {isa = PBXBuildFile; fileRef = A2C87DFF2229F5F400295F41 /* Blackout.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A2C87DF62229F5F400295F41 /* Blackout.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Blackout.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2C87DF92229F5F400295F41 /* Blackout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Blackout.h; path = Source/Blackout.h; sourceTree = SOURCE_ROOT; };
+		A2C87DFB2229F5F400295F41 /* Blackout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Blackout.m; path = Source/Blackout.m; sourceTree = SOURCE_ROOT; };
+		A2C87DFD2229F5F400295F41 /* Blackout.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Blackout.tiff; sourceTree = "<group>"; };
+		A2C87E022229F5F400295F41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A2E6126A2229F78B00B49BE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Blackout.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A2C87DF32229F5F400295F41 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A2C87DEC2229F5F400295F41 = {
+			isa = PBXGroup;
+			children = (
+				A2C87DF92229F5F400295F41 /* Blackout.h */,
+				A2C87DFB2229F5F400295F41 /* Blackout.m */,
+				A2E612692229F6D200B49BE7 /* Resources */,
+				A2C87DF72229F5F400295F41 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A2C87DF72229F5F400295F41 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A2C87DF62229F5F400295F41 /* Blackout.prefPane */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A2E612692229F6D200B49BE7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A2C87E022229F5F400295F41 /* Info.plist */,
+				A2C87DFF2229F5F400295F41 /* Blackout.xib */,
+				A2C87DFD2229F5F400295F41 /* Blackout.tiff */,
+			);
+			path = Resources;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A2C87DF12229F5F400295F41 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2C87DFA2229F5F400295F41 /* Blackout.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		A2C87DF52229F5F400295F41 /* Blackout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A2C87E052229F5F400295F41 /* Build configuration list for PBXNativeTarget "Blackout" */;
+			buildPhases = (
+				A2C87DF12229F5F400295F41 /* Headers */,
+				A2C87DF22229F5F400295F41 /* Sources */,
+				A2C87DF32229F5F400295F41 /* Frameworks */,
+				A2C87DF42229F5F400295F41 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Blackout;
+			productName = Blackout;
+			productReference = A2C87DF62229F5F400295F41 /* Blackout.prefPane */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A2C87DED2229F5F400295F41 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Michael Dippery";
+				TargetAttributes = {
+					A2C87DF52229F5F400295F41 = {
+						CreatedOnToolsVersion = 10.1;
+					};
+				};
+			};
+			buildConfigurationList = A2C87DF02229F5F400295F41 /* Build configuration list for PBXProject "Blackout" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = A2C87DEC2229F5F400295F41;
+			productRefGroup = A2C87DF72229F5F400295F41 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A2C87DF52229F5F400295F41 /* Blackout */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A2C87DF42229F5F400295F41 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2C87E012229F5F400295F41 /* Blackout.xib in Resources */,
+				A2C87DFE2229F5F400295F41 /* Blackout.tiff in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A2C87DF22229F5F400295F41 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A2C87DFC2229F5F400295F41 /* Blackout.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A2C87DFF2229F5F400295F41 /* Blackout.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A2E6126A2229F78B00B49BE7 /* en */,
+			);
+			name = Blackout.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A2C87E032229F5F400295F41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		A2C87E042229F5F400295F41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		A2C87E062229F5F400295F41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mipadi.Blackout.Preferences;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = prefPane;
+			};
+			name = Debug;
+		};
+		A2C87E072229F5F400295F41 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Resources/Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mipadi.Blackout.Preferences;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = prefPane;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A2C87DF02229F5F400295F41 /* Build configuration list for PBXProject "Blackout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2C87E032229F5F400295F41 /* Debug */,
+				A2C87E042229F5F400295F41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A2C87E052229F5F400295F41 /* Build configuration list for PBXNativeTarget "Blackout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A2C87E062229F5F400295F41 /* Debug */,
+				A2C87E072229F5F400295F41 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A2C87DED2229F5F400295F41 /* Project object */;
+}
