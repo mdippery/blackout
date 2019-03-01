@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A28CAD8A2229F90600C1A193 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A28CAD882229F90600C1A193 /* InfoPlist.strings */; };
 		A2C87DFA2229F5F400295F41 /* Blackout.h in Headers */ = {isa = PBXBuildFile; fileRef = A2C87DF92229F5F400295F41 /* Blackout.h */; };
 		A2C87DFC2229F5F400295F41 /* Blackout.m in Sources */ = {isa = PBXBuildFile; fileRef = A2C87DFB2229F5F400295F41 /* Blackout.m */; };
 		A2C87DFE2229F5F400295F41 /* Blackout.tiff in Resources */ = {isa = PBXBuildFile; fileRef = A2C87DFD2229F5F400295F41 /* Blackout.tiff */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A28CAD892229F90600C1A193 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A2C87DF62229F5F400295F41 /* Blackout.prefPane */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Blackout.prefPane; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2C87DF92229F5F400295F41 /* Blackout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Blackout.h; path = Source/Blackout.h; sourceTree = SOURCE_ROOT; };
 		A2C87DFB2229F5F400295F41 /* Blackout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Blackout.m; path = Source/Blackout.m; sourceTree = SOURCE_ROOT; };
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				A2C87E022229F5F400295F41 /* Info.plist */,
+				A28CAD882229F90600C1A193 /* InfoPlist.strings */,
 				A2C87DFF2229F5F400295F41 /* Blackout.xib */,
 				A2C87DFD2229F5F400295F41 /* Blackout.tiff */,
 			);
@@ -130,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2C87E012229F5F400295F41 /* Blackout.xib in Resources */,
+				A28CAD8A2229F90600C1A193 /* InfoPlist.strings in Resources */,
 				A2C87DFE2229F5F400295F41 /* Blackout.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,6 +152,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		A28CAD882229F90600C1A193 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A28CAD892229F90600C1A193 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		A2C87DFF2229F5F400295F41 /* Blackout.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

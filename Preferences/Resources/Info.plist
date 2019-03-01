@@ -18,8 +18,6 @@
 	<string>0.4.0d4</string>
 	<key>CFBundleVersion</key>
 	<string>40.6</string>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2019 Michael Dippery. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>Blackout</string>
 	<key>NSPrefPaneIconFile</key>
