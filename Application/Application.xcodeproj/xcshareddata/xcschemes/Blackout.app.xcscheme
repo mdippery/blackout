@@ -17,7 +17,7 @@
                BlueprintIdentifier = "8D1107260486CEB800E47090"
                BuildableName = "Blackout.app"
                BlueprintName = "Blackout"
-               ReferencedContainer = "container:Blackout.xcodeproj">
+               ReferencedContainer = "container:Application.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
             BlueprintIdentifier = "8D1107260486CEB800E47090"
             BuildableName = "Blackout.app"
             BlueprintName = "Blackout"
-            ReferencedContainer = "container:Blackout.xcodeproj">
+            ReferencedContainer = "container:Application.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -58,16 +58,9 @@
             BlueprintIdentifier = "8D1107260486CEB800E47090"
             BuildableName = "Blackout.app"
             BlueprintName = "Blackout"
-            ReferencedContainer = "container:Blackout.xcodeproj">
+            ReferencedContainer = "container:Application.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "BLACKOUT_ALWAYS_SHOW_GREETING"
-            value = "true"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -84,7 +77,7 @@
             BlueprintIdentifier = "8D1107260486CEB800E47090"
             BuildableName = "Blackout.app"
             BlueprintName = "Blackout"
-            ReferencedContainer = "container:Blackout.xcodeproj">
+            ReferencedContainer = "container:Application.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
