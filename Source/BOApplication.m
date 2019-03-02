@@ -70,8 +70,6 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [super dealloc];
 }
 
-#pragma mark - Properties
-
 - (void)awakeFromNib
 {
     NSStatusBar *bar = [NSStatusBar systemStatusBar];
@@ -79,6 +77,8 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [statusItem setMenu:[self statusMenu]];
     [[statusItem button] setImage:[self statusMenuImage]];
 }
+
+#pragma mark - Properties
 
 - (NSString *)version
 {
