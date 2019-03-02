@@ -48,6 +48,8 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 }
 
 
+#pragma mark -
+
 @interface BOApplication ()
 - (BOOL)hasShownGreeting;
 - (void)markGreetingShown;
@@ -56,7 +58,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 @implementation BOApplication
 
-#pragma mark Lifecyle
+#pragma mark - Lifecyle
 
 + (void)initialize
 {
@@ -80,7 +82,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [[self loginItemButton] setState:[self isLoginItem] ? NSControlStateValueOn : NSControlStateValueOff];
 }
 
-#pragma mark Properties
+#pragma mark - Properties
 
 - (NSString *)version
 {
@@ -151,7 +153,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [self setCarbonKeyCombo:newCombo];
 }
 
-#pragma mark Application
+#pragma mark - Application
 
 - (void)registerGlobalHotkey:(id)sender;
 {
@@ -185,7 +187,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [[NSWorkspace sharedWorkspace] launchApplication:@"ScreenSaverEngine"];
 }
 
-#pragma mark User Interface
+#pragma mark - User Interface
 
 - (IBAction)showPreferencesWindow:(id)sender
 {
@@ -221,7 +223,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     [self registerGlobalHotkey:self];
 }
 
-#pragma mark NSApp Delegate
+#pragma mark - NSApp Delegate
 
 - (BOOL)hasShownGreeting
 {
