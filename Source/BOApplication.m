@@ -107,8 +107,13 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 
 - (NSImage *)statusMenuImage
 {
-    // TODO: Adjust for dark mode
-    return [NSImage imageNamed:@"StatusMenu18x18.png"];
+    NSImage *image = [NSImage imageNamed:@"StatusMenu18x18.png"];
+    [image setTemplate:YES];
+
+    NSAssert(image != nil, @"status menu image is nil");
+    NSLog(@"Using status menu image: %@", image);
+
+    return image;
 }
 
 - (BOCarbonKeyCombo)carbonKeyCombo
