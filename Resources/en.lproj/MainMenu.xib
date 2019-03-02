@@ -62,7 +62,7 @@
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="-508" y="-1395"/>
+            <point key="canvasLocation" x="-1133" y="-1590"/>
         </window>
         <menu title="Main Menu" systemMenu="main" id="vWa-JZ-7cm">
             <items>
@@ -79,7 +79,7 @@
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-550" y="-728"/>
+            <point key="canvasLocation" x="-1296" y="-1649"/>
         </menu>
         <menu title="Status" id="dwl-zR-HuB">
             <items>
@@ -104,7 +104,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-715" y="-697"/>
+            <point key="canvasLocation" x="-1461" y="-1618"/>
         </menu>
     </objects>
 </document>
