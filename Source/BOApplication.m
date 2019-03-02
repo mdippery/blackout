@@ -108,11 +108,8 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (NSImage *)statusMenuImage
 {
     NSImage *image = [NSImage imageNamed:@"StatusMenu18x18.png"];
-    [image setTemplate:YES];
-
     NSAssert(image != nil, @"status menu image is nil");
-    NSLog(@"Using status menu image: %@", image);
-
+    [image setTemplate:YES];
     return image;
 }
 
