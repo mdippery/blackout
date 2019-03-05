@@ -13,7 +13,6 @@
 		A2346709221F32AF002A194B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A2346707221F32AF002A194B /* InfoPlist.strings */; };
 		A234670C221F32BA002A194B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = A234670A221F32BA002A194B /* MainMenu.xib */; };
 		A23A9779221DDC54003389C7 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23A9778221DDC3F003389C7 /* ServiceManagement.framework */; };
-		A262823E222A060500F52DC8 /* StatusMenu18x18.png in Resources */ = {isa = PBXBuildFile; fileRef = A262823D222A060500F52DC8 /* StatusMenu18x18.png */; };
 		B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783BE6B123146EC005AA38B /* Carbon.framework */; };
 		B7B79F581241448900AE27A1 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
 		B7B79F601241449500AE27A1 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
@@ -49,7 +48,6 @@
 		A2346708221F32AF002A194B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A234670B221F32BA002A194B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		A23A9778221DDC3F003389C7 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
-		A262823D222A060500F52DC8 /* StatusMenu18x18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StatusMenu18x18.png; sourceTree = "<group>"; };
 		B783BE6B123146EC005AA38B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		B7D1C416125D6D0500C74190 /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserDefaults.plist; sourceTree = "<group>"; };
 		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Moon.icns; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 				B7D1C416125D6D0500C74190 /* UserDefaults.plist */,
 				A234670A221F32BA002A194B /* MainMenu.xib */,
 				B7D1D54A1226F53E00803D94 /* Moon.icns */,
-				A262823D222A060500F52DC8 /* StatusMenu18x18.png */,
 			);
 			path = Resources;
 			sourceTree = SOURCE_ROOT;
@@ -210,7 +207,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */,
-				A262823E222A060500F52DC8 /* StatusMenu18x18.png in Resources */,
 				B7D1C417125D6D0500C74190 /* UserDefaults.plist in Resources */,
 				A2346709221F32AF002A194B /* InfoPlist.strings in Resources */,
 				A234670C221F32BA002A194B /* MainMenu.xib in Resources */,

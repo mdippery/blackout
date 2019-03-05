@@ -46,9 +46,6 @@ BOCarbonKeyCombo;
 @property (readonly) NSDictionary *environment;
 @property (assign, nonatomic) BOOL isLoginItem;
 
-
-@property (readonly) NSImage *statusMenuImage;
-
 @property (assign, nonatomic) BOCarbonKeyCombo carbonKeyCombo;
 @property (assign, nonatomic) BOCocoaKeyCombo cocoaKeyCombo;
 
@@ -56,6 +53,8 @@ BOCarbonKeyCombo;
 @property (strong, nonatomic) IBOutlet NSWindow *preferencesWindow;
 @property (strong, nonatomic) IBOutlet SRRecorderControl *shortcutControl;
 @property (strong, nonatomic) IBOutlet NSButton *loginItemButton;
+
+- (NSImage *)statusMenuImageWithFrame:(NSRect)frame;
 
 - (void)registerGlobalHotkey:(id)sender;
 - (void)unregisterGlobalHotkey:(id)sender;

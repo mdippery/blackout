@@ -33,6 +33,7 @@ static NSString * const BOHotkeyCodeKey = @"HotkeyCode";
 static NSString * const BOHotkeyModifierKey = @"HotkeyModifiers";
 static NSString * const BOLoginItemKey = @"IsLoginItem";
 static const NSTimeInterval BOScreensaverDelay = 0.5;
+static const NSInteger BOStatusMenuIconPadding = 3;
 
 
 static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData)
@@ -74,8 +75,11 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 {
     NSStatusBar *bar = [NSStatusBar systemStatusBar];
     statusItem = [[bar statusItemWithLength:NSSquareStatusItemLength] retain];
+
     [statusItem setMenu:[self statusMenu]];
-    [[statusItem button] setImage:[self statusMenuImage]];
+
+    NSStatusBarButton *button = [statusItem button];
+    [button setImage:[self statusMenuImageWithFrame:[button frame]]];
 }
 
 #pragma mark - Properties
@@ -103,14 +107,6 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (void)setIsLoginItem:(BOOL)isLoginItem
 {
     [[NSUserDefaults standardUserDefaults] setBool:isLoginItem forKey:BOLoginItemKey];
-}
-
-- (NSImage *)statusMenuImage
-{
-    NSImage *image = [NSImage imageNamed:@"StatusMenu18x18.png"];
-    NSAssert(image != nil, @"status menu image is nil");
-    [image setTemplate:YES];
-    return image;
 }
 
 - (BOCarbonKeyCombo)carbonKeyCombo
@@ -158,6 +154,28 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 }
 
 #pragma mark - Application
+
+- (NSImage *)statusMenuImageWithFrame:(NSRect)frame
+{
+    NSImage *image = [NSImage imageWithSize:frame.size flipped:NO drawingHandler:^BOOL(NSRect rect) {
+        NSLog(@"Drawing status menu icon in frame %@", NSStringFromRect(rect));
+
+        NSInteger radius = (NSInteger) MIN(rect.size.height, rect.size.width);
+        radius /= 2;
+        radius -= BOStatusMenuIconPadding;
+        NSLog(@"Using radius of %ld", radius);
+
+        NSRect moonFrame = NSMakeRect(BOStatusMenuIconPadding, BOStatusMenuIconPadding, radius * 2, radius * 2);
+        NSLog(@"Using icon frame %@", NSStringFromRect(moonFrame));
+        NSBezierPath *moon = [NSBezierPath bezierPathWithOvalInRect:moonFrame];
+        [[NSColor blackColor] set];
+        [moon fill];
+
+        return YES;
+    }];
+    [image setTemplate:YES];
+    return image;
+}
 
 - (void)registerGlobalHotkey:(id)sender;
 {
