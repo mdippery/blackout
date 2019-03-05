@@ -32,7 +32,7 @@
 static NSString * const BOHotkeyCodeKey = @"HotkeyCode";
 static NSString * const BOHotkeyModifierKey = @"HotkeyModifiers";
 static NSString * const BOLoginItemKey = @"IsLoginItem";
-static const NSTimeInterval screensaverDelay = 0.5;
+static const NSTimeInterval BOScreensaverDelay = 0.5;
 
 
 static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData)
@@ -42,7 +42,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     NSLog(@"Invoked hotkey");
     [(BOApplication *)userData performSelector:@selector(activateScreenSaver:)
                                     withObject:(BOApplication *)userData
-                                    afterDelay:screensaverDelay];
+                                    afterDelay:BOScreensaverDelay];
     return noErr;
 }
 
