@@ -165,6 +165,8 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
         NSRect crescentFrame = NSMakeRect(radius + 1.0, radius - 2.0, radius * 1.5, radius * 1.5);
         NSBezierPath *crescent = [NSBezierPath bezierPathWithOvalInRect:crescentFrame];
 
+        // With inspiration from: https://stackoverflow.com/a/8860903/28804
+
         NSRect moonFrame = NSMakeRect(BOStatusMenuIconPadding + 1.0, BOStatusMenuIconPadding, radius * 2.0, radius * 2.0);
         NSBezierPath *moon = [NSBezierPath bezierPathWithOvalInRect:moonFrame];
         [moon appendBezierPath:crescent];
