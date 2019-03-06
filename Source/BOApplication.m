@@ -158,19 +158,14 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
 - (NSImage *)statusMenuImageWithFrame:(NSRect)frame
 {
     NSImage *image = [NSImage imageWithSize:frame.size flipped:NO drawingHandler:^BOOL(NSRect rect) {
-        NSLog(@"Drawing status menu icon in frame %@", NSStringFromRect(rect));
-
         NSInteger radius = (NSInteger) MIN(rect.size.height, rect.size.width);
         radius /= 2;
         radius -= BOStatusMenuIconPadding;
-        NSLog(@"Using radius of %ld", radius);
 
         NSRect crescentFrame = NSMakeRect(radius + 1.0, radius - 2.0, radius * 1.5, radius * 1.5);
-        NSLog(@"Drawing crescent in frame %@", NSStringFromRect(crescentFrame));
         NSBezierPath *crescent = [NSBezierPath bezierPathWithOvalInRect:crescentFrame];
 
         NSRect moonFrame = NSMakeRect(BOStatusMenuIconPadding + 1.0, BOStatusMenuIconPadding, radius * 2.0, radius * 2.0);
-        NSLog(@"Using icon frame %@", NSStringFromRect(moonFrame));
         NSBezierPath *moon = [NSBezierPath bezierPathWithOvalInRect:moonFrame];
         [moon appendBezierPath:crescent];
         [moon setWindingRule:NSEvenOddWindingRule];
