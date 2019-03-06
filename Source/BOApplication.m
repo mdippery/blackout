@@ -33,7 +33,7 @@ static NSString * const BOHotkeyCodeKey = @"HotkeyCode";
 static NSString * const BOHotkeyModifierKey = @"HotkeyModifiers";
 static NSString * const BOLoginItemKey = @"IsLoginItem";
 static const NSTimeInterval BOScreensaverDelay = 0.5;
-static const NSInteger BOStatusMenuIconPadding = 3;
+static const CGFloat BOStatusMenuIconPadding = 3.0;
 
 
 static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEvent, void *userData)
@@ -165,9 +165,20 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
         radius -= BOStatusMenuIconPadding;
         NSLog(@"Using radius of %ld", radius);
 
-        NSRect moonFrame = NSMakeRect(BOStatusMenuIconPadding, BOStatusMenuIconPadding, radius * 2, radius * 2);
+        NSRect crescentFrame = NSMakeRect(radius + 1.0, radius - 2.0, radius * 1.5, radius * 1.5);
+        NSLog(@"Drawing crescent in frame %@", NSStringFromRect(crescentFrame));
+        NSBezierPath *crescent = [NSBezierPath bezierPathWithOvalInRect:crescentFrame];
+
+        NSRect moonFrame = NSMakeRect(BOStatusMenuIconPadding + 1.0, BOStatusMenuIconPadding, radius * 2.0, radius * 2.0);
         NSLog(@"Using icon frame %@", NSStringFromRect(moonFrame));
         NSBezierPath *moon = [NSBezierPath bezierPathWithOvalInRect:moonFrame];
+        [moon appendBezierPath:crescent];
+        [moon setWindingRule:NSEvenOddWindingRule];
+
+        NSRect clipFrame = NSMakeRect(moonFrame.origin.x, moonFrame.origin.y, moonFrame.size.width - 1.0, moonFrame.size.height - 1.0);
+        NSBezierPath *clip = [NSBezierPath bezierPathWithOvalInRect:clipFrame];
+        [clip setClip];
+
         [[NSColor blackColor] set];
         [moon fill];
 
