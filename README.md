@@ -18,8 +18,7 @@ need this program, but they don't, so you do. Or *might*.
 
 You can, but in Snow Leopard, this just blanks the screen, instead of
 activating the screensaver. Also, Blackout doesn't lock the screen (unless
-the screen is set to lock upon screensaver activation). The Keychain menulet
-also takes up valuable menubar real estate.
+the screen is set to lock upon screensaver activation).
 
 ## Can't I drag ScreenSaverEngine.app to the Dock?
 
