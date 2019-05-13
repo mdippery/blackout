@@ -28,7 +28,7 @@ You can, but that takes up valuable Dock real estate.
 
 You need:
 
-* Mac OS X 10.5 (yep, that's it!)
+* Mac OS X 10.6 (yep, that's it!)
 
 ## How do I activate the screen saver?
 
