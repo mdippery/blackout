@@ -16,7 +16,7 @@
 		B716F97A125D502900606308 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = B716F978125D502900606308 /* MainMenu.xib */; };
 		B783BE6C123146EC005AA38B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B783BE6B123146EC005AA38B /* Carbon.framework */; };
 		B7B79F581241448900AE27A1 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
-		B7B79F601241449500AE27A1 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; };
+		B7B79F601241449500AE27A1 /* ShortcutRecorder.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B7D1C417125D6D0500C74190 /* UserDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = B7D1C416125D6D0500C74190 /* UserDefaults.plist */; };
 		B7D1D54B1226F53E00803D94 /* Moon.icns in Resources */ = {isa = PBXBuildFile; fileRef = B7D1D54A1226F53E00803D94 /* Moon.icns */; };
 		B7E0267E125D7F9E00D832E7 /* NSEvent+ModifierKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = B7E0267D125D7F9E00D832E7 /* NSEvent+ModifierKeys.m */; };
@@ -302,10 +302,7 @@
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
@@ -315,24 +312,18 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/Blackout.pch;
-				GCC_VERSION = "";
 				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = /Applications;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mipadi.Blackout;
 				PRODUCT_NAME = Blackout;
 				RUN_CLANG_STATIC_ANALYZER = YES;
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD)";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/Frameworks\"",
@@ -340,15 +331,12 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Source/Blackout.pch;
-				GCC_VERSION = "";
 				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = /Applications;
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mipadi.Blackout;
 				PRODUCT_NAME = Blackout;
 				RUN_CLANG_STATIC_ANALYZER = YES;
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
