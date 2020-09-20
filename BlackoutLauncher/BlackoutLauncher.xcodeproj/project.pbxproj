@@ -22,9 +22,9 @@
 		A23A978E221E07E6003389C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A23A978F221E07E6003389C7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A23A9799221E09CA003389C7 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Moon.icns; sourceTree = "<group>"; };
-		A23A979B221E0A98003389C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		A23A97A5221E0BDC003389C7 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		A23A97A8221E0C74003389C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B72643EF2517D5A800B108DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +128,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = A23A977A221E07E3003389C7;
 			productRefGroup = A23A9784221E07E4003389C7 /* Products */;
@@ -168,7 +169,7 @@
 		A23A978B221E07E6003389C7 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A23A979B221E0A98003389C7 /* en */,
+				B72643EF2517D5A800B108DA /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -307,7 +308,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mipadi.BlackoutLauncher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -327,7 +328,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mipadi.BlackoutLauncher;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
