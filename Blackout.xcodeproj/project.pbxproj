@@ -46,11 +46,11 @@
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Blackout.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blackout.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2346708221F32AF002A194B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		A234670B221F32BA002A194B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		A23A9778221DDC3F003389C7 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		B783BE6B123146EC005AA38B /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		B7D1C416125D6D0500C74190 /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserDefaults.plist; sourceTree = "<group>"; };
 		B7D1D54A1226F53E00803D94 /* Moon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Moon.icns; sourceTree = "<group>"; };
+		B7D5C88D2517D38D0076327A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		B7E0267C125D7F9E00D832E7 /* NSEvent+ModifierKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSEvent+ModifierKeys.h"; sourceTree = "<group>"; };
 		B7E0267D125D7F9E00D832E7 /* NSEvent+ModifierKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSEvent+ModifierKeys.m"; sourceTree = "<group>"; };
 		B7FB0B641235CC6B00C2B7C9 /* ShortcutRecorder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShortcutRecorder.framework; path = Frameworks/ShortcutRecorder.framework; sourceTree = "<group>"; };
@@ -191,6 +191,7 @@
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Blackout */;
 			projectDirPath = "";
@@ -240,7 +241,7 @@
 		A234670A221F32BA002A194B /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A234670B221F32BA002A194B /* en */,
+				B7D5C88D2517D38D0076327A /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
