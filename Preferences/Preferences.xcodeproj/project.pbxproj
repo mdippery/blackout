@@ -21,7 +21,7 @@
 		A2C87DFB2229F5F400295F41 /* Blackout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Blackout.m; path = Source/Blackout.m; sourceTree = SOURCE_ROOT; };
 		A2C87DFD2229F5F400295F41 /* Blackout.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = Blackout.tiff; sourceTree = "<group>"; };
 		A2C87E022229F5F400295F41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A2E6126A2229F78B00B49BE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/Blackout.xib; sourceTree = "<group>"; };
+		B76322812517DAF400D581F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Blackout.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +116,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = A2C87DEC2229F5F400295F41;
 			productRefGroup = A2C87DF72229F5F400295F41 /* Products */;
@@ -163,7 +164,7 @@
 		A2C87DFF2229F5F400295F41 /* Blackout.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A2E6126A2229F78B00B49BE7 /* en */,
+				B76322812517DAF400D581F0 /* Base */,
 			);
 			name = Blackout.xib;
 			sourceTree = "<group>";
@@ -290,7 +291,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mipadi.Blackout.Preferences;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = prefPane;
@@ -305,7 +306,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Resources/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/PreferencePanes";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.mipadi.Blackout.Preferences;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = prefPane;
