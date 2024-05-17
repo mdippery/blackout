@@ -170,7 +170,7 @@ static OSStatus BOHotkeyHandler(EventHandlerCallRef nextHandler, EventRef theEve
     BOCarbonKeyCombo combo = [self carbonKeyCombo];
     
     InstallApplicationEventHandler(BOHotkeyHandler, 1, &eventType, self, NULL);
-    RegisterEventHotKey(combo.code, combo.flags, hotKeyID, GetApplicationEventTarget(), 0, &hotkeyHandler);
+    RegisterEventHotKey((UInt32) combo.code, (UInt32) combo.flags, hotKeyID, GetApplicationEventTarget(), 0, &hotkeyHandler);
     NSLog(@"Registered global hotkey: code = %ld, mods = %ld, ref = %p", (long) combo.code, (long) combo.flags, hotkeyHandler);
 }
 

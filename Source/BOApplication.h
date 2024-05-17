@@ -28,8 +28,8 @@ typedef KeyCombo BOCocoaKeyCombo;
 
 typedef struct
 {
-    NSInteger flags;
-    NSInteger code;
+    NSUInteger flags;
+    NSUInteger code;
 }
 BOCarbonKeyCombo;
 
